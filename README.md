@@ -8,3 +8,5 @@ It strongly advizes that the polynomials appearing for functions in WuRittSolva 
 This work is mainly for educational purposes, for the use of the WuRitt characteristic set method.
 
 Up to now, the main components in mechanzation mathematics that have been implemented in WuRittSolva are only the basic algorithms of characteristic set method and also simple geometry theorem proving functions. This package WuRittSolva, however, shall introduce more algorithms for relevant subjects, including algebraic varities, simplifying, PDEs reducing, algebraic curves and surfaces, and differential characteristic set methods with corresponding objects.
+
+also see http://library.wolfram.com/infocenter/MathSource/5716/
