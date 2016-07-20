@@ -1,0 +1,3017 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     64126,       1994]*)
+(*NotebookOutlinePosition[     81000,       2484]*)
+(*  CellTagsIndexPosition[     80172,       2449]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Demonstration for WuRittSolva", "Title",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman",
+  CellTags->{"toc:1", "c:1"}],
+
+Cell["Standard Application Package for Wu-Ritt Process", "Subtitle",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman",
+  FontWeight->"Plain"],
+
+Cell[BoxData[{
+    StyleBox["By",
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(\(\ \)\(Huashan\ Liu, \[IndentingNewLine]Department\ of\ \
+Mathematics, Tianjin\ Polytechnic\ University, 
+      P . R . C . \[IndentingNewLine]E - \(Mail : 
+          liukaitianpidi@sina . com\)\)\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(HomePage : \(\(http\)\(:\)\) // magicm  .51 . net\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(\(Instructed\ by\)\(\ \)\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(Prof . \ Huang\ Dongwei\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[
+      RowBox[{\(Department\ of\ Mathematics\), 
+        ",", \(Tianjin\ Polytechnic\ University\), ",", 
+        RowBox[{"P", ".", "R", ".", "C", ".", "\[IndentingNewLine]", 
+          StyleBox["March",
+            FontSlant->"Italic"], 
+          StyleBox[".",
+            FontSlant->"Italic"], 
+          StyleBox[
+            FormBox[\(4\^th\),
+              "TraditionalForm"],
+            FontSlant->"Italic"]}], ",", 
+        RowBox[{"2005", "-", 
+          RowBox[{"March", ".", 
+            FormBox[\(15\^th\),
+              "TraditionalForm"]}]}], ",", "2005"}],
+      FontSlant->"Italic"]}], "Text",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman"],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_I:Class and MainVariable wrt ord", "Section",
+  CellTags->{"toc:2", "b:2.0", "c:2"}],
+
+Cell[CellGroupData[{
+
+Cell["Definition of polynomials", "Subsubsection",
+  CellTags->{"toc:3", "b:2.0"}],
+
+Cell[BoxData[{
+    \(\(Off[General::"\<spell1\>"];\)\), "\[IndentingNewLine]", 
+    \(\(lhspoly = \(x\_1\^2\) x\_2\^3 - x\_2;\)\), "\[IndentingNewLine]", 
+    \(\(rhspoly = \(x\_1\^3\) x\_2 - 2;\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2};\)\)}], "Input",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Class of polynomials wrt ord", "Subsubsection",
+  CellTags->{"toc:4", "b:2.0"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(Class[lhspoly, ord]\), "\[IndentingNewLine]", 
+    \(Class[rhspoly]\)}], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(2\)], "Output",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(2\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["MainVariable of polynomials wrt ord", "Subsubsection",
+  CellTags->{"toc:5", "b:2.0"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(MainVariable[lhspoly, ord]\), "\[IndentingNewLine]", 
+    \(MainVariable[lhspoly]\)}], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(x\_2\)], "Output",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(x\_2\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Initial of polynomials wrt ord", "Subsubsection",
+  CellTags->{"toc:6", "b:2.0"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Initial[lhspoly]\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(x\_1\%2\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Initial[lhspoly, {x\_1, x\_2}]\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(x\_1\%2\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Checking polynomials reduced", "Subsubsection",
+  CellTags->{"toc:7", "b:2.0"}],
+
+Cell[BoxData[{
+    \(\(ppoly = \(u\_1\) \(u\_2\) x\_1\^6 + 
+          2 \( u\_1\^2\) \(x\_1\) x\_2\^3 - \(x\_1\) x\_2\^3 - 
+          3 \( u\_2\) x\_2\^3 + 1;\)\), "\[IndentingNewLine]", 
+    \(\(qpoly = \(u\_2\) x\_1\^4 - 3 \( u\_1\) x\_2\^4 - 
+          2 \( x\_1\) \(x\_2\) x\_3 + 3 \( u\_2\^2\) \(x\_2\^2\) x\_3 + 
+          4;\)\), "\[IndentingNewLine]", 
+    \(\(qqpoly = 
+        x\_3\^4 + \(u\_2\) \(x\_1\^2\) x\_2\^2 + 
+          3 \( u\_1\^2\) \(x\_1\) \(x\_2\) x\_3 - \(u\_1\) \(u\_2\) \(x\_2\) 
+            x\_3 - 3;\)\)}], "Input",
+  CellTags->"b:2.0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(IsPolyReduced[qpoly, qqpoly, {x\_1, x\_2}, {x\_3}]\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(True\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\({Class[#, {x\_1, x\_2}, {u\_1, u\_2, x\_3}], 
+          MainVariable[#, {x\_1, x\_2}, {u\_1, u\_2, x\_3}], 
+          MainVariableExponent[#, {x\_1, x\_2}, {u\_1, u\_2, x\_3}]} &\) /@ 
+      Expand@{ppoly, qpoly, qqpoly}\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \({{2, x\_2, 3}, {2, x\_2, 4}, {2, x\_2, 2}}\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Other Properties of polynomials wrt ord", "Subsubsection",
+  CellTags->{"toc:8", "b:2.0"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PolyVariables[lhspoly]\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \({x\_1, x\_2}\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(MainVariableExponent[lhspoly]\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(3\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(MainVariableExponent[lhspoly, ord]\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(3\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(LeadCoefficient[lhspoly, x\_1]\)], "Input",
+  CellTags->"b:2.0"],
+
+Cell[BoxData[
+    \(x\_2\%3\)], "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_II:Pseuduo Division & Resolution", "Section",
+  CellTags->{"toc:9", "b:2.1", "c:3"}],
+
+Cell[CellGroupData[{
+
+Cell["Definition of polynomial sets", "Subsubsection",
+  CellTags->{"toc:10", "b:2.1"}],
+
+Cell[BoxData[{
+    \(\(poly\_1 = 
+        x\_1\^2 - 2  x\_2\^3\ x\_3 + 1;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_2 = x\_1\ x\_2 + x\_3\^2;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_3 = 3  x\_1\^2 - 2  x\_3\^2;\)\), "\[IndentingNewLine]", 
+    \(\(polyset = {poly\_1, poly\_2, poly\_3};\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2, x\_3};\)\)}], "Input",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Poly2Poly Pseudo Division: Remainder & Resolution", "Subsubsection",
+  CellTags->{"toc:11", "b:2.1"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoRemainder[poly\_1, poly\_2]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \(1 + x\_1\%2 - 2\ x\_2\%3\ x\_3\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoResolution[poly\_1*poly\_3, poly\_2]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \({1, \(-2\) - 2\ x\_1\%2 + 4\ x\_2\%3\ x\_3, 
+      3\ x\_1\%2 + 3\ x\_1\%4 + 2\ x\_1\ x\_2 + 2\ x\_1\%3\ x\_2 - 
+        6\ x\_1\%2\ x\_2\%3\ x\_3 - 4\ x\_1\ x\_2\%4\ x\_3}\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Poly2Polyset Pseudo Division:Remainder & Resolution", "Subsubsection",
+  CellTags->{"toc:12", "b:2.1"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(AuxPseudoRemainder[poly\_1, polyset]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \(0\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(AuxPseudoResolution[poly\_1, polyset]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \({1, 0, 0}\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PolySet2PolySet Pseudo Division:Remainder & Resolution", "Subsubsection",
+  CellTags->{"toc:13", "b:2.1"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoRemainderSet[{lhspoly, rhspoly}, polyset]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \({\(-x\_2\) + x\_1\%2\ x\_2\%3, \(-2\) + x\_1\%3\ x\_2}\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoResolutionSet[{lhspoly, rhspoly}, polyset]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \({{1, 0, \(-x\_2\) + x\_1\%2\ x\_2\%3}, {1, 
+        0, \(-2\) + x\_1\%3\ x\_2}}\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Exral Example", "Subsubsection",
+  CellTags->{"toc:14", "b:2.1"}],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "This example can be found at ",
+  Cell[BoxData[
+      \(TraditionalForm\`P\_17\)]],
+  " in ",
+  StyleBox["Selected Papers in Symbolic Computation",
+    FontSlant->"Italic"],
+  " by Doc.Wang. etc."
+}], "SmallText",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[{
+    \(\(fpoly = \(x\_1\) x\_2\^2 + 1;\)\), "\[IndentingNewLine]", 
+    \(\(gpoly = 
+        2  x\_2\^3 - x\_2\^2 + \(\(\(x\_1\)\(\ \)\)\^2\) x\_2;\)\)}], "Input",\
+
+  CellTags->"b:2.1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PolyPRemainder[fpoly, gpoly, x\_2]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \(1 + x\_1\ x\_2\%2\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoRemainder[gpoly, fpoly, {x\_1, x\_2}]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \(1 - 2\ x\_2 + x\_1\%3\ x\_2\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoResolution[gpoly, fpoly, {x\_1, x\_2}]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \({x\_1, \(-1\) + 2\ x\_2, 1 - 2\ x\_2 + x\_1\%3\ x\_2}\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+  "This example can be found at ",
+  Cell[BoxData[
+      \(TraditionalForm\`P\_271\)]],
+  " in ",
+  StyleBox["Higher Algebra and Analytic Geometry(II)  b",
+    FontSlant->"Italic"],
+  "y",
+  StyleBox[" Chen Zhijie",
+    FontSlant->"Italic"],
+  ".etc."
+}], "SmallText",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[{
+    \(\(fpoly = \(x\_1\^2\) x\_2\^3 - x\_2;\)\), "\[IndentingNewLine]", 
+    \(\(gpoly = \(x\_1\^2\) x\_2 - 2;\)\)}], "Input",
+  CellTags->"b:2.1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoRemainder[fpoly, gpoly]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \(8 - 2\ x\_1\%2\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PseudoResolution[fpoly, gpoly]\)], "Input",
+  CellTags->"b:2.1"],
+
+Cell[BoxData[
+    \({x\_1\%4, 4 - x\_1\%2 + 2\ x\_1\%2\ x\_2 + x\_1\%4\ x\_2\%2, 
+      8 - 2\ x\_1\%2}\)], "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_III:Characteristic Set & WuRittProver", "Section",
+  CellTags->{"toc:15", "b:2.2", "c:4"}],
+
+Cell[CellGroupData[{
+
+Cell["Characteristic Set Examples", "Subsubsection",
+  CellTags->{"toc:16", "b:2.2"}],
+
+Cell[CellGroupData[{
+
+Cell["Test Example", "Text",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[{
+    \(\(h1 = \((u\_1 - x\_1)\)\^2 + x\_2\^2 - x\_1\^2 - 
+          x\_2\^2;\)\), "\[IndentingNewLine]", 
+    \(\(h2 = \((u\_2 - x\_1)\)\^2 + \((u\_3 - x\_2)\)\^2 - x\_1\^2 - 
+          x\_2\^2;\)\), "\[IndentingNewLine]", 
+    \(\(h3 = \((u\_4 - x\_1)\)\^2 + \((x\_3 - u\_2)\)\^2 - x\_1\^2 - 
+          x\_2\^2;\)\), "\[IndentingNewLine]", 
+    \(\(h4 = \((x\_3 - x\_5)\) 
+            u\_3 + \((u\_4 - x\_4)\) \((u\_2 - 
+                u\_1)\);\)\), "\[IndentingNewLine]", 
+    \(\(h5 = \(x\_5\) \((u\_2 - u\_1)\) - \(u\_3\) \((x\_4 - 
+                u\_1)\);\)\), "\[IndentingNewLine]", 
+    \(\(h6 = \((x\_3 - x\_7)\) u\_3 + \((u\_4 - x\_6)\) 
+            u\_2;\)\), "\[IndentingNewLine]", 
+    \(\(h7 = \(x\_7\) u\_2 - \(x\_6\) u\_3;\)\), "\[IndentingNewLine]", 
+    \(\(hset = {h1, h2, h3, h4, h5, h6, h7};\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2, x\_3, x\_4, x\_5, x\_6, 
+          x\_7};\)\), "\[IndentingNewLine]", 
+    \(\(const = {u\_1, u\_2, u\_3, u\_4};\)\)}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(defcs = 
+      CharacteristicSet[hset, ord, const, 
+        TracePrintOn -> True]\), "\[IndentingNewLine]", 
+    \(CharacteristicForm[defcs, ord, const]\)}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({u\_1\ \((u\_1 - 2\ x\_1)\), 
+              u\_2\%2 - 2\ u\_2\ x\_1 + 
+                u\_3\ \((u\_3 - 
+                      2\ x\_2)\), \(-x\_1\%2\) + \((\(-u\_4\) + x\_1)\)\^2 - 
+                x\_2\%2 + \((\(-u\_2\) + x\_3)\)\^2, \(-u\_3\)\ x\_4 + 
+                u\_1\ \((u\_3 - x\_5)\) + u\_2\ x\_5, \(-u\_3\)\ x\_6 + 
+                u\_2\ x\_7}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(u\_1 - 2\ x\_1\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({u\_1\ \((u\_1 - 2\ x\_1)\), 
+              u\_2\%2 - 2\ u\_2\ x\_1 + 
+                u\_3\ \((u\_3 - 
+                      2\ x\_2)\), \(-x\_1\%2\) + \((\(-u\_4\) + x\_1)\)\^2 - 
+                x\_2\%2 + \((\(-u\_2\) + x\_3)\)\^2, \(-u\_2\)\ u\_3\ x\_3 + 
+                u\_3\%2\ x\_4 + u\_1\%2\ \((\(-u\_4\) + x\_4)\) + 
+                u\_2\%2\ \((\(-u\_4\) + x\_4)\) + 
+                u\_1\ \((u\_3\ \((\(-u\_3\) + x\_3)\) - 
+                      2\ u\_2\ \((\(-u\_4\) + x\_4)\))\), \(-u\_3\)\ x\_4 + 
+                u\_1\ \((u\_3 - x\_5)\) + u\_2\ x\_5, 
+              u\_2\ u\_3\ x\_3 + u\_2\%2\ \((u\_4 - x\_6)\) - 
+                u\_3\%2\ x\_6, \(-u\_3\)\ x\_6 + u\_2\ x\_7}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(u\_1 - 2\ x\_1\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      TagBox[
+        StyleBox["\<\"Total 2 Branch(s) of New Component(s) Discovered\"\>",
+          "WuRittSolva`WuRittSolva`Private`Subsubtitle",
+          FontColor->RGBColor[0, 0.6, 0]],
+        (StyleForm[ #, WuRittSolva`WuRittSolva`Private`Subsubtitle, FontColor -> 
+          RGBColor[ 0, .59999999999999998, 0]]&)], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \({\((u\_1 - x\_1)\)\^2 - x\_1\%2, \((u\_2 - x\_1)\)\^2 - 
+        x\_1\%2 + \((u\_3 - x\_2)\)\^2 - x\_2\%2, \((u\_4 - x\_1)\)\^2 - 
+        x\_1\%2 - x\_2\%2 + \((\(-u\_2\) + x\_3)\)\^2, \(-u\_1\)\ u\_3\%2 - 
+        u\_1\%2\ u\_4 + 2\ u\_1\ u\_2\ u\_4 - u\_2\%2\ u\_4 + 
+        u\_1\ u\_3\ x\_3 - u\_2\ u\_3\ x\_3 + u\_1\%2\ x\_4 - 
+        2\ u\_1\ u\_2\ x\_4 + u\_2\%2\ x\_4 + 
+        u\_3\%2\ x\_4, \(-u\_3\)\ \((\(-u\_1\) + x\_4)\) + \((\(-u\_1\) + 
+              u\_2)\)\ x\_5, 
+      u\_2\%2\ u\_4 + u\_2\ u\_3\ x\_3 - u\_2\%2\ x\_6 - 
+        u\_3\%2\ x\_6, \(-u\_3\)\ x\_6 + u\_2\ x\_7}\)], "Output",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\((u\_1 - x\_1)\)\^2 - x\_1\%2\), \({x\_1, "00", "00", "00", 
+                "00", "00", "00"}\)},
+            {\(\((u\_2 - x\_1)\)\^2 - x\_1\%2 + \((u\_3 - x\_2)\)\^2 - 
+                x\_2\%2\), \({x\_1, x\_2, "00", "00", "00", "00", "00"}\)},
+            {\(\((u\_4 - x\_1)\)\^2 - x\_1\%2 - 
+                x\_2\%2 + \((\(-u\_2\) + x\_3)\)\^2\), \({x\_1, x\_2, x\_3, 
+                "00", "00", "00", "00"}\)},
+            {\(\(-u\_1\)\ u\_3\%2 - u\_1\%2\ u\_4 + 2\ u\_1\ u\_2\ u\_4 - 
+                u\_2\%2\ u\_4 + u\_1\ u\_3\ x\_3 - u\_2\ u\_3\ x\_3 + 
+                u\_1\%2\ x\_4 - 2\ u\_1\ u\_2\ x\_4 + u\_2\%2\ x\_4 + 
+                u\_3\%2\ x\_4\), \({"00", "00", x\_3, x\_4, "00", "00", 
+                "00"}\)},
+            {\(\(-u\_3\)\ \((\(-u\_1\) + x\_4)\) + \((\(-u\_1\) + 
+                      u\_2)\)\ x\_5\), \({"00", "00", "00", x\_4, x\_5, "00", 
+                "00"}\)},
+            {\(u\_2\%2\ u\_4 + u\_2\ u\_3\ x\_3 - u\_2\%2\ x\_6 - 
+                u\_3\%2\ x\_6\), \({"00", "00", x\_3, "00", "00", x\_6, 
+                "00"}\)},
+            {\(\(-u\_3\)\ x\_6 + u\_2\ x\_7\), \({"00", "00", "00", "00", 
+                "00", x\_6, x\_7}\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Test Example 1", "Text",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[{
+    \(\(poly\_1 = 
+        x\_1\^2 - 2 \( x\_1\) x\_3 + 1;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_2 = x\_1\ x\_2 + x\_3\^2;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_3 = \(-3\) x\_2\^2 + 2  x\_3\^2;\)\), "\[IndentingNewLine]", 
+    \(\(polyset = {poly\_1, poly\_2, poly\_3};\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2, x\_3};\)\), "\[IndentingNewLine]", 
+    \(\(const = {};\)\)}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(CharacteristicForm[
+      CharacteristicSet[polyset, ord, const, TracePrintOn -> True], ord, 
+      const]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox[\({1 + x\_1\%2 - 2\ x\_1\ x\_3}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({1 + 2\ x\_1\%2 + x\_1\%4 + 4\ x\_1\%3\ x\_2, 
+              1 + x\_1\%2 - 2\ x\_1\ x\_3}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:3\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({\((1 + x\_1\%2)\)\^2\ \((\(-3\) - 6\ x\_1\%2 + 
+                    5\ x\_1\%4)\), 
+              1 + 2\ x\_1\%2 + x\_1\%4 + 4\ x\_1\%3\ x\_2, 
+              1 + x\_1\%2 - 2\ x\_1\ x\_3}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(\(-3\) - 6\ x\_1\%2 + 5\ x\_1\%4\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      TagBox[
+        StyleBox["\<\"Total 1 Branch(s) of New Component(s) Discovered\"\>",
+          "WuRittSolva`WuRittSolva`Private`Subsubtitle",
+          FontColor->RGBColor[0, 0.6, 0]],
+        (StyleForm[ #, WuRittSolva`WuRittSolva`Private`Subsubtitle, FontColor -> 
+          RGBColor[ 0, .59999999999999998, 0]]&)], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(-3\) - 12\ x\_1\%2 - 10\ x\_1\%4 + 4\ x\_1\%6 + 
+                5\ x\_1\%8\), \({x\_1, "00", "00"}\)},
+            {\(1 + 2\ x\_1\%2 + x\_1\%4 + 4\ x\_1\%3\ x\_2\), \({x\_1, x\_2, 
+                "00"}\)},
+            {\(1 + x\_1\%2 - 2\ x\_1\ x\_3\), \({x\_1, "00", x\_3}\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Test Example 2", "Text",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[{
+    \(\(poly\_1 = x\_1\^2 - 2  x\_2\ x\_3 + 1;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_2 = x\_1\ x\_2 + x\_3\^2;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_3 = 3  x\_1\^2 - 2  x\_3\^2;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_4 = 2  x\_1 + 2 \( x\_2\) x\_1;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_5 = 
+        2  x\_1 + 2 \( x\_2\^2\) x\_1\^2;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_6 = 3  x\_1\^2 + 2  x\_3\^3;\)\), "\[IndentingNewLine]", 
+    \(\(poly\_7 = 3 \( x\_1\) x\_2 + 1;\)\), "\[IndentingNewLine]", 
+    \(\(polyset = {poly\_1, poly\_2, poly\_4, poly\_3, poly\_6, poly\_5, 
+          poly\_7};\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2, x\_3};\)\), "\[IndentingNewLine]", 
+    \(\(const = {};\)\)}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(CharacteristicForm[
+      CharacteristicSet[polyset, ord, const, TracePrintOn -> True], ord, 
+      const]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({2\ x\_1\ \((1 + x\_2)\), 1 + x\_1\%2 - 2\ x\_2\ x\_3}\),
+            
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(1 + x\_2\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({2 - 6\ x\_1, 2\ x\_1\ \((1 + x\_2)\), 
+              1 + x\_1\%2 - 2\ x\_2\ x\_3}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(1 + x\_2\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      TagBox[
+        StyleBox["\<\"Total 2 Branch(s) of New Component(s) Discovered\"\>",
+          "WuRittSolva`WuRittSolva`Private`Subsubtitle",
+          FontColor->RGBColor[0, 0.6, 0]],
+        (StyleForm[ #, WuRittSolva`WuRittSolva`Private`Subsubtitle, FontColor -> 
+          RGBColor[ 0, .59999999999999998, 0]]&)], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(2 - 6\ x\_1\), \({x\_1, "00", "00"}\)},
+            {\(2\ x\_1 + 2\ x\_1\ x\_2\), \({x\_1, x\_2, "00"}\)},
+            {\(1 + x\_1\%2 - 2\ x\_2\ x\_3\), \({x\_1, x\_2, x\_3}\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 1 (Paralell Square Theorem)", "Subsubsection",
+  CellTags->{"toc:17", "b:2.2"}],
+
+Cell[BoxData[{
+    \(\(H\_1 = x\_1 - u\_1 - u\_2;\)\), "\[IndentingNewLine]", 
+    \(\(H\_2 = x\_2 - u\_3;\)\), "\[IndentingNewLine]", 
+    \(\(H\_3 = \(-u\_1\) \(u\_3\) x\_1 + \(u\_1\) \(u\_3\) 
+            x\_3 - \(u\_2\) \(u\_3\) x\_3 + \(u\_3\) \(x\_1\) 
+            x\_3;\)\), "\[IndentingNewLine]", 
+    \(\(H\_4 = \(x\_4\) \((u\_2 - u\_1)\) - \((x\_3 - u\_1)\) 
+            u\_3;\)\), "\[IndentingNewLine]", 
+    \(\(HSet = {H\_1, H\_2, H\_3, H\_4};\)\), "\[IndentingNewLine]", 
+    \(\(G\_1 = 
+        x\_1\^2 - 2 \( x\_1\) x\_3 - 2 \( x\_4\) x\_2 + 
+          x\_2\^2;\)\), "\[IndentingNewLine]", 
+    \(\(G\_2 = 
+        2 \( x\_3\) u\_1 - 2 \( x\_3\) u\_2 - 2 \( x\_4\) u\_3 - u\_1\^2 + 
+          u\_2\^2 + u\_3\^2;\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2, x\_3, x\_4};\)\), "\[IndentingNewLine]", 
+    \(\(const = {u\_1, u\_2, u\_3};\)\)}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(CS = 
+      CharacteristicSet[HSet, ord, const, TracePrintOn -> True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({\(-u\_1\) - u\_2 + x\_1, \(-u\_3\) + x\_2, 
+              u\_3\ \((\((\(-u\_2\) + x\_1)\)\ x\_3 + 
+                    u\_1\ \((\(-x\_1\) + x\_3)\))\), \(-u\_3\)\ x\_3 + 
+                u\_1\ \((u\_3 - x\_4)\) + u\_2\ x\_4}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(u\_1\ x\_1 - u\_1\ x\_3 + u\_2\ x\_3 - x\_1\ x\_3\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      TagBox[
+        StyleBox["\<\"Total 1 Branch(s) of New Component(s) Discovered\"\>",
+          "WuRittSolva`WuRittSolva`Private`Subsubtitle",
+          FontColor->RGBColor[0, 0.6, 0]],
+        (StyleForm[ #, WuRittSolva`WuRittSolva`Private`Subsubtitle, FontColor -> 
+          RGBColor[ 0, .59999999999999998, 0]]&)], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \({\(-u\_1\) - u\_2 + x\_1, \(-u\_3\) + x\_2, \(-u\_1\)\ u\_3\ x\_1 + 
+        u\_1\ u\_3\ x\_3 - u\_2\ u\_3\ x\_3 + 
+        u\_3\ x\_1\ x\_3, \(-u\_3\)\ \((\(-u\_1\) + x\_3)\) + \((\(-u\_1\) + 
+              u\_2)\)\ x\_4}\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(WuRittProver[Reverse@CS, G\_1, ord, const, 
+      TraceProverOn \[Rule] True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(2\ u\_3\ x\_2\ x\_3 - 
+              u\_2\ \((x\_1\%2 + x\_2\%2 - 2\ x\_1\ x\_3)\) + 
+              u\_1\ \((x\_1\%2 + x\_2\ \((\(-2\)\ u\_3 + x\_2)\) - 
+                    2\ x\_1\ x\_3)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(\(-\((u\_1 - 
+                    u\_2)\)\)\ u\_3\ \((u\_1\ \((x\_1\%2 + \((2\ u\_3 - 
+                              x\_2)\)\ x\_2)\) + \((u\_2 - 
+                        x\_1)\)\ \((x\_1\%2 + x\_2\%2)\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:3\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(\(-\((u\_1 - u\_2)\)\)\ u\_3\ \((u\_1 + u\_2 - 
+                  x\_1)\)\ \((u\_3\%2 + x\_1\%2)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:4\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox["0",
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \(True\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(WuRittProver[Reverse@CS, G\_2, ord, const, 
+      TraceProverOn \[Rule] True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(\(-\((u\_1\%2 - 2\ u\_1\ u\_2 + u\_2\%2 + 
+                    u\_3\%2)\)\)\ \((u\_1 + u\_2 - 2\ x\_3)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(\(-\((u\_1 - u\_2)\)\)\ u\_3\ \((u\_1\%2 - 
+                  2\ u\_1\ u\_2 + u\_2\%2 + u\_3\%2)\)\ \((u\_1 + u\_2 - 
+                  x\_1)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:3\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(\(-\((u\_1 - u\_2)\)\)\ u\_3\ \((u\_1\%2 - 
+                  2\ u\_1\ u\_2 + u\_2\%2 + u\_3\%2)\)\ \((u\_1 + u\_2 - 
+                  x\_1)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:4\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox["0",
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \(True\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 2 (Desargus Theorem)", "Subsubsection",
+  CellTags->{"toc:18", "b:2.2"}],
+
+Cell[BoxData[{
+    \(\(H\_1 = \(x\_1\) x\_6 - \(x\_2\) x\_3;\)\), "\[IndentingNewLine]", 
+    \(\(H\_2 = \(x\_4\) \((x\_8 - x\_6)\) - \(x\_7\) \((x\_5 - 
+                x\_3)\);\)\), "\[IndentingNewLine]", 
+    \(\(H\_3 = \((x\_4 - x\_1)\) 
+            x\_8 - \(x\_5\) \((x\_7 - x\_2)\);\)\), "\[IndentingNewLine]", 
+    \(\(HSet = {H\_1, H\_2, H\_3};\)\), "\[IndentingNewLine]", 
+    \(\(G = \(x\_4\) x\_8 - \(x\_5\) x\_7;\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2, x\_3, x\_4, x\_5, x\_6, x\_7, 
+          x\_8};\)\), "\[IndentingNewLine]", 
+    \(\(const = {};\)\)}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(CS = 
+      CharacteristicSet[HSet, ord, const, TracePrintOn -> True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({\(-x\_2\)\ x\_3 + x\_1\ x\_6, 
+              x\_2\ x\_5 - x\_5\ x\_7 + \((\(-x\_1\) + x\_4)\)\ x\_8}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({\(-x\_2\)\ x\_3 + 
+                x\_1\ x\_6, \((x\_3\ x\_4 + 
+                    x\_1\ \((\(-x\_3\) + x\_5)\))\)\ \((x\_2\ x\_4 - 
+                    x\_1\ x\_7)\), 
+              x\_2\ x\_5 - x\_5\ x\_7 + \((\(-x\_1\) + x\_4)\)\ x\_8}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(\(-x\_2\)\ x\_4 + x\_1\ x\_7\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      TagBox[
+        StyleBox["\<\"Total 1 Branch(s) of New Component(s) Discovered\"\>",
+          "WuRittSolva`WuRittSolva`Private`Subsubtitle",
+          FontColor->RGBColor[0, 0.6, 0]],
+        (StyleForm[ #, WuRittSolva`WuRittSolva`Private`Subsubtitle, FontColor -> 
+          RGBColor[ 0, .59999999999999998, 0]]&)], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \({\(-x\_2\)\ x\_3 + x\_1\ x\_6, \(-x\_1\)\ x\_2\ x\_3\ x\_4 + 
+        x\_2\ x\_3\ x\_4\%2 + x\_1\ x\_2\ x\_4\ x\_5 + x\_1\%2\ x\_3\ x\_7 - 
+        x\_1\ x\_3\ x\_4\ x\_7 - 
+        x\_1\%2\ x\_5\ x\_7, \(-x\_5\)\ \((\(-x\_2\) + 
+              x\_7)\) + \((\(-x\_1\) + x\_4)\)\ x\_8}\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(WuRittProver[Reverse@CS, G, ord, const, 
+      TraceProverOn \[Rule] True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox[\(x\_5\ \((x\_2\ x\_4 - x\_1\ x\_7)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox["0",
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:3\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox["0",
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \(True\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 3 (Simon Theorem)", "Subsubsection",
+  CellTags->{"toc:19", "b:2.2"}],
+
+Cell[BoxData[{\(H\_1 = \((u\_1 - x\_1)\)\^2 + x\_2\^2 - x\_1\^2 - 
+          x\_2\^2;\), "\[IndentingNewLine]", \(H\_2 = \((u\_2 - x\_1)\)\^2 + \
+\((u\_3 - x\_2)\)\^2 - x\_1\^2 - 
+          x\_2\^2;\), "\[IndentingNewLine]", \(H\_3 = \((u\_4 - x\_1)\)\^2 + \
+\((x\_3 - x\_2)\)\^2 - x\_1\^2 - 
+          x\_2\^2;\), "\[IndentingNewLine]", \(H\_4 = \((x\_3 - x\_5)\) 
+            u\_3 + \((u\_4 - x\_4)\) \((u\_2 - 
+                u\_1)\);\), "\[IndentingNewLine]", \(H\_5 = \(x\_5\) \((u\_2 \
+- u\_1)\) - \(u\_3\) \((x\_4 - 
+                u\_1)\);\), "\[IndentingNewLine]", \(H\_6 = \((x\_3 - x\_7)\) 
+            u\_3 + \((u\_4 - x\_6)\) 
+            u\_2;\), "\[IndentingNewLine]", \(H\_7 = \(x\_7\) u\_2 - \(x\_6\) 
+            u\_3;\), "\[IndentingNewLine]", \(HSet = {H\_1, H\_2, H\_3, H\_4, 
+          H\_5, H\_6, H\_7};\), "\[IndentingNewLine]", 
+    StyleBox[\(G = \(x\_7\) \((x\_4 - u\_4)\) - \((x\_6 - u\_4)\) x\_5;\),
+      FontFamily->"Courier New"], "\[IndentingNewLine]", 
+    RowBox[{
+      RowBox[{
+        StyleBox["ord",
+          FontFamily->"Courier New"], 
+        StyleBox["=",
+          FontFamily->"Courier New"], 
+        RowBox[{
+          StyleBox["{",
+            FontFamily->"Courier New"], 
+          RowBox[{
+            SubscriptBox[
+              StyleBox["x",
+                FontFamily->"Courier New"], "1"], ",", \(x\_2\), 
+            ",", \(x\_3\), ",", \(x\_4\), ",", \(x\_5\), ",", \(x\_6\), 
+            ",", \(x\_7\)}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{
+      RowBox[{"const", "=", 
+        RowBox[{"{", 
+          RowBox[{\(u\_1\), ",", 
+            SubscriptBox[
+              StyleBox["u",
+                FontVariations->{"Underline"->False}], "2"], ",", \(u\_3\), 
+            ",", \(u\_4\)}], "}"}]}], ";"}]}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(defCS = 
+      CharacteristicSet[Expand@HSet, ord, const, 
+        TracePrintOn -> True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({u\_1\ \((u\_1 - 2\ x\_1)\), 
+              u\_2\%2 - 2\ u\_2\ x\_1 + u\_3\ \((u\_3 - 2\ x\_2)\), 
+              u\_4\%2 - 2\ u\_4\ x\_1 + 
+                x\_3\ \((\(-2\)\ x\_2 + x\_3)\), \(-u\_3\)\ x\_4 + 
+                u\_1\ \((u\_3 - x\_5)\) + u\_2\ x\_5, \(-u\_3\)\ x\_6 + 
+                u\_2\ x\_7}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(u\_1 - 2\ x\_1\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({u\_1\ \((u\_1 - 2\ x\_1)\), 
+              u\_2\%2 - 2\ u\_2\ x\_1 + u\_3\ \((u\_3 - 2\ x\_2)\), 
+              u\_4\%2 - 2\ u\_4\ x\_1 + 
+                x\_3\ \((\(-2\)\ x\_2 + x\_3)\), \(-u\_2\)\ u\_3\ x\_3 + 
+                u\_3\%2\ x\_4 + u\_1\%2\ \((\(-u\_4\) + x\_4)\) + 
+                u\_2\%2\ \((\(-u\_4\) + x\_4)\) + 
+                u\_1\ \((u\_3\ \((\(-u\_3\) + x\_3)\) - 
+                      2\ u\_2\ \((\(-u\_4\) + x\_4)\))\), \(-u\_3\)\ x\_4 + 
+                u\_1\ \((u\_3 - x\_5)\) + u\_2\ x\_5, 
+              u\_2\ u\_3\ x\_3 + u\_2\%2\ \((u\_4 - x\_6)\) - 
+                u\_3\%2\ x\_6, \(-u\_3\)\ x\_6 + u\_2\ x\_7}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(u\_1 - 2\ x\_1\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      TagBox[
+        StyleBox["\<\"Total 2 Branch(s) of New Component(s) Discovered\"\>",
+          "WuRittSolva`WuRittSolva`Private`Subsubtitle",
+          FontColor->RGBColor[0, 0.6, 0]],
+        (StyleForm[ #, WuRittSolva`WuRittSolva`Private`Subsubtitle, FontColor -> 
+          RGBColor[ 0, .59999999999999998, 0]]&)], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \({u\_1\%2 - 2\ u\_1\ x\_1, 
+      u\_2\%2 + u\_3\%2 - 2\ u\_2\ x\_1 - 2\ u\_3\ x\_2, 
+      u\_4\%2 - 2\ u\_4\ x\_1 - 2\ x\_2\ x\_3 + x\_3\%2, \(-u\_1\)\ u\_3\%2 - 
+        u\_1\%2\ u\_4 + 2\ u\_1\ u\_2\ u\_4 - u\_2\%2\ u\_4 + 
+        u\_1\ u\_3\ x\_3 - u\_2\ u\_3\ x\_3 + u\_1\%2\ x\_4 - 
+        2\ u\_1\ u\_2\ x\_4 + u\_2\%2\ x\_4 + u\_3\%2\ x\_4, 
+      u\_1\ u\_3 - u\_3\ x\_4 - u\_1\ x\_5 + u\_2\ x\_5, 
+      u\_2\%2\ u\_4 + u\_2\ u\_3\ x\_3 - u\_2\%2\ x\_6 - 
+        u\_3\%2\ x\_6, \(-u\_3\)\ x\_6 + u\_2\ x\_7}\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(WuRittProver[Reverse@defCS, G, ord, const, 
+      TraceProverOn -> True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_2\ x\_5\ \((u\_4 - x\_6)\) + 
+              u\_3\ \((\(-u\_4\) + x\_4)\)\ x\_6\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_2\ u\_3\ \((\(-u\_2\)\ \((u\_4\%2 - u\_4\ x\_4 + 
+                        x\_3\ x\_5)\) + 
+                  u\_3\ \((x\_3\ x\_4 + u\_4\ \((\(-x\_3\) + x\_5)\))\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:3\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_2\ u\_3\ \((u\_1\ \((\(-u\_3\%2\)\ u\_4 + 
+                        u\_2\ u\_4\ \((u\_4 - x\_4)\) + 
+                        u\_3\ x\_3\ \((u\_2 + u\_4 - x\_4)\))\) + 
+                  u\_4\ \((\(-u\_2\)\ u\_3\ x\_3 + u\_3\%2\ x\_4 + 
+                        u\_2\%2\ \((\(-u\_4\) + x\_4)\))\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:4\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_1\ u\_2\ u\_3\%2\ \((u\_1\%2\ \((\(-u\_3\)\ u\_4 + 
+                        u\_2\ x\_3)\) + 
+                  u\_2\ \((u\_2\%2\ x\_3 + u\_3\%2\ x\_3 - 
+                        u\_3\ \((u\_4\%2 + x\_3\%2)\))\) + 
+                  u\_1\ \((u\_2\ u\_3\ u\_4 - 2\ u\_2\%2\ x\_3 + 
+                        u\_3\ \((u\_4\%2 - u\_3\ x\_3 + x\_3\%2)\))\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:5\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_1\ \((u\_1 - 
+                  u\_2)\)\ u\_2\ u\_3\%2\ \((\(-u\_2\%2\)\ x\_3 - 
+                  u\_3\%2\ x\_3 + u\_1\ \((\(-u\_3\)\ u\_4 + u\_2\ x\_3)\) + 
+                  2\ u\_3\ \((u\_4\ x\_1 + x\_2\ x\_3)\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:6\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_1\ \((u\_1 - u\_2)\)\ u\_2\ u\_3\%2\ \((u\_1 - 
+                  2\ x\_1)\)\ \((\(-u\_3\)\ u\_4 + u\_2\ x\_3)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:7\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox["0",
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \(True\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(CS = {\ H\_1, H\_2, H\_3, PolyPRemainder[H\_4, H\_5, x\_5], H\_5, 
+          PolyPRemainder[H\_6, H\_7, x\_7], H\_7} // Expand\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \({u\_1\%2 - 2\ u\_1\ x\_1, 
+      u\_2\%2 + u\_3\%2 - 2\ u\_2\ x\_1 - 2\ u\_3\ x\_2, 
+      u\_4\%2 - 2\ u\_4\ x\_1 - 2\ x\_2\ x\_3 + x\_3\%2, 
+      u\_1\ u\_3\%2 + u\_1\%2\ u\_4 - 2\ u\_1\ u\_2\ u\_4 + u\_2\%2\ u\_4 - 
+        u\_1\ u\_3\ x\_3 + u\_2\ u\_3\ x\_3 - u\_1\%2\ x\_4 + 
+        2\ u\_1\ u\_2\ x\_4 - u\_2\%2\ x\_4 - u\_3\%2\ x\_4, 
+      u\_1\ u\_3 - u\_3\ x\_4 - u\_1\ x\_5 + u\_2\ x\_5, 
+      u\_2\%2\ u\_4 + u\_2\ u\_3\ x\_3 - u\_2\%2\ x\_6 - 
+        u\_3\%2\ x\_6, \(-u\_3\)\ x\_6 + u\_2\ x\_7}\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(WuRittProver[Reverse@CS, G, ord, const, 
+      TraceProverOn -> True]\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_2\ x\_5\ \((u\_4 - x\_6)\) + 
+              u\_3\ \((\(-u\_4\) + x\_4)\)\ x\_6\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_2\ u\_3\ \((\(-u\_2\)\ \((u\_4\%2 - u\_4\ x\_4 + 
+                        x\_3\ x\_5)\) + 
+                  u\_3\ \((x\_3\ x\_4 + u\_4\ \((\(-x\_3\) + x\_5)\))\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:3\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_2\ u\_3\ \((u\_1\ \((\(-u\_3\%2\)\ u\_4 + 
+                        u\_2\ u\_4\ \((u\_4 - x\_4)\) + 
+                        u\_3\ x\_3\ \((u\_2 + u\_4 - x\_4)\))\) + 
+                  u\_4\ \((\(-u\_2\)\ u\_3\ x\_3 + u\_3\%2\ x\_4 + 
+                        u\_2\%2\ \((\(-u\_4\) + x\_4)\))\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:4\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_1\ u\_2\ u\_3\%2\ \((u\_1\%2\ \((\(-u\_3\)\ u\_4 + 
+                        u\_2\ x\_3)\) + 
+                  u\_2\ \((u\_2\%2\ x\_3 + u\_3\%2\ x\_3 - 
+                        u\_3\ \((u\_4\%2 + x\_3\%2)\))\) + 
+                  u\_1\ \((u\_2\ u\_3\ u\_4 - 2\ u\_2\%2\ x\_3 + 
+                        u\_3\ \((u\_4\%2 - u\_3\ x\_3 + x\_3\%2)\))\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:5\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_1\ \((u\_1 - 
+                  u\_2)\)\ u\_2\ u\_3\%2\ \((\(-u\_2\%2\)\ x\_3 - 
+                  u\_3\%2\ x\_3 + u\_1\ \((\(-u\_3\)\ u\_4 + u\_2\ x\_3)\) + 
+                  2\ u\_3\ \((u\_4\ x\_1 + x\_2\ x\_3)\))\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:6\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\(u\_1\ \((u\_1 - u\_2)\)\ u\_2\ u\_3\%2\ \((u\_1 - 
+                  2\ x\_1)\)\ \((\(-u\_3\)\ u\_4 + u\_2\ x\_3)\)\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"WRP_STEP:7\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox["0",
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \(True\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 4 (Algebra Relations Discovery)", "Subsubsection",
+  CellTags->{"toc:20", "b:2.2"}],
+
+Cell[BoxData[{
+    \(\(H\_1 = x\_1\^2 + x\_3\^2 - x\_5\^2;\)\), "\[IndentingNewLine]", 
+    \(\(H\_2 = x\_2\^2 + x\_4\^2 - x\_5\^2;\)\), "\[IndentingNewLine]", 
+    \(\(H\_3 = 
+        x\_1\^2 + \((x\_3 - x\_5)\)\^2 - \((x\_2 - x\_1)\)\^2 - \((x\_3 - \
+x\_4)\)\^2;\)\), "\[IndentingNewLine]", 
+    \(\(H\_4 = 
+        x\_1\^2 + \((x\_3 - x\_5)\)\^2 - 
+          4  x\_2\^2;\)\), "\[IndentingNewLine]", 
+    \(\(HSet = {H\_1, H\_2, H\_3, H\_4};\)\), "\[IndentingNewLine]", 
+    \(\(ord = {x\_1, x\_2, x\_3, x\_4, x\_5};\)\), "\[IndentingNewLine]", 
+    \(\(const = {};\)\)}], "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(CharacteristicSet[HSet, ord, const, TracePrintOn -> True] // 
+      Simplify\)], "Input",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:1\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          StyleBox[\({x\_1\%2 - 4\ x\_2\%2 + \((x\_3 - x\_5)\)\^2}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:2\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({\(-x\_1\%2\) + 2\ x\_1\ x\_2 + 
+                3\ x\_2\%2 - \((x\_3 - x\_4)\)\^2, 
+              2\ \((x\_1\%2 - 2\ x\_2\%2 + x\_3\ \((x\_3 - x\_5)\))\)}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:3\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({2\ \((x\_1\%4 + 4\ x\_2\%2\ \((x\_2\%2 - x\_3\%2)\) + 
+                    x\_1\%2\ \((\(-4\)\ x\_2\%2 + 
+                          x\_3\%2)\))\), \(-2\)\ \((x\_1\%2 - x\_1\ x\_2 - 
+                    2\ x\_2\%2 + x\_3\ \((x\_3 - x\_4)\))\), 
+              2\ \((x\_1\%2 - 2\ x\_2\%2 + x\_3\ \((x\_3 - x\_5)\))\)}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"CS_STEP:4\"\>",
+            FontColor->RGBColor[0, 0, 1]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, 0, 1]]&)], ",", 
+        TagBox[
+          
+          StyleBox[\({8\ x\_2\%3\ \((\(-x\_1\%3\) + 2\ x\_1\ x\_2\%2 + 
+                    x\_2\%3)\), 
+              2\ \((x\_1\%4 + 4\ x\_2\%2\ \((x\_2\%2 - x\_3\%2)\) + 
+                    x\_1\%2\ \((\(-4\)\ x\_2\%2 + 
+                          x\_3\%2)\))\), \(-2\)\ \((x\_1\%2 - x\_1\ x\_2 - 
+                    2\ x\_2\%2 + x\_3\ \((x\_3 - x\_4)\))\), 
+              2\ \((x\_1\%2 - 2\ x\_2\%2 + x\_3\ \((x\_3 - x\_5)\))\)}\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, 0]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:1\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(x\_1 + x\_2\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        TagBox[
+          StyleBox["\<\"A New Component:2\"\>",
+            FontColor->RGBColor[0, 0.6, 0]],
+          (StyleForm[ #, FontColor -> RGBColor[ 0, .59999999999999998, 0]]&)],
+         ",", 
+        TagBox[
+          StyleBox[\(x\_1\%2 - x\_1\ x\_2 - x\_2\%2\),
+            FontFamily->"Times",
+            FontColor->RGBColor[1, 0, 0.500008]],
+          (
+          StyleForm[ #, FontFamily -> "Times", FontColor -> RGBColor[ 
+            1, 0, .5]]&)]}], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      TagBox[
+        StyleBox["\<\"Total 1 Branch(s) of New Component(s) Discovered\"\>",
+          "WuRittSolva`WuRittSolva`Private`Subsubtitle",
+          FontColor->RGBColor[0, 0.6, 0]],
+        (StyleForm[ #, WuRittSolva`WuRittSolva`Private`Subsubtitle, FontColor -> 
+          RGBColor[ 0, .59999999999999998, 0]]&)], "}"}]], "Print",
+  CellTags->"b:2.2"],
+
+Cell[BoxData[
+    \({8\ x\_2\%3\ \((\(-x\_1\%3\) + 2\ x\_1\ x\_2\%2 + x\_2\%3)\), 
+      2\ \((x\_1\%4 + 4\ x\_2\%2\ \((x\_2\%2 - x\_3\%2)\) + 
+            x\_1\%2\ \((\(-4\)\ x\_2\%2 + x\_3\%2)\))\), \(-2\)\ \((x\_1\%2 - 
+            x\_1\ x\_2 - 2\ x\_2\%2 + x\_3\ \((x\_3 - x\_4)\))\), 
+      2\ \((x\_1\%2 - 2\ x\_2\%2 + x\_3\ \((x\_3 - x\_5)\))\)}\)], "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Relevent Resources ", "Section",
+  CellTags->{"toc:21", "b:2.3", "c:5"}],
+
+Cell["\<\
+Some resources are available for developing the WuRittSolva Tools,and these \
+coresponding notebooks are listed below:\
+\>", "Text",
+  CellTags->"b:2.3"],
+
+Cell["\<\
+[1]. Details of WuRittSolva.nb
+[2]. WuRittSolva User Guide.nb
+[3]. Demonstration of WuRittSolva in Elementary Geometry.nb
+[4]. A Collection of Testing Problems.nb
+[5]. WuRittSolva for Concrete Geometric Configurations in Elementary \
+Geometry.nb
+[6]. WuRittSolva User Manual.nb\
+\>", "SmallText",
+  CellTags->"b:2.3"]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 800}, {0, 527}},
+ShowPageBreaks->False,
+CellGrouping->Manual,
+WindowSize->{792, 498},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingStartingPageNumber->4,
+PrintingPageRange->{Automatic, Automatic},
+TaggingRules:>{"PaginationCache" -> {{2005, 6, 6, 12, 38, \
+55.720344`9.498588628104514}, {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, \
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, \
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, \
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, \
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, \
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, \
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, \
+4}}},
+Magnification->1,
+StyleDefinitions -> "Default.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "toc:1"->{
+    Cell[1776, 53, 134, 3, 93, "Title",
+      CellTags->{"toc:1", "c:1"}]},
+  "c:1"->{
+    Cell[1776, 53, 134, 3, 93, "Title",
+      CellTags->{"toc:1", "c:1"}]},
+  "toc:2"->{
+    Cell[3434, 99, 102, 1, 73, "Section",
+      CellTags->{"toc:2", "b:2.0", "c:2"}]},
+  "b:2.0"->{
+    Cell[3434, 99, 102, 1, 73, "Section",
+      CellTags->{"toc:2", "b:2.0", "c:2"}],
+    Cell[3561, 104, 82, 1, 29, "Subsubsection",
+      CellTags->{"toc:3", "b:2.0"}],
+    Cell[3646, 107, 288, 5, 90, "Input",
+      CellTags->"b:2.0"],
+    Cell[3971, 117, 85, 1, 29, "Subsubsection",
+      CellTags->{"toc:4", "b:2.0"}],
+    Cell[4081, 122, 123, 3, 50, "Input",
+      CellTags->"b:2.0"],
+    Cell[4207, 127, 56, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[4266, 131, 56, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[4371, 139, 92, 1, 29, "Subsubsection",
+      CellTags->{"toc:5", "b:2.0"}],
+    Cell[4488, 144, 137, 3, 50, "Input",
+      CellTags->"b:2.0"],
+    Cell[4628, 149, 59, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[4690, 153, 59, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[4798, 161, 87, 1, 29, "Subsubsection",
+      CellTags->{"toc:6", "b:2.0"}],
+    Cell[4910, 166, 70, 2, 30, "Input",
+      CellTags->"b:2.0"],
+    Cell[4983, 170, 62, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[5082, 177, 84, 2, 30, "Input",
+      CellTags->"b:2.0"],
+    Cell[5169, 181, 62, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[5280, 189, 85, 1, 29, "Subsubsection",
+      CellTags->{"toc:7", "b:2.0"}],
+    Cell[5368, 192, 565, 11, 70, "Input",
+      CellTags->"b:2.0"],
+    Cell[5958, 207, 104, 2, 30, "Input",
+      CellTags->"b:2.0"],
+    Cell[6065, 211, 59, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[6161, 218, 276, 5, 50, "Input",
+      CellTags->"b:2.0"],
+    Cell[6440, 225, 97, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[6586, 233, 96, 1, 29, "Subsubsection",
+      CellTags->{"toc:8", "b:2.0"}],
+    Cell[6707, 238, 76, 2, 30, "Input",
+      CellTags->"b:2.0"],
+    Cell[6786, 242, 67, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[6890, 249, 83, 2, 30, "Input",
+      CellTags->"b:2.0"],
+    Cell[6976, 253, 56, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[7069, 260, 88, 2, 30, "Input",
+      CellTags->"b:2.0"],
+    Cell[7160, 264, 56, 2, 29, "Output",
+      CellTags->"b:2.0"],
+    Cell[7253, 271, 84, 2, 30, "Input",
+      CellTags->"b:2.0"],
+    Cell[7340, 275, 62, 2, 29, "Output",
+      CellTags->"b:2.0"]},
+  "c:2"->{
+    Cell[3434, 99, 102, 1, 73, "Section",
+      CellTags->{"toc:2", "b:2.0", "c:2"}]},
+  "toc:3"->{
+    Cell[3561, 104, 82, 1, 29, "Subsubsection",
+      CellTags->{"toc:3", "b:2.0"}]},
+  "toc:4"->{
+    Cell[3971, 117, 85, 1, 29, "Subsubsection",
+      CellTags->{"toc:4", "b:2.0"}]},
+  "toc:5"->{
+    Cell[4371, 139, 92, 1, 29, "Subsubsection",
+      CellTags->{"toc:5", "b:2.0"}]},
+  "toc:6"->{
+    Cell[4798, 161, 87, 1, 29, "Subsubsection",
+      CellTags->{"toc:6", "b:2.0"}]},
+  "toc:7"->{
+    Cell[5280, 189, 85, 1, 29, "Subsubsection",
+      CellTags->{"toc:7", "b:2.0"}]},
+  "toc:8"->{
+    Cell[6586, 233, 96, 1, 29, "Subsubsection",
+      CellTags->{"toc:8", "b:2.0"}]},
+  "toc:9"->{
+    Cell[7463, 284, 102, 1, 43, "Section",
+      CellTags->{"toc:9", "b:2.1", "c:3"}]},
+  "b:2.1"->{
+    Cell[7463, 284, 102, 1, 43, "Section",
+      CellTags->{"toc:9", "b:2.1", "c:3"}],
+    Cell[7590, 289, 87, 1, 29, "Subsubsection",
+      CellTags->{"toc:10", "b:2.1"}],
+    Cell[7680, 292, 390, 7, 110, "Input",
+      CellTags->"b:2.1"],
+    Cell[8107, 304, 107, 1, 29, "Subsubsection",
+      CellTags->{"toc:11", "b:2.1"}],
+    Cell[8239, 309, 87, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[8329, 313, 85, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[8451, 320, 96, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[8550, 324, 227, 4, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[8826, 334, 109, 1, 29, "Subsubsection",
+      CellTags->{"toc:12", "b:2.1"}],
+    Cell[8960, 339, 90, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[9053, 343, 56, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[9146, 350, 91, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[9240, 354, 64, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[9353, 362, 112, 1, 29, "Subsubsection",
+      CellTags->{"toc:13", "b:2.1"}],
+    Cell[9490, 367, 101, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[9594, 371, 109, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[9740, 378, 102, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[9845, 382, 134, 3, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[10028, 391, 71, 1, 29, "Subsubsection",
+      CellTags->{"toc:14", "b:2.1"}],
+    Cell[10124, 396, 253, 9, 28, "SmallText",
+      CellTags->"b:2.1"],
+    Cell[10380, 407, 200, 5, 50, "Input",
+      CellTags->"b:2.1"],
+    Cell[10605, 416, 88, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[10696, 420, 72, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[10805, 427, 97, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[10905, 431, 82, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[11024, 438, 98, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[11125, 442, 108, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[11282, 450, 305, 12, 28, "SmallText",
+      CellTags->"b:2.1"],
+    Cell[11590, 464, 162, 3, 50, "Input",
+      CellTags->"b:2.1"],
+    Cell[11777, 471, 83, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[11863, 475, 69, 2, 29, "Output",
+      CellTags->"b:2.1"],
+    Cell[11969, 482, 84, 2, 30, "Input",
+      CellTags->"b:2.1"],
+    Cell[12056, 486, 138, 3, 29, "Output",
+      CellTags->"b:2.1"]},
+  "c:3"->{
+    Cell[7463, 284, 102, 1, 43, "Section",
+      CellTags->{"toc:9", "b:2.1", "c:3"}]},
+  "toc:10"->{
+    Cell[7590, 289, 87, 1, 29, "Subsubsection",
+      CellTags->{"toc:10", "b:2.1"}]},
+  "toc:11"->{
+    Cell[8107, 304, 107, 1, 29, "Subsubsection",
+      CellTags->{"toc:11", "b:2.1"}]},
+  "toc:12"->{
+    Cell[8826, 334, 109, 1, 29, "Subsubsection",
+      CellTags->{"toc:12", "b:2.1"}]},
+  "toc:13"->{
+    Cell[9353, 362, 112, 1, 29, "Subsubsection",
+      CellTags->{"toc:13", "b:2.1"}]},
+  "toc:14"->{
+    Cell[10028, 391, 71, 1, 29, "Subsubsection",
+      CellTags->{"toc:14", "b:2.1"}]},
+  "toc:15"->{
+    Cell[12267, 497, 108, 1, 43, "Section",
+      CellTags->{"toc:15", "b:2.2", "c:4"}]},
+  "b:2.2"->{
+    Cell[12267, 497, 108, 1, 43, "Section",
+      CellTags->{"toc:15", "b:2.2", "c:4"}],
+    Cell[12400, 502, 85, 1, 29, "Subsubsection",
+      CellTags->{"toc:16", "b:2.2"}],
+    Cell[12510, 507, 49, 1, 33, "Text",
+      CellTags->"b:2.2"],
+    Cell[12562, 510, 1033, 19, 210, "Input",
+      CellTags->"b:2.2"],
+    Cell[13620, 533, 208, 5, 50, "Input",
+      CellTags->"b:2.2"],
+    Cell[13831, 540, 844, 21, 49, "Print",
+      CellTags->"b:2.2"],
+    Cell[14678, 563, 537, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[15218, 580, 1180, 26, 70, "Print",
+      CellTags->"b:2.2"],
+    Cell[16401, 608, 537, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[16941, 625, 393, 8, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[17337, 635, 651, 11, 67, "Output",
+      CellTags->"b:2.2"],
+    Cell[17991, 648, 1400, 26, 155, "Output",
+      CellTags->"b:2.2"],
+    Cell[19440, 680, 51, 1, 33, "Text",
+      CellTags->"b:2.2"],
+    Cell[19494, 683, 443, 8, 130, "Input",
+      CellTags->"b:2.2"],
+    Cell[19962, 695, 160, 4, 50, "Input",
+      CellTags->"b:2.2"],
+    Cell[20125, 701, 508, 14, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[20636, 717, 579, 16, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[21218, 735, 677, 18, 29, "Print",
+      CellTags->"b:2.2"],
+    Cell[21898, 755, 555, 15, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[22456, 772, 393, 8, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[22852, 782, 496, 11, 83, "Output",
+      CellTags->"b:2.2"],
+    Cell[23397, 799, 51, 1, 33, "Text",
+      CellTags->"b:2.2"],
+    Cell[23451, 802, 780, 13, 210, "Input",
+      CellTags->"b:2.2"],
+    Cell[24256, 819, 160, 4, 50, "Input",
+      CellTags->"b:2.2"],
+    Cell[24419, 825, 557, 16, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[24979, 843, 531, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[25513, 860, 572, 16, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[26088, 878, 531, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[26622, 895, 393, 8, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[27018, 905, 393, 9, 75, "Output",
+      CellTags->"b:2.2"],
+    Cell[27472, 921, 93, 1, 29, "Subsubsection",
+      CellTags->{"toc:17", "b:2.2"}],
+    Cell[27568, 924, 898, 17, 190, "Input",
+      CellTags->"b:2.2"],
+    Cell[28491, 945, 123, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[28617, 950, 715, 18, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[29335, 970, 572, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[29910, 987, 393, 8, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[30306, 997, 277, 5, 29, "Output",
+      CellTags->"b:2.2"],
+    Cell[30620, 1007, 131, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[30754, 1012, 681, 18, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[31438, 1032, 697, 18, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[32138, 1052, 589, 16, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[32730, 1070, 479, 14, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[33212, 1086, 59, 2, 29, "Output",
+      CellTags->"b:2.2"],
+    Cell[33308, 1093, 131, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[33442, 1098, 595, 16, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[34040, 1116, 634, 17, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[34677, 1135, 634, 17, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[35314, 1154, 479, 14, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[35796, 1170, 59, 2, 29, "Output",
+      CellTags->"b:2.2"],
+    Cell[35904, 1178, 86, 1, 29, "Subsubsection",
+      CellTags->{"toc:18", "b:2.2"}],
+    Cell[35993, 1181, 614, 11, 150, "Input",
+      CellTags->"b:2.2"],
+    Cell[36632, 1196, 123, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[36758, 1201, 591, 16, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[37352, 1219, 730, 19, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[38085, 1240, 551, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[38639, 1257, 393, 8, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[39035, 1267, 338, 6, 29, "Output",
+      CellTags->"b:2.2"],
+    Cell[39410, 1278, 128, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[39541, 1283, 515, 14, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[40059, 1299, 479, 14, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[40541, 1315, 479, 14, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[41023, 1331, 59, 2, 29, "Output",
+      CellTags->"b:2.2"],
+    Cell[41131, 1339, 83, 1, 29, "Subsubsection",
+      CellTags->{"toc:19", "b:2.2"}],
+    Cell[41217, 1342, 1809, 39, 230, "Input",
+      CellTags->"b:2.2"],
+    Cell[43051, 1385, 142, 4, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[43196, 1391, 798, 20, 49, "Print",
+      CellTags->"b:2.2"],
+    Cell[43997, 1413, 537, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[44537, 1430, 1134, 25, 70, "Print",
+      CellTags->"b:2.2"],
+    Cell[45674, 1457, 537, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[46214, 1474, 393, 8, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[46610, 1484, 575, 10, 67, "Output",
+      CellTags->"b:2.2"],
+    Cell[47222, 1499, 126, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[47351, 1504, 572, 16, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[47926, 1522, 659, 17, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[48588, 1541, 790, 19, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[49381, 1562, 845, 20, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[50229, 1584, 712, 18, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[50944, 1604, 606, 16, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[51553, 1622, 479, 14, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[52035, 1638, 59, 2, 29, "Output",
+      CellTags->"b:2.2"],
+    Cell[52131, 1645, 180, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[52314, 1650, 568, 10, 67, "Output",
+      CellTags->"b:2.2"],
+    Cell[52919, 1665, 123, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[53045, 1670, 572, 16, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[53620, 1688, 659, 17, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[54282, 1707, 790, 19, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[55075, 1728, 845, 20, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[55923, 1750, 712, 18, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[56638, 1770, 606, 16, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[57247, 1788, 479, 14, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[57729, 1804, 59, 2, 29, "Output",
+      CellTags->"b:2.2"],
+    Cell[57837, 1812, 97, 1, 29, "Subsubsection",
+      CellTags->{"toc:20", "b:2.2"}],
+    Cell[57937, 1815, 604, 12, 150, "Input",
+      CellTags->"b:2.2"],
+    Cell[58566, 1831, 130, 3, 30, "Input",
+      CellTags->"b:2.2"],
+    Cell[58699, 1836, 524, 14, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[59226, 1852, 645, 17, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[59874, 1871, 805, 19, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[60682, 1892, 902, 21, 49, "Print",
+      CellTags->"b:2.2"],
+    Cell[61587, 1915, 534, 15, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[62124, 1932, 553, 15, 28, "Print",
+      CellTags->"b:2.2"],
+    Cell[62680, 1949, 393, 8, 25, "Print",
+      CellTags->"b:2.2"],
+    Cell[63076, 1959, 387, 6, 48, "Output",
+      CellTags->"b:2.2"]},
+  "c:4"->{
+    Cell[12267, 497, 108, 1, 43, "Section",
+      CellTags->{"toc:15", "b:2.2", "c:4"}]},
+  "toc:16"->{
+    Cell[12400, 502, 85, 1, 29, "Subsubsection",
+      CellTags->{"toc:16", "b:2.2"}]},
+  "toc:17"->{
+    Cell[27472, 921, 93, 1, 29, "Subsubsection",
+      CellTags->{"toc:17", "b:2.2"}]},
+  "toc:18"->{
+    Cell[35904, 1178, 86, 1, 29, "Subsubsection",
+      CellTags->{"toc:18", "b:2.2"}]},
+  "toc:19"->{
+    Cell[41131, 1339, 83, 1, 29, "Subsubsection",
+      CellTags->{"toc:19", "b:2.2"}]},
+  "toc:20"->{
+    Cell[57837, 1812, 97, 1, 29, "Subsubsection",
+      CellTags->{"toc:20", "b:2.2"}]},
+  "toc:21"->{
+    Cell[63524, 1972, 78, 1, 43, "Section",
+      CellTags->{"toc:21", "b:2.3", "c:5"}]},
+  "b:2.3"->{
+    Cell[63524, 1972, 78, 1, 43, "Section",
+      CellTags->{"toc:21", "b:2.3", "c:5"}],
+    Cell[63605, 1975, 163, 4, 33, "Text",
+      CellTags->"b:2.3"],
+    Cell[63771, 1981, 327, 9, 108, "SmallText",
+      CellTags->"b:2.3"]},
+  "c:5"->{
+    Cell[63524, 1972, 78, 1, 43, "Section",
+      CellTags->{"toc:21", "b:2.3", "c:5"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"toc:1", 65528, 2025},
+  {"c:1", 65615, 2028},
+  {"toc:2", 65704, 2031},
+  {"b:2.0", 65804, 2034},
+  {"c:2", 68015, 2097},
+  {"toc:3", 68115, 2100},
+  {"toc:4", 68214, 2103},
+  {"toc:5", 68313, 2106},
+  {"toc:6", 68412, 2109},
+  {"toc:7", 68511, 2112},
+  {"toc:8", 68610, 2115},
+  {"toc:9", 68709, 2118},
+  {"b:2.1", 68810, 2121},
+  {"c:3", 71172, 2188},
+  {"toc:10", 71274, 2191},
+  {"toc:11", 71375, 2194},
+  {"toc:12", 71477, 2197},
+  {"toc:13", 71579, 2200},
+  {"toc:14", 71681, 2203},
+  {"toc:15", 71783, 2206},
+  {"b:2.2", 71886, 2209},
+  {"c:4", 79094, 2414},
+  {"toc:16", 79198, 2417},
+  {"toc:17", 79300, 2420},
+  {"toc:18", 79402, 2423},
+  {"toc:19", 79505, 2426},
+  {"toc:20", 79608, 2429},
+  {"toc:21", 79711, 2432},
+  {"b:2.3", 79814, 2435},
+  {"c:5", 80057, 2442}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 134, 3, 93, "Title",
+  CellTags->{"toc:1", "c:1"}],
+Cell[1913, 58, 149, 3, 51, "Subtitle"],
+Cell[2065, 63, 1344, 32, 183, "Text"],
+
+Cell[CellGroupData[{
+Cell[3434, 99, 102, 1, 73, "Section",
+  CellTags->{"toc:2", "b:2.0", "c:2"}],
+
+Cell[CellGroupData[{
+Cell[3561, 104, 82, 1, 29, "Subsubsection",
+  CellTags->{"toc:3", "b:2.0"}],
+Cell[3646, 107, 288, 5, 90, "Input",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[3971, 117, 85, 1, 29, "Subsubsection",
+  CellTags->{"toc:4", "b:2.0"}],
+
+Cell[CellGroupData[{
+Cell[4081, 122, 123, 3, 50, "Input",
+  CellTags->"b:2.0"],
+Cell[4207, 127, 56, 2, 29, "Output",
+  CellTags->"b:2.0"],
+Cell[4266, 131, 56, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[4371, 139, 92, 1, 29, "Subsubsection",
+  CellTags->{"toc:5", "b:2.0"}],
+
+Cell[CellGroupData[{
+Cell[4488, 144, 137, 3, 50, "Input",
+  CellTags->"b:2.0"],
+Cell[4628, 149, 59, 2, 29, "Output",
+  CellTags->"b:2.0"],
+Cell[4690, 153, 59, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[4798, 161, 87, 1, 29, "Subsubsection",
+  CellTags->{"toc:6", "b:2.0"}],
+
+Cell[CellGroupData[{
+Cell[4910, 166, 70, 2, 30, "Input",
+  CellTags->"b:2.0"],
+Cell[4983, 170, 62, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5082, 177, 84, 2, 30, "Input",
+  CellTags->"b:2.0"],
+Cell[5169, 181, 62, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[5280, 189, 85, 1, 29, "Subsubsection",
+  CellTags->{"toc:7", "b:2.0"}],
+Cell[5368, 192, 565, 11, 70, "Input",
+  CellTags->"b:2.0"],
+
+Cell[CellGroupData[{
+Cell[5958, 207, 104, 2, 30, "Input",
+  CellTags->"b:2.0"],
+Cell[6065, 211, 59, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6161, 218, 276, 5, 50, "Input",
+  CellTags->"b:2.0"],
+Cell[6440, 225, 97, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6586, 233, 96, 1, 29, "Subsubsection",
+  CellTags->{"toc:8", "b:2.0"}],
+
+Cell[CellGroupData[{
+Cell[6707, 238, 76, 2, 30, "Input",
+  CellTags->"b:2.0"],
+Cell[6786, 242, 67, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6890, 249, 83, 2, 30, "Input",
+  CellTags->"b:2.0"],
+Cell[6976, 253, 56, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[7069, 260, 88, 2, 30, "Input",
+  CellTags->"b:2.0"],
+Cell[7160, 264, 56, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[7253, 271, 84, 2, 30, "Input",
+  CellTags->"b:2.0"],
+Cell[7340, 275, 62, 2, 29, "Output",
+  CellTags->"b:2.0"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[7463, 284, 102, 1, 43, "Section",
+  CellTags->{"toc:9", "b:2.1", "c:3"}],
+
+Cell[CellGroupData[{
+Cell[7590, 289, 87, 1, 29, "Subsubsection",
+  CellTags->{"toc:10", "b:2.1"}],
+Cell[7680, 292, 390, 7, 110, "Input",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8107, 304, 107, 1, 29, "Subsubsection",
+  CellTags->{"toc:11", "b:2.1"}],
+
+Cell[CellGroupData[{
+Cell[8239, 309, 87, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[8329, 313, 85, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8451, 320, 96, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[8550, 324, 227, 4, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[8826, 334, 109, 1, 29, "Subsubsection",
+  CellTags->{"toc:12", "b:2.1"}],
+
+Cell[CellGroupData[{
+Cell[8960, 339, 90, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[9053, 343, 56, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9146, 350, 91, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[9240, 354, 64, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9353, 362, 112, 1, 29, "Subsubsection",
+  CellTags->{"toc:13", "b:2.1"}],
+
+Cell[CellGroupData[{
+Cell[9490, 367, 101, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[9594, 371, 109, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9740, 378, 102, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[9845, 382, 134, 3, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[10028, 391, 71, 1, 29, "Subsubsection",
+  CellTags->{"toc:14", "b:2.1"}],
+
+Cell[CellGroupData[{
+Cell[10124, 396, 253, 9, 28, "SmallText",
+  CellTags->"b:2.1"],
+Cell[10380, 407, 200, 5, 50, "Input",
+  CellTags->"b:2.1"],
+
+Cell[CellGroupData[{
+Cell[10605, 416, 88, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[10696, 420, 72, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[10805, 427, 97, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[10905, 431, 82, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[11024, 438, 98, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[11125, 442, 108, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[11282, 450, 305, 12, 28, "SmallText",
+  CellTags->"b:2.1"],
+Cell[11590, 464, 162, 3, 50, "Input",
+  CellTags->"b:2.1"],
+
+Cell[CellGroupData[{
+Cell[11777, 471, 83, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[11863, 475, 69, 2, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[11969, 482, 84, 2, 30, "Input",
+  CellTags->"b:2.1"],
+Cell[12056, 486, 138, 3, 29, "Output",
+  CellTags->"b:2.1"]
+}, Closed]]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[12267, 497, 108, 1, 43, "Section",
+  CellTags->{"toc:15", "b:2.2", "c:4"}],
+
+Cell[CellGroupData[{
+Cell[12400, 502, 85, 1, 29, "Subsubsection",
+  CellTags->{"toc:16", "b:2.2"}],
+
+Cell[CellGroupData[{
+Cell[12510, 507, 49, 1, 33, "Text",
+  CellTags->"b:2.2"],
+Cell[12562, 510, 1033, 19, 210, "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+Cell[13620, 533, 208, 5, 50, "Input",
+  CellTags->"b:2.2"],
+Cell[13831, 540, 844, 21, 49, "Print",
+  CellTags->"b:2.2"],
+Cell[14678, 563, 537, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[15218, 580, 1180, 26, 70, "Print",
+  CellTags->"b:2.2"],
+Cell[16401, 608, 537, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[16941, 625, 393, 8, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[17337, 635, 651, 11, 67, "Output",
+  CellTags->"b:2.2"],
+Cell[17991, 648, 1400, 26, 155, "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[19440, 680, 51, 1, 33, "Text",
+  CellTags->"b:2.2"],
+Cell[19494, 683, 443, 8, 130, "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+Cell[19962, 695, 160, 4, 50, "Input",
+  CellTags->"b:2.2"],
+Cell[20125, 701, 508, 14, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[20636, 717, 579, 16, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[21218, 735, 677, 18, 29, "Print",
+  CellTags->"b:2.2"],
+Cell[21898, 755, 555, 15, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[22456, 772, 393, 8, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[22852, 782, 496, 11, 83, "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[23397, 799, 51, 1, 33, "Text",
+  CellTags->"b:2.2"],
+Cell[23451, 802, 780, 13, 210, "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+Cell[24256, 819, 160, 4, 50, "Input",
+  CellTags->"b:2.2"],
+Cell[24419, 825, 557, 16, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[24979, 843, 531, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[25513, 860, 572, 16, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[26088, 878, 531, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[26622, 895, 393, 8, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[27018, 905, 393, 9, 75, "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[27472, 921, 93, 1, 29, "Subsubsection",
+  CellTags->{"toc:17", "b:2.2"}],
+Cell[27568, 924, 898, 17, 190, "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+Cell[28491, 945, 123, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[28617, 950, 715, 18, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[29335, 970, 572, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[29910, 987, 393, 8, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[30306, 997, 277, 5, 29, "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[30620, 1007, 131, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[30754, 1012, 681, 18, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[31438, 1032, 697, 18, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[32138, 1052, 589, 16, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[32730, 1070, 479, 14, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[33212, 1086, 59, 2, 29, "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[33308, 1093, 131, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[33442, 1098, 595, 16, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[34040, 1116, 634, 17, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[34677, 1135, 634, 17, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[35314, 1154, 479, 14, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[35796, 1170, 59, 2, 29, "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[35904, 1178, 86, 1, 29, "Subsubsection",
+  CellTags->{"toc:18", "b:2.2"}],
+Cell[35993, 1181, 614, 11, 150, "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+Cell[36632, 1196, 123, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[36758, 1201, 591, 16, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[37352, 1219, 730, 19, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[38085, 1240, 551, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[38639, 1257, 393, 8, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[39035, 1267, 338, 6, 29, "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[39410, 1278, 128, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[39541, 1283, 515, 14, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[40059, 1299, 479, 14, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[40541, 1315, 479, 14, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[41023, 1331, 59, 2, 29, "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[41131, 1339, 83, 1, 29, "Subsubsection",
+  CellTags->{"toc:19", "b:2.2"}],
+Cell[41217, 1342, 1809, 39, 230, "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+Cell[43051, 1385, 142, 4, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[43196, 1391, 798, 20, 49, "Print",
+  CellTags->"b:2.2"],
+Cell[43997, 1413, 537, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[44537, 1430, 1134, 25, 70, "Print",
+  CellTags->"b:2.2"],
+Cell[45674, 1457, 537, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[46214, 1474, 393, 8, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[46610, 1484, 575, 10, 67, "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[47222, 1499, 126, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[47351, 1504, 572, 16, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[47926, 1522, 659, 17, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[48588, 1541, 790, 19, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[49381, 1562, 845, 20, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[50229, 1584, 712, 18, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[50944, 1604, 606, 16, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[51553, 1622, 479, 14, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[52035, 1638, 59, 2, 29, "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[52131, 1645, 180, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[52314, 1650, 568, 10, 67, "Output",
+  CellTags->"b:2.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[52919, 1665, 123, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[53045, 1670, 572, 16, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[53620, 1688, 659, 17, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[54282, 1707, 790, 19, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[55075, 1728, 845, 20, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[55923, 1750, 712, 18, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[56638, 1770, 606, 16, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[57247, 1788, 479, 14, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[57729, 1804, 59, 2, 29, "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[57837, 1812, 97, 1, 29, "Subsubsection",
+  CellTags->{"toc:20", "b:2.2"}],
+Cell[57937, 1815, 604, 12, 150, "Input",
+  CellTags->"b:2.2"],
+
+Cell[CellGroupData[{
+Cell[58566, 1831, 130, 3, 30, "Input",
+  CellTags->"b:2.2"],
+Cell[58699, 1836, 524, 14, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[59226, 1852, 645, 17, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[59874, 1871, 805, 19, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[60682, 1892, 902, 21, 49, "Print",
+  CellTags->"b:2.2"],
+Cell[61587, 1915, 534, 15, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[62124, 1932, 553, 15, 28, "Print",
+  CellTags->"b:2.2"],
+Cell[62680, 1949, 393, 8, 25, "Print",
+  CellTags->"b:2.2"],
+Cell[63076, 1959, 387, 6, 48, "Output",
+  CellTags->"b:2.2"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[63524, 1972, 78, 1, 43, "Section",
+  CellTags->{"toc:21", "b:2.3", "c:5"}],
+Cell[63605, 1975, 163, 4, 33, "Text",
+  CellTags->"b:2.3"],
+Cell[63771, 1981, 327, 9, 108, "SmallText",
+  CellTags->"b:2.3"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

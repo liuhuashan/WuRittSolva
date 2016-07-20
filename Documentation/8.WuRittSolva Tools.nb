@@ -1,0 +1,693 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     15469,        469]*)
+(*NotebookOutlinePosition[     19951,        610]*)
+(*  CellTagsIndexPosition[     19391,        584]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["WuRittSolva Tools", "Title",
+  TextAlignment->Center,
+  CellTags->{"toc:1", "c:1"}],
+
+Cell["Standard Application Package for Wu-Ritt Process", "Subtitle",
+  TextAlignment->Center],
+
+Cell[BoxData[{
+    StyleBox["By",
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(\(\ \)\(Huashan\ Liu, \[IndentingNewLine]Department\ of\ \
+Mathematics, Tianjin\ Polytechnic\ University, 
+      P . R . C . \[IndentingNewLine]E - \(Mail : 
+          liukaitianpidi@sina . com\)\)\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(HomePage : \(\(http\)\(:\)\) // magicm  .51 . net\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(\(Instructed\ by\)\(\ \)\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    StyleBox[\(Prof . \ Huang\ Dongwei\),
+      FontSlant->"Italic"], "\[IndentingNewLine]", 
+    RowBox[{\(Department\ of\ Mathematics\), 
+      ",", \(Tianjin\ Polytechnic\ University\), ",", 
+      RowBox[{"P", ".", "R", ".", "C", ".", "\[IndentingNewLine]", 
+        StyleBox["March",
+          FontSlant->"Italic"], 
+        StyleBox[".",
+          FontSlant->"Italic"], 
+        StyleBox[
+          FormBox[\(4\^th\),
+            "TraditionalForm"],
+          FontSlant->"Italic"]}], 
+      StyleBox[",",
+        FontSlant->"Italic"], 
+      StyleBox[
+        RowBox[{"2005", "-", 
+          RowBox[{"March", ".", 
+            FormBox[\(15\^th\),
+              "TraditionalForm"]}]}],
+        FontSlant->"Italic"], 
+      StyleBox[",",
+        FontSlant->"Italic"], 
+      StyleBox["2005",
+        FontSlant->"Italic"]}]}], "Text",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman"],
+
+Cell[CellGroupData[{
+
+Cell["Setion WRS_I: Basic Tools for Polynomial Properties", "Section",
+  CellTags->{"toc:2", "b:5.0", "c:2"}],
+
+Cell[CellGroupData[{
+
+Cell["Here the palettes.", "Subsubsection",
+  CellTags->{"toc:3", "b:5.0"}],
+
+Cell["\<\
+{\"MaxElementPos\",\"MinElementPos\",\"IsConstantsIn\",\"PolyVariables\",\"\
+FixedClass\",\"AutoClass\",\"Class\",\"FixedMainVariable\",\"AutoMainVariable\
+\",\"MainVariable\",\"MainVariableExponent\",\"Initial\",\"IsPolyReduced\",\"\
+LeadCoefficient\",\"PolynomialRank\",\"IsRankEqual\",\"IsRankLess\",\"\
+IsRankGreater\",\"intTest\",\"orderTransform\",\"Separant\",\"IsCompatibleSet\
+\",\"IsIncompatibleSet\"}\
+\>", "Text",
+  CellTags->"b:5.0"],
+
+Cell[BoxData[GridBox[{
+        {
+          
+          ButtonBox[\(Class[\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(MainVariable[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(MainVariableExponent[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(Initial[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(Separant[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(LeadCoefficient[\[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(IsPolyReduced[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(PolynomialRank[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(IsRankEqual[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(IsRankGreater[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(IsRankLess[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          ButtonBox[\(IsConstantsIn[\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(IsCompatibleSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(IsIncompatibleSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {""}
+        },
+      RowSpacings->0,
+      ColumnSpacings->0,
+      GridDefaultElement:>ButtonBox[ "\\[Placeholder]"]]], "Input",
+  CellTags->"b:5.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Setion WRS_II: Tools for Arithmatic Computation Inter Polynomials\
+\>", "Section",
+  CellTags->{"toc:4", "b:5.1", "c:3"}],
+
+Cell[CellGroupData[{
+
+Cell["Here the palettes.", "Subsubsection",
+  CellTags->{"toc:5", "b:5.1"}],
+
+Cell["\<\
+{\"PolyPRemainder\",\"PseudoRemainder\",\"PseudoResolution\",\"\
+AuxPseudoRemainder\",\"AuxPseudoResolution\",\"PseudoRemainderSet\",\"\
+PseudoResolutionSet\",\"IsAscendingSet\",\"SplitPolySet\",\"MiniAscSet\",\"\
+BasicSet\",\"CharacteristicSet\",\"CharacteristicForm\",\"WuRittEqnsSolve\",\"\
+Padding\",\"TracePrintOn\",\"MaxSteps\",\"ZerosDecomposition\"}\
+\>", "Text",
+  CellTags->"b:5.1"],
+
+Cell[BoxData[GridBox[{
+        {
+          
+          ButtonBox[\(PseudoRemainder[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(PseudoResolution[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(AuxPseudoRemainder[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(AuxPseudoResolution[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(PseudoRemainderSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(PseudoResolutionSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(IsAscendingSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(SplitPolySet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(BasicSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(MiniAscSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(CharacteristicSet[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(CharacteristicForm[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(WuRittEqnsSolve[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(ZerosDecomposition[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          ButtonBox[\(TracePrintOn \[Rule] False\)]},
+        {
+          ButtonBox[\(MaxSteps \[Rule] 50\)]},
+        {
+          ButtonBox[\(Padding \[Rule] \[SelectionPlaceholder]\)]},
+        {""}
+        },
+      RowSpacings->0,
+      ColumnSpacings->0,
+      GridDefaultElement:>ButtonBox[ "\\[Placeholder]"]]], "Input",
+  CellTags->"b:5.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Setion WRS_III: Tools for Geo2AlgLib", "Section",
+  CellTags->{"toc:6", "b:5.2", "c:4"}],
+
+Cell[CellGroupData[{
+
+Cell["Here the palettes.", "Subsubsection",
+  CellTags->{"toc:7", "b:5.2"}],
+
+Cell["\<\
+{\"TwoLinesParallel\",\"TwoLinesPerpend\",\"TriplePointsCollinear\",\"\
+PointOnLineEqual\",\"PointOnLineToRatio\",\"TwoLinesEqual\",\"TwoLinesToRatio\
+\",\"TripleLinesIntersect\",\"TwoLinesEqualRatio\",\"TwoAnglesEqual\",\"\
+PointInAngle\",\"PointOnCirlce\",\"TwoPointsOnCircle\",\"ThreePointsOnCircle\"\
+,\"FourPointsOnCircle\",\"FivePointsOnCircle\"}\
+\>", "Text",
+  CellTags->"b:5.2"],
+
+Cell[BoxData[GridBox[{
+        {
+          
+          ButtonBox[\(TwoLinesParallel[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \[SelectionPlaceholder]}]\
+\)]},
+        {
+          
+          ButtonBox[\(TwoLinesPerpend[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \[SelectionPlaceholder]}]\
+\)]},
+        {
+          
+          ButtonBox[\(TwoLinesEqual[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \[SelectionPlaceholder]}]\
+\)]},
+        {
+          
+          ButtonBox[\(TwoLinesToRatio[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \[SelectionPlaceholder]}, \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(TwoLinesEqualRatio[{{\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}}, {{\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}}]\)]},
+        {
+          
+          ButtonBox[\(TriplePointsCollinear[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(TripleLinesIntersect[\[SelectionPlaceholder], {{\
+\[SelectionPlaceholder], \[SelectionPlaceholder]}, {\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}}]\)]},
+        {
+          
+          ButtonBox[\(PointOnLineEqual[\[SelectionPlaceholder], {\
+\[SelectionPlaceholder], \[SelectionPlaceholder]}]\)]},
+        {
+          
+          ButtonBox[\(PointOnLineToRatio[\[SelectionPlaceholder], {\
+\[SelectionPlaceholder], \[SelectionPlaceholder]}, \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(TwoAnglesEqual[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]}, {\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]}]\)]},
+        {
+          
+          ButtonBox[\(PointInAngle[\[SelectionPlaceholder], {\
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]}]\)]},
+        {
+          
+          ButtonBox[\(PointOnCirlce[\[SelectionPlaceholder], {\
+\[SelectionPlaceholder], \[SelectionPlaceholder]}]\)]},
+        {
+          
+          ButtonBox[\(TwoPointsOnCircle[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \[SelectionPlaceholder]}]\
+\)]},
+        {
+          
+          ButtonBox[\(ThreePointsOnCircle[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]}, {\[SelectionPlaceholder], \
+\[SelectionPlaceholder]}]\)]},
+        {
+          
+          ButtonBox[\(FourPointsOnCircle[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \[SelectionPlaceholder]}, {\
+\[SelectionPlaceholder], \[SelectionPlaceholder]}]\)]},
+        {
+          
+          ButtonBox[\(FivePointsOnCircle[{\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]}, {\[SelectionPlaceholder], \[SelectionPlaceholder]}]\
+\)]}
+        },
+      RowSpacings->0,
+      ColumnSpacings->0,
+      GridDefaultElement:>ButtonBox[ "\\[Placeholder]"]]], "Input",
+  PageWidth->PaperWidth,
+  CellMargins->{{Inherited, 0}, {Inherited, Inherited}},
+  CellSize->{371, Inherited},
+  CellTags->"b:5.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Setion WRS_IV: Tools for WuRittProver", "Section",
+  CellTags->{"toc:8", "b:5.3", "c:5"}],
+
+Cell[CellGroupData[{
+
+Cell["Here the palettes.", "Subsubsection",
+  CellTags->{"toc:9", "b:5.3"}],
+
+Cell[BoxData[
+    \({"\<IsNewComponent\>", "\<AuxProverRemainder\>", "\<WuRittProver\>", \
+"\<WuRittSmartProver\>", "\<TraceCharacteristicSetOn\>", "\<TraceProverOn\>"}\
+\)], "Input",
+  CellTags->"b:5.3"],
+
+Cell[BoxData[GridBox[{
+        {
+          ButtonBox[\(IsNewComponent[\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(WuRittProver[\[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder], \
+\[SelectionPlaceholder]]\)]},
+        {
+          
+          ButtonBox[\(WuRittSmartProver[\[SelectionPlaceholder], {\
+\[SelectionPlaceholder], \[SelectionPlaceholder]}, \[SelectionPlaceholder], \
+\[SelectionPlaceholder], \[SelectionPlaceholder]]\)]},
+        {
+          ButtonBox[\(TraceCharacteristicSetOn \[Rule] True\)]},
+        {
+          ButtonBox[\(TraceProverOn \[Rule] True\)]}
+        },
+      RowSpacings->0,
+      ColumnSpacings->0,
+      GridDefaultElement:>ButtonBox[ "\\[Placeholder]"]]], "Input",
+  CellTags->"b:5.3"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Relevent Resources ", "Section",
+  CellTags->{"toc:10", "b:5.4", "c:6"}],
+
+Cell["\<\
+Some resources are available for developing the WuRittSolva Tools,and these \
+coresponding notebooks are listed below:\
+\>", "Text",
+  CellTags->"b:5.4"],
+
+Cell["\<\
+[1]. Demonstration of WuRittSolva.nb
+[2]. WuRittSolva User Guide.nb
+[3]. Demonstration of WuRittSolva in Elementary Geometry.nb
+[4]. A Collection of Testing Problems.nb
+[5]. WuRittSolva for Concrete Geometric Configurations in Elementary \
+Geometry.nb
+[6]. WuRittSolva User Manual.nb\
+\>", "SmallText",
+  CellTags->"b:5.4"]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 800}, {0, 527}},
+ShowPageBreaks->False,
+WindowSize->{792, 500},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingStartingPageNumber->7,
+TaggingRules:>{"PaginationCache" -> {{2005, 6, 6, 12, 38, \
+58.6445488`9.520802480217752}, {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, \
+7, 7, 7, 7, 7, 7, 7}}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "toc:1"->{
+    Cell[1776, 53, 89, 2, 95, "Title",
+      CellTags->{"toc:1", "c:1"}]},
+  "c:1"->{
+    Cell[1776, 53, 89, 2, 95, "Title",
+      CellTags->{"toc:1", "c:1"}]},
+  "toc:2"->{
+    Cell[3453, 102, 109, 1, 73, "Section",
+      CellTags->{"toc:2", "b:5.0", "c:2"}]},
+  "b:5.0"->{
+    Cell[3453, 102, 109, 1, 73, "Section",
+      CellTags->{"toc:2", "b:5.0", "c:2"}],
+    Cell[3587, 107, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:3", "b:5.0"}],
+    Cell[3665, 110, 456, 8, 71, "Text",
+      CellTags->"b:5.0"],
+    Cell[4124, 120, 2089, 64, 277, "Input",
+      CellTags->"b:5.0"]},
+  "c:2"->{
+    Cell[3453, 102, 109, 1, 73, "Section",
+      CellTags->{"toc:2", "b:5.0", "c:2"}]},
+  "toc:3"->{
+    Cell[3587, 107, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:3", "b:5.0"}]},
+  "toc:4"->{
+    Cell[6262, 190, 131, 3, 43, "Section",
+      CellTags->{"toc:4", "b:5.1", "c:3"}]},
+  "b:5.1"->{
+    Cell[6262, 190, 131, 3, 43, "Section",
+      CellTags->{"toc:4", "b:5.1", "c:3"}],
+    Cell[6418, 197, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:5", "b:5.1"}],
+    Cell[6496, 200, 402, 7, 71, "Text",
+      CellTags->"b:5.1"],
+    Cell[6901, 209, 2658, 79, 331, "Input",
+      CellTags->"b:5.1"]},
+  "c:3"->{
+    Cell[6262, 190, 131, 3, 43, "Section",
+      CellTags->{"toc:4", "b:5.1", "c:3"}]},
+  "toc:5"->{
+    Cell[6418, 197, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:5", "b:5.1"}]},
+  "toc:6"->{
+    Cell[9608, 294, 94, 1, 43, "Section",
+      CellTags->{"toc:6", "b:5.2", "c:4"}]},
+  "b:5.2"->{
+    Cell[9608, 294, 94, 1, 43, "Section",
+      CellTags->{"toc:6", "b:5.2", "c:4"}],
+    Cell[9727, 299, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:7", "b:5.2"}],
+    Cell[9805, 302, 397, 7, 71, "Text",
+      CellTags->"b:5.2"],
+    Cell[10205, 311, 3382, 89, 303, "Input",
+      CellTags->"b:5.2"]},
+  "c:4"->{
+    Cell[9608, 294, 94, 1, 43, "Section",
+      CellTags->{"toc:6", "b:5.2", "c:4"}]},
+  "toc:7"->{
+    Cell[9727, 299, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:7", "b:5.2"}]},
+  "toc:8"->{
+    Cell[13636, 406, 95, 1, 43, "Section",
+      CellTags->{"toc:8", "b:5.3", "c:5"}]},
+  "b:5.3"->{
+    Cell[13636, 406, 95, 1, 43, "Section",
+      CellTags->{"toc:8", "b:5.3", "c:5"}],
+    Cell[13756, 411, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:9", "b:5.3"}],
+    Cell[13834, 414, 204, 4, 50, "Input",
+      CellTags->"b:5.3"],
+    Cell[14041, 420, 771, 21, 105, "Input",
+      CellTags->"b:5.3"]},
+  "c:5"->{
+    Cell[13636, 406, 95, 1, 43, "Section",
+      CellTags->{"toc:8", "b:5.3", "c:5"}]},
+  "toc:9"->{
+    Cell[13756, 411, 75, 1, 29, "Subsubsection",
+      CellTags->{"toc:9", "b:5.3"}]},
+  "toc:10"->{
+    Cell[14861, 447, 78, 1, 43, "Section",
+      CellTags->{"toc:10", "b:5.4", "c:6"}]},
+  "b:5.4"->{
+    Cell[14861, 447, 78, 1, 43, "Section",
+      CellTags->{"toc:10", "b:5.4", "c:6"}],
+    Cell[14942, 450, 163, 4, 33, "Text",
+      CellTags->"b:5.4"],
+    Cell[15108, 456, 333, 9, 108, "SmallText",
+      CellTags->"b:5.4"]},
+  "c:6"->{
+    Cell[14861, 447, 78, 1, 43, "Section",
+      CellTags->{"toc:10", "b:5.4", "c:6"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"toc:1", 16274, 489},
+  {"c:1", 16360, 492},
+  {"toc:2", 16448, 495},
+  {"b:5.0", 16549, 498},
+  {"c:2", 16869, 507},
+  {"toc:3", 16970, 510},
+  {"toc:4", 17069, 513},
+  {"b:5.1", 17170, 516},
+  {"c:3", 17490, 525},
+  {"toc:5", 17591, 528},
+  {"toc:6", 17690, 531},
+  {"b:5.2", 17790, 534},
+  {"c:4", 18110, 543},
+  {"toc:7", 18210, 546},
+  {"toc:8", 18309, 549},
+  {"b:5.3", 18410, 552},
+  {"c:5", 18733, 561},
+  {"toc:9", 18834, 564},
+  {"toc:10", 18935, 567},
+  {"b:5.4", 19037, 570},
+  {"c:6", 19277, 577}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 89, 2, 95, "Title",
+  CellTags->{"toc:1", "c:1"}],
+Cell[1868, 57, 93, 1, 51, "Subtitle"],
+Cell[1964, 60, 1464, 38, 183, "Text"],
+
+Cell[CellGroupData[{
+Cell[3453, 102, 109, 1, 73, "Section",
+  CellTags->{"toc:2", "b:5.0", "c:2"}],
+
+Cell[CellGroupData[{
+Cell[3587, 107, 75, 1, 29, "Subsubsection",
+  CellTags->{"toc:3", "b:5.0"}],
+Cell[3665, 110, 456, 8, 71, "Text",
+  CellTags->"b:5.0"],
+Cell[4124, 120, 2089, 64, 277, "Input",
+  CellTags->"b:5.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[6262, 190, 131, 3, 43, "Section",
+  CellTags->{"toc:4", "b:5.1", "c:3"}],
+
+Cell[CellGroupData[{
+Cell[6418, 197, 75, 1, 29, "Subsubsection",
+  CellTags->{"toc:5", "b:5.1"}],
+Cell[6496, 200, 402, 7, 71, "Text",
+  CellTags->"b:5.1"],
+Cell[6901, 209, 2658, 79, 331, "Input",
+  CellTags->"b:5.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9608, 294, 94, 1, 43, "Section",
+  CellTags->{"toc:6", "b:5.2", "c:4"}],
+
+Cell[CellGroupData[{
+Cell[9727, 299, 75, 1, 29, "Subsubsection",
+  CellTags->{"toc:7", "b:5.2"}],
+Cell[9805, 302, 397, 7, 71, "Text",
+  CellTags->"b:5.2"],
+Cell[10205, 311, 3382, 89, 303, "Input",
+  CellTags->"b:5.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[13636, 406, 95, 1, 43, "Section",
+  CellTags->{"toc:8", "b:5.3", "c:5"}],
+
+Cell[CellGroupData[{
+Cell[13756, 411, 75, 1, 29, "Subsubsection",
+  CellTags->{"toc:9", "b:5.3"}],
+Cell[13834, 414, 204, 4, 50, "Input",
+  CellTags->"b:5.3"],
+Cell[14041, 420, 771, 21, 105, "Input",
+  CellTags->"b:5.3"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[14861, 447, 78, 1, 43, "Section",
+  CellTags->{"toc:10", "b:5.4", "c:6"}],
+Cell[14942, 450, 163, 4, 33, "Text",
+  CellTags->"b:5.4"],
+Cell[15108, 456, 333, 9, 108, "SmallText",
+  CellTags->"b:5.4"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

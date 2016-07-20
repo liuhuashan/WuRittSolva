@@ -1,0 +1,3659 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    113616,       3649]
+NotebookOptionsPosition[     91543,       2922]
+NotebookOutlinePosition[    104585,       3328]
+CellTagsIndexPosition[    103580,       3286]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["Details of WuRittSolva",
+ FontWeight->"Bold"]], "Title",
+ TextAlignment->Center,
+ CellTags->{"toc:1", "c:1"}],
+
+Cell["Standard Application Package for Wu-Ritt Process", "Subtitle",
+ TextAlignment->Center],
+
+Cell[BoxData[{
+ StyleBox["By",
+  FontSlant->"Italic"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{" ", 
+   RowBox[{
+    RowBox[{"Huashan", " ", "Liu"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Department", " ", "of", " ", "Mathematics"}], ",", 
+    RowBox[{"Tianjin", " ", "Polytechnic", " ", "University"}], ",", 
+    RowBox[{
+     RowBox[{"P", ".", "R", ".", "C", ".", "\[IndentingNewLine]", "E"}], "-", 
+     RowBox[{"Mail", ":", 
+      RowBox[{
+       RowBox[{"liukaitianpidi", "@", "sina"}], ".", "com"}]}]}]}]}],
+  FontSlant->"Italic"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"HomePage", ":", 
+    RowBox[{"http", ":"}]}], "//", 
+   RowBox[{"magicm", 
+    RowBox[{".51", ".", "net"}]}]}],
+  FontSlant->"Italic"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Instructed", " ", "by"}], " "}],
+  FontSlant->"Italic"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"Prof", ".", " ", "Huang"}], " ", "Dongwei"}],
+  FontSlant->"Italic"], "\[IndentingNewLine]", 
+ RowBox[{
+  StyleBox[
+   RowBox[{"Department", " ", "of", " ", "Mathematics"}],
+   FontSlant->"Italic"], 
+  StyleBox[",",
+   FontSlant->"Italic"], 
+  StyleBox[
+   RowBox[{"Tianjin", " ", "Polytechnic", " ", "University"}],
+   FontSlant->"Italic"], 
+  StyleBox[",",
+   FontSlant->"Italic"], 
+  RowBox[{
+   StyleBox["P",
+    FontSlant->"Italic"], 
+   StyleBox[".",
+    FontSlant->"Italic"], 
+   StyleBox["R",
+    FontSlant->"Italic"], 
+   StyleBox[".",
+    FontSlant->"Italic"], 
+   StyleBox["C",
+    FontSlant->"Italic"], 
+   StyleBox[".",
+    FontSlant->"Italic"], "\[IndentingNewLine]", 
+   StyleBox["March",
+    FontSlant->"Italic"], 
+   StyleBox[".",
+    FontSlant->"Italic"], 
+   StyleBox[
+    FormBox[
+     SuperscriptBox["4", "th"],
+     TraditionalForm],
+    FontSlant->"Italic"]}], 
+  StyleBox[",",
+   FontSlant->"Italic"], 
+  StyleBox[
+   RowBox[{"2005", "-", 
+    RowBox[{"March", ".", 
+     FormBox[
+      SuperscriptBox["15", "th"],
+      TraditionalForm]}]}],
+   FontSlant->"Italic"], 
+  StyleBox[",",
+   FontSlant->"Italic"], 
+  StyleBox["2005",
+   FontSlant->"Italic"]}]}], "Text",
+ TextAlignment->Center,
+ FontFamily->"Times New Roman"],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_I: Some Functions Defined for List Manipulation", "Section",
+ CellTags->{"b:3.0", "c:2"}],
+
+Cell[CellGroupData[{
+
+Cell["Element postion", "Subsubsection",
+ CellTags->{"toc:2", "b:3.0"}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxElementPos", "[", "vector_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Position", "[", 
+     RowBox[{"vector", ",", 
+      RowBox[{"Max", "[", "vector", "]"}]}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MinElementPos", "[", "vector_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Position", "[", 
+     RowBox[{"vector", ",", 
+      RowBox[{"Min", "[", "vector", "]"}]}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";"}]}], "Input",
+ CellTags->"b:3.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Check Constants in List", "Subsubsection",
+ CellTags->{"toc:3", "b:3.0"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsConstantsIn", "[", "list_", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "res"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"Select", "[", 
+       RowBox[{"list", ",", "IntegerQ"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "@", "tmp"}], ">", "0"}], ",", "True", ",", 
+        "False"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.0"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Fix the Variables of  ",
+ StyleBox["poly",
+  FontSlant->"Italic"],
+ " wrt ",
+ StyleBox["const",
+  FontSlant->"Italic"],
+ " as constansts"
+}], "Subsubsection",
+ CellTags->{"toc:4", "b:3.0"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PolyVariables", "[", 
+   RowBox[{"poly_", ",", "const___"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"Complement", "[", 
+       RowBox[{
+        RowBox[{"Variables", "[", "poly", "]"}], ",", "const"}], "]"}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "]"}]}]], "Input",
+ CellTags->"b:3.0"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_II:Computation of Class and MainVariable", "Section",
+ CellTags->{"b:3.1", "c:3"}],
+
+Cell[CellGroupData[{
+
+Cell["Computation of Class wrt ord", "Subsubsection",
+ CellTags->{"toc:5", "b:3.1"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FixedClass", "[", 
+   RowBox[{"poly_", ",", "ord_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Exponent", "[", 
+         RowBox[{"poly", ",", "#"}], "]"}], "&"}], "/@", "ord"}]}], ";", "\n",
+      " ", 
+     RowBox[{"mid", "=", 
+      RowBox[{"Last", "[", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Position", "[", 
+         RowBox[{"tmp", ",", 
+          RowBox[{"Last", "@", 
+           RowBox[{"Select", "[", 
+            RowBox[{"tmp", ",", "Positive"}], "]"}]}]}], "]"}], "]"}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"Return", "[", 
+      RowBox[{
+       RowBox[{"ord", "[", 
+        RowBox[{"[", "mid", "]"}], "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AutoClass", "[", 
+   RowBox[{"poly_", ",", "const___"}], "]"}], ":=", "\n", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "mid"}], "}"}], ",", "\n", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"PolyVariables", "[", 
+       RowBox[{"poly", ",", "const"}], "]"}]}], ";", "\n", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"mid", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Exponent", "[", 
+           RowBox[{"poly", ",", "#"}], "]"}], "&"}], "/@", "tmp"}]}], ";", 
+       "\n", 
+       RowBox[{"res", "=", 
+        RowBox[{"MaxElementPos", "[", "mid", "]"}]}], ";"}], "*)"}], "\n", 
+     RowBox[{"res", "=", 
+      RowBox[{
+       RowBox[{"Last", "[", "tmp", "]"}], "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", "\n", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\n", "]"}]}]], "Input",
+ CellTags->"b:3.1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Class", "[", 
+   RowBox[{"poly_", ",", 
+    RowBox[{"ord_:", "False"}], ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ArrayQ", "[", "ord", "]"}], ",", 
+        RowBox[{"FixedClass", "[", 
+         RowBox[{"poly", ",", "ord"}], "]"}], ",", 
+        RowBox[{"AutoClass", "[", 
+         RowBox[{"poly", ",", "const"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Computaion of MainVariable wrt ord", "Subsubsection",
+ CellTags->{"toc:6", "b:3.1"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FixedMainVariable", "[", 
+   RowBox[{"poly_", ",", "ord_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"FixedClass", "[", 
+       RowBox[{"poly", ",", "ord"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"ord", "[", 
+       RowBox[{"[", "tmp", "]"}], "]"}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellTags->"b:3.1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AutoMainVariable", "[", 
+   RowBox[{"poly_", ",", "const___"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "mid"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"AutoClass", "[", 
+       RowBox[{"poly", ",", "const"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"PolyVariables", "[", 
+       RowBox[{"poly", ",", "const"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"mid", "[", 
+       RowBox[{"[", "tmp", "]"}], "]"}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellTags->"b:3.1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MainVariable", "[", 
+    RowBox[{"poly_", ",", 
+     RowBox[{"ord_:", "False"}], ",", "const___"}], "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tmp", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"Not", "[", 
+          RowBox[{"ArrayQ", "[", "ord", "]"}], "]"}], ",", 
+         RowBox[{"AutoMainVariable", "[", 
+          RowBox[{"poly", ",", "const"}], "]"}], ",", 
+         RowBox[{"FixedMainVariable", "[", 
+          RowBox[{"poly", ",", "ord"}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]"}]], "Input",
+ CellTags->"b:3.1"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Some Related Functions", "Subsubsection",
+ CellTags->{"toc:7", "b:3.1"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MainVariableExponent", "[", 
+   RowBox[{"poly_", ",", "ord___"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"Exponent", "[", 
+       RowBox[{"poly", ",", 
+        RowBox[{"MainVariable", "[", 
+         RowBox[{"poly", ",", "ord"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Initial", "[", 
+   RowBox[{"poly_", ",", "ord___", ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "mid", ",", "res"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"MainVariable", "[", 
+       RowBox[{"poly", ",", "ord", ",", "const"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"Exponent", "[", 
+       RowBox[{"poly", ",", "tmp"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"Coefficient", "[", 
+       RowBox[{"poly", ",", 
+        RowBox[{"tmp", "^", "mid"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LeadCoefficient", "[", 
+   RowBox[{"poly_", ",", "var_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"Last", "@", 
+       RowBox[{"CoefficientList", "[", 
+        RowBox[{"poly", ",", "var"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"Expand", "[", "tmp", "]"}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellTags->"b:3.1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"IsPolyReduced", "::", "\"\<Reduced\>\""}], "=", 
+   "\"\<`1` is  reduced to `2`.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"IsPolyReduced", "::", "\"\<NotReduced\>\""}], "=", 
+   "\"\<`1` is not reduced to `2`.\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"IsPolyReduced", "[", 
+   RowBox[{"lhspoly_", ",", "rhspoly_", ",", "ord___", ",", "const___"}], 
+   "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Class", "[", 
+           RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], "<", 
+          RowBox[{"Class", "[", 
+           RowBox[{"lhspoly", ",", "ord", ",", "const"}], "]"}]}], "||", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Class", "[", 
+             RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], "==", 
+            RowBox[{"Class", "[", 
+             RowBox[{"lhspoly", ",", "ord", ",", "const"}], "]"}]}], "&&", 
+           RowBox[{
+            RowBox[{"MainVariableExponent", "[", 
+             RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], "<", 
+            RowBox[{"MainVariableExponent", "[", 
+             RowBox[{"lhspoly", ",", "ord", ",", "const"}], "]"}]}]}], 
+          ")"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Message", "[", 
+           RowBox[{
+            RowBox[{"IsPolyReduced", "::", "\"\<Reduced\>\""}], ",", 
+            "rhspoly", ",", "lhspoly"}], "]"}], ";"}], "*)"}], "True", ",", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Message", "[", 
+           RowBox[{
+            RowBox[{"IsPolyReduced", "::", "\"\<NotReduced\>\""}], ",", 
+            "rhspoly", ",", "lhspoly"}], "]"}], ";"}], "*)"}], "False"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]}], "Input",
+ CellTags->"b:3.1"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_III:WuRittSolva Main Procedure", "Section",
+ CellTags->{"b:3.2", "c:4"}],
+
+Cell[CellGroupData[{
+
+Cell["Poly2Poly Pseudo Division: Remainder & Resolution", "Subsubsection",
+ CellTags->{"toc:8", "b:3.2"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PseudoRemainder", "[", 
+   RowBox[{"lhspoly_", ",", "rhspoly_", ",", "ord___", ",", "const___"}], 
+   "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "polyquo", ",", "polyrem", ",", "tmppolyquo", ",", "tmppolyrem", ",", 
+      "polytmplcm", ",", "polypseudoquo", ",", "polypseudorem", ",", 
+      RowBox[{"i", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"polyquo", "=", 
+      RowBox[{"Together", "@", 
+       RowBox[{"PolynomialQuotient", "[", 
+        RowBox[{"lhspoly", ",", "rhspoly", ",", 
+         RowBox[{"MainVariable", "[", 
+          RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}]}], "]"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"polyrem", "=", 
+      RowBox[{"Together", "@", 
+       RowBox[{"PolynomialRemainder", "[", 
+        RowBox[{"lhspoly", ",", "rhspoly", ",", 
+         RowBox[{"MainVariable", "[", 
+          RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}]}], "]"}]}]}], 
+     ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"tmppolyquo", "=", 
+      RowBox[{"Denominator", "[", "polyquo", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tmppolyrem", "=", 
+      RowBox[{"Denominator", "[", "polyrem", "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"polytmplcm", "=", 
+      RowBox[{"PolynomialLCM", "[", 
+       RowBox[{"tmppolyquo", ",", "tmppolyrem"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"polypseudorem", "=", 
+      RowBox[{"polytmplcm", "*", "polyrem"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "polypseudorem", "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PseudoResolution", "[", 
+   RowBox[{"lhspoly_", ",", "rhspoly_", ",", "ord___", ",", "const___"}], 
+   "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "polyquo", ",", "polyrem", ",", "tmppolyquo", ",", "tmppolyrem", ",", 
+      "polytmplcm", ",", "polypseudoquo", ",", "polypseudorem", ",", 
+      RowBox[{"i", "=", "0"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"polyquo", "=", 
+      RowBox[{"Together", "@", 
+       RowBox[{"PolynomialQuotient", "[", 
+        RowBox[{"lhspoly", ",", "rhspoly", ",", 
+         RowBox[{"MainVariable", "[", 
+          RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}]}], "]"}]}]}], 
+     ";", 
+     RowBox[{"polyrem", "=", 
+      RowBox[{"Together", "@", 
+       RowBox[{"PolynomialRemainder", "[", 
+        RowBox[{"lhspoly", ",", "rhspoly", ",", 
+         RowBox[{"MainVariable", "[", 
+          RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}]}], "]"}]}]}], 
+     ";", 
+     RowBox[{"tmppolyquo", "=", 
+      RowBox[{"Denominator", "[", "polyquo", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tmppolyrem", "=", 
+      RowBox[{"Denominator", "[", "polyrem", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"polytmplcm", "=", 
+      RowBox[{"PolynomialLCM", "[", 
+       RowBox[{"tmppolyquo", ",", "tmppolyrem"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"polypseudoquo", "=", 
+      RowBox[{"polytmplcm", "*", "polyquo"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"polypseudorem", "=", 
+      RowBox[{"polytmplcm", "*", "polyrem"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"{", 
+         RowBox[{"polytmplcm", ",", "tmppolyquo", ",", "tmppolyrem"}], "}"}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"i", "\[LessEqual]", "10"}], "&&", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Expand", "@", 
+            RowBox[{"Simplify", "[", 
+             RowBox[{
+              SuperscriptBox[
+               RowBox[{"Initial", "[", 
+                RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], "i"], 
+              "*", "lhspoly"}], "]"}]}], "=!=", 
+           RowBox[{"Expand", "@", 
+            RowBox[{"Simplify", "[", 
+             RowBox[{
+              RowBox[{"polypseudoquo", "*", "rhspoly"}], "+", 
+              "polypseudorem"}], "]"}]}]}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"i", "++"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"Initial", "[", 
+               RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], "i"], 
+             ",", 
+             RowBox[{"Expand", "[", 
+              RowBox[{
+               SuperscriptBox[
+                RowBox[{"Initial", "[", 
+                 RowBox[{"rhspoly", ",", "ord"}], "]"}], "i"], "lhspoly"}], 
+              "]"}], ",", 
+             RowBox[{"Expand", "[", 
+              RowBox[{
+               RowBox[{"polypseudoquo", "*", "rhspoly"}], "+", 
+               "polypseudorem"}], "]"}], ",", "i"}], "}"}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"i", "=", 
+        RowBox[{"Max", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"MainVariableExponent", "[", 
+             RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], "-", 
+            RowBox[{"MainVarExponent", "[", 
+             RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], "+", "1"}],
+            ",", "0"}], "}"}], "]"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"Expand", "@", 
+       RowBox[{"{", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Initial", "[", 
+           RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}], ",", "i"}], 
+         "*)"}], 
+        RowBox[{"polytmplcm", ",", "polypseudoquo", ",", "polypseudorem"}], 
+        "}"}]}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[CellGroupData[{
+
+Cell["Test for above procedure", "Text",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ff", "=", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "2"], 
+     SuperscriptBox[
+      SubscriptBox["x", "2"], "3"]}], "-", 
+    SubscriptBox["x", "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg", "=", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "3"], 
+     SubscriptBox["x", "2"]}], "-", "2"}]}], ";"}]}], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{"PseudoResolution", "[", 
+  RowBox[{"ff", ",", "gg", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["x", "1"], ",", 
+     SubscriptBox["x", "2"]}], "}"}]}], "]"}]], "Input",
+ CellTags->"b:3.2"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Poly2Polyset Pseudo Division:Remainder & Resolution", "Subsubsection",
+ CellTags->{"toc:9", "b:3.2"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AuxPseudoRemainder", "[", 
+   RowBox[{"poly_", ",", "polyset_", ",", "ord___", ",", "const___"}], "]"}], 
+  ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"len", ",", "tmp", ",", "mid", ",", 
+      RowBox[{"i", "=", "1"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"len", "=", 
+      RowBox[{"Length", "@", "polyset"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmp", "=", "poly"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"i", "<=", "len"}], ",", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"mid", "=", 
+          RowBox[{"Evaluate", "@", 
+           RowBox[{"PseudoRemainder", "[", 
+            RowBox[{"tmp", ",", 
+             RowBox[{"polyset", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "ord", ",", "const"}], 
+            "]"}]}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"tmp", "=", "mid"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"Print", "@", "tmp"}], ";"}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"i", "++"}], ";"}], "\[IndentingNewLine]", ")"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AuxPseudoResolution", "[", 
+   RowBox[{"poly_", ",", "polyset_", ",", "ord___", ",", "const___"}], "]"}], 
+  ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"len", ",", "tmp", ",", "mid", ",", 
+      RowBox[{"i", "=", "1"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"len", "=", 
+      RowBox[{"Length", "@", "polyset"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmp", "=", "poly"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"i", "<=", "len"}], ",", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"mid", "=", 
+          RowBox[{"PseudoResolution", "[", 
+           RowBox[{"tmp", ",", 
+            RowBox[{"polyset", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", "ord", ",", "const"}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"tmp", "=", 
+          RowBox[{"Last", "@", "mid"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"Print", "@", "mid"}], ";"}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"i", "++"}], ";"}], "\[IndentingNewLine]", ")"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "mid", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["PolySet2PolySet Pseudo Division:Remainder & Resolution", "Subsubsection",
+ CellTags->{"toc:10", "b:3.2"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PseudoRemainderSet", "[", 
+   RowBox[{
+   "lhspolyset_", ",", "rhspolyset_", ",", "ord___", ",", "const___"}], "]"}],
+   ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"AuxPseudoRemainder", "[", 
+         RowBox[{"#", ",", "rhspolyset", ",", "ord", ",", "const"}], "]"}], 
+        "&"}], "/@", "lhspolyset"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PseudoResolutionSet", "[", 
+   RowBox[{
+   "lhspolyset_", ",", "rhspolyset_", ",", "ord___", ",", "const___"}], "]"}],
+   ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"AuxPseudoResolution", "[", 
+         RowBox[{"#", ",", "rhspolyset", ",", "ord", ",", "const"}], "]"}], 
+        "&"}], "/@", "lhspolyset"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.2"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Checking Ascending Set", "Subsubsection",
+ CellTags->{"toc:11", "b:3.2"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AscSetCheck", "[", 
+   RowBox[{"polyset_", ",", "ord___"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "tmpset"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmpset", "=", 
+      RowBox[{"Sort", "@", "polyset"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmp", "=", 
+      RowBox[{"Variables", "/@", "tmpset"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"IsConstantsIn", "[", "tmpset", "]"}], "||", 
+        RowBox[{"MemberQ", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"Complement", "[", 
+             RowBox[{"ord", ",", "#"}], "]"}], "&"}], "/@", "tmp"}], ",", 
+          "ord"}], "]"}]}], ",", 
+       RowBox[{"Return", "[", "False", "]"}], ",", 
+       RowBox[{"Return", "[", "tmpset", "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"{", 
+       RowBox[{"True", ",", "tmpset"}], "}"}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[CellGroupData[{
+
+Cell["Test for AscSetCheck", "Text",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "1"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    RowBox[{"2", 
+     SuperscriptBox[
+      SubscriptBox["x", "2"], "3"], " ", 
+     SubscriptBox["x", "3"]}], "+", "1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "2"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "1"], " ", 
+     SubscriptBox["x", "2"]}], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "3"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "3"], "=", 
+   RowBox[{
+    RowBox[{"3", 
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "2"]}], "-", 
+    RowBox[{"2", 
+     SuperscriptBox[
+      SubscriptBox["x", "3"], "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"polyset", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["poly", "1"], ",", 
+     SubscriptBox["poly", "2"], ",", 
+     SubscriptBox["poly", "3"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ord", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["x", "1"], ",", 
+     SubscriptBox["x", "2"], ",", 
+     SubscriptBox["x", "3"]}], "}"}]}], ";"}]}], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{"AscSetCheck", "[", 
+  RowBox[{"polyset", ",", "ord"}], "]"}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ff", "=", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "2"], 
+     SuperscriptBox[
+      SubscriptBox["x", "2"], "3"]}], "-", 
+    SubscriptBox["x", "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gg", "=", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "3"], 
+     SubscriptBox["x", "2"]}], "-", "2"}]}], ";"}]}], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{"PseudoResolution", "[", 
+  RowBox[{"ff", ",", "gg", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["x", "2"], ",", 
+     SubscriptBox["x", "1"]}], "}"}]}], "]"}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{"LeadCoefficient", "[", 
+  RowBox[{"ff", ",", 
+   SubscriptBox["x", "1"]}], "]"}]], "Input",
+ CellTags->"b:3.2"],
+
+Cell[BoxData[
+ RowBox[{"PseudoRemainder", "[", 
+  RowBox[{"ff", ",", "gg"}], "]"}]], "Input",
+ CellTags->"b:3.2"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_IV:WuRittSolva Characteristic Set", "Section",
+ CellTags->{"b:3.3", "c:5"}],
+
+Cell[CellGroupData[{
+
+Cell["Split Polynomials into Groups wrt Main variables", "Subsubsection",
+ CellTags->{"toc:12", "b:3.3"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SplitPolySet", "[", 
+   RowBox[{"polyset_", ",", "ord___", ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"lst", ",", "tmplst", ",", "mid", ",", "midlst", ",", "res"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"lst", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"MainVariable", "[", 
+           RowBox[{"#", ",", "ord", ",", "const"}], "]"}], ",", "#"}], "}"}], 
+        "&"}], "/@", "polyset"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmplst", "=", 
+      RowBox[{"Transpose", "[", 
+       RowBox[{"Sort", "[", "lst", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"Split", "@", 
+       RowBox[{"tmplst", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"midlst", "=", 
+      RowBox[{"Length", "/@", "mid"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Take", "[", 
+         RowBox[{
+          RowBox[{"tmplst", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"1", "+", 
+             RowBox[{"Apply", "[", 
+              RowBox[{"Plus", ",", 
+               RowBox[{"Take", "[", 
+                RowBox[{"midlst", ",", 
+                 RowBox[{"i", "-", "1"}]}], "]"}]}], "]"}]}], ",", 
+            RowBox[{"Apply", "[", 
+             RowBox[{"Plus", ",", 
+              RowBox[{"Take", "[", 
+               RowBox[{"midlst", ",", "i"}], "]"}]}], "]"}]}], "}"}]}], "]"}],
+         ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "@", "midlst"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+BasicSet or MiniSet of polyset wrt to ord with const as constants\
+\>", "Subsubsection",
+ CellTags->{"toc:13", "b:3.3"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BasicSet", "[", 
+   RowBox[{"polyset_", ",", "ord___", ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "mid", ",", "res"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"SplitPolySet", "[", 
+       RowBox[{"polyset", ",", "ord", ",", "const"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"MinElementPos", "/@", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Exponent", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"MainVariable", "[", 
+             RowBox[{"#", ",", "ord", ",", "const"}], "]"}]}], "]"}], "&"}], "/@", 
+         RowBox[{"SplitPolySet", "[", 
+          RowBox[{"polyset", ",", "ord", ",", "const"}], "]"}]}], ")"}]}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"tmp", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"mid", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "mid", "]"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["CharacteristicSet of polyset wrt ord with const as constatns", \
+"Subsubsection",
+ CellTags->{"toc:14", "b:3.3"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsNewComponent", "[", "lhspoly_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "res"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"FactorList", "[", "lhspoly", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "tmp", "]"}], ">", "2"}], ",", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Print", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"StyleForm", "[", 
+               RowBox[{
+                RowBox[{"StringJoin", "[", 
+                 RowBox[{"\"\<A New Component:\>\"", ",", 
+                  RowBox[{"ToString", "[", "i", "]"}]}], "]"}], ",", 
+                RowBox[{"FontColor", "\[Rule]", 
+                 RowBox[{"RGBColor", "[", 
+                  RowBox[{"0", ",", "0.6", ",", "0"}], "]"}]}]}], "]"}], ",", 
+              RowBox[{"StyleForm", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"tmp", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", "+", "i"}], "]"}], "]"}], "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], "^", 
+                 RowBox[{
+                  RowBox[{"tmp", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", "+", "i"}], "]"}], "]"}], "[", 
+                  RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+                RowBox[{"FontColor", "\[Rule]", 
+                 RowBox[{"RGBColor", "[", 
+                  RowBox[{"1", ",", "0", ",", "0.5"}], "]"}]}]}], "]"}]}], 
+             "}"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "1", ",", 
+             RowBox[{
+              RowBox[{"Length", "[", "tmp", "]"}], "-", "2"}]}], "}"}]}], 
+          "]"}], ";", "\[IndentingNewLine]", "True"}], ",", "False"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{"polyset_", ",", 
+    RowBox[{"switch_:", "False"}], ",", 
+    RowBox[{"cnt_:", "20"}], ",", "ord___", ",", "const___"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmppolys", ",", "tmpbass", ",", "tmprems", ",", "mid", ",", 
+      RowBox[{"i", "=", "1"}], ",", "oldtmpbass", ",", "tmp", ",", 
+      RowBox[{"j", "=", "0"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"tmppolys", "=", "polyset"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmpbass", "=", 
+      RowBox[{"BasicSet", "[", "tmppolys", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"PseudoRemainderSet", "[", 
+       RowBox[{"tmppolys", ",", "tmpbass"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tmprems", "=", 
+      RowBox[{"Union", "[", 
+       RowBox[{"Select", "[", 
+        RowBox[{"mid", ",", 
+         RowBox[{
+          RowBox[{"Not", "[", 
+           RowBox[{"IntegerQ", "[", "#", "]"}], "]"}], "&"}]}], "]"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "tmprems", "]"}], ">", "0"}], "&&", 
+        RowBox[{
+         RowBox[{"Length", "[", "tmp", "]"}], "<", 
+         RowBox[{"Length", "[", "polyset", "]"}]}], "&&", 
+        RowBox[{"i", "<", 
+         RowBox[{"cnt", "+", "1"}]}]}], ",", 
+       RowBox[{
+        RowBox[{"tmpbass", "=", 
+         RowBox[{"BasicSet", "[", "tmppolys", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", "oldtmpbass", "]"}], "\[Equal]", 
+           RowBox[{"Length", "[", "tmpbass", "]"}]}], ",", 
+          RowBox[{
+           RowBox[{"tmp", "=", 
+            RowBox[{"oldtmpbass", "-", "tmpbass"}]}], ";"}]}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"mid", "=", 
+         RowBox[{"PseudoRemainderSet", "[", 
+          RowBox[{"tmppolys", ",", "tmpbass"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"tmprems", "=", 
+         RowBox[{"Union", "[", 
+          RowBox[{"Select", "[", 
+           RowBox[{"mid", ",", 
+            RowBox[{
+             RowBox[{"Not", "[", 
+              RowBox[{"IntegerQ", "[", "#", "]"}], "]"}], "&"}]}], "]"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"tmppolys", "=", 
+         RowBox[{"Union", "[", 
+          RowBox[{"tmpbass", ",", "tmprems"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{"switch", ",", 
+          RowBox[{"Print", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"StyleForm", "[", 
+              RowBox[{
+               RowBox[{"StringJoin", "[", 
+                RowBox[{"\"\<CS_STEP:\>\"", ",", 
+                 RowBox[{"ToString", "[", "i", "]"}]}], "]"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", 
+                RowBox[{"RGBColor", "[", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "]"}]}]}], "]"}], ",", 
+             RowBox[{"StyleForm", "[", 
+              RowBox[{
+               RowBox[{"Simplify", "@", "tmpbass"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", 
+                RowBox[{"RGBColor", "[", 
+                 RowBox[{"1", ",", "0", ",", "0"}], "]"}]}]}], "]"}]}], "}"}],
+            "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"{", 
+            RowBox[{"tmprems", ",", "i"}], "}"}], "]"}], ";"}], "*)"}], 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"{", 
+            RowBox[{"tmppolys", ",", "tmpbass", ",", "tmprems", ",", "i"}], 
+            "}"}], "]"}], ";"}], "*)"}], 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"IsNewComponent", "[", "#", "]"}], ",", 
+             RowBox[{"++", "j"}]}], "]"}], "&"}], ",", "tmpbass"}], "]"}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"oldtmpbass", "=", "tmpbass"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"i", "++"}], ";"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"j", ">", "0"}], ",", 
+       RowBox[{"Print", "[", 
+        RowBox[{"{", 
+         RowBox[{"StyleForm", "[", 
+          RowBox[{
+           RowBox[{"StringJoin", "[", 
+            RowBox[{"\"\<Total \>\"", ",", 
+             RowBox[{"ToString", "[", "j", "]"}], ",", 
+             "\"\< New Components Discovered\>\""}], "]"}], ",", 
+           "Subsubtitle", ",", 
+           RowBox[{"FontColor", "\[Rule]", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{"0", ",", "0.6", ",", "0"}], "]"}]}]}], "]"}], "}"}], 
+        "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmpbass", "]"}], ";"}]}], "]"}]}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["New Characteristic Set", "Subsubsection",
+ CellTags->{"toc:15", "b:3.3"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"intTest", "[", "lst_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "tmp", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"Select", "[", 
+       RowBox[{"lst", ",", 
+        RowBox[{
+         RowBox[{"Not", "[", 
+          RowBox[{"IntegerQ", "[", "#", "]"}], "]"}], "&"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmp", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NewCharacteristicSet", "[", 
+   RowBox[{"polyset_", ",", 
+    RowBox[{"switch_:", "False"}], ",", "ord___", ",", "const___"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmppolys", ",", "tmpbass", ",", "tmprems", ",", "mid", ",", 
+      RowBox[{"i", "=", "1"}], ",", "oldtmpbass", ",", "tmp", ",", 
+      RowBox[{"j", "=", "0"}], ",", "midres", ","}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"tmppolys", "=", "polyset"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmpbass", "=", 
+      RowBox[{"BasicSet", "[", "tmppolys", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"PseudoRemainderSet", "[", 
+       RowBox[{"tmppolys", ",", "tmpbass", ",", "ord", ",", "const"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmprems", "=", 
+      RowBox[{"Union", "[", 
+       RowBox[{"intTest", "[", "mid", "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"midres", "=", 
+        RowBox[{"Length", "@", 
+         RowBox[{"intTest", "[", 
+          RowBox[{"PseudoRemainderSet", "[", 
+           RowBox[{"polyset", ",", 
+            RowBox[{"Reverse", "@", "tmpbass"}], ",", "ord", ",", "const"}], 
+           "]"}], "]"}]}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "tmprems", "]"}], ">", "0"}], 
+        RowBox[{"(*", 
+         RowBox[{"&&", 
+          RowBox[{"midres", ">=", "0"}]}], "*)"}], "&&", 
+        RowBox[{"i", "<", "10000"}]}], 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{
+         "SHOULD", " ", "BE", " ", "MODIFYED", " ", "FOR", " ", "COMPLEX", 
+          " ", "SITUATION"}], ",", 
+         RowBox[{"i", ".", "e", ".", " ", "Infinity"}]}], "*)"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"tmpbass", "=", 
+         RowBox[{"BasicSet", "[", "tmppolys", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"mid", "=", 
+         RowBox[{"PseudoRemainderSet", "[", 
+          RowBox[{"tmppolys", ",", 
+           RowBox[{"Reverse", "@", "tmpbass"}], ",", "ord", ",", "const"}], 
+          "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"tmprems", "=", 
+         RowBox[{"Union", "[", 
+          RowBox[{"intTest", "[", "mid", "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"tmppolys", "=", 
+         RowBox[{"Union", "[", 
+          RowBox[{"tmpbass", ",", "tmprems"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{"switch", ",", 
+          RowBox[{"Print", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"StyleForm", "[", 
+              RowBox[{
+               RowBox[{"StringJoin", "[", 
+                RowBox[{"\"\<CS_STEP:\>\"", ",", 
+                 RowBox[{"ToString", "[", "i", "]"}]}], "]"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", 
+                RowBox[{"RGBColor", "[", 
+                 RowBox[{"0", ",", "0", ",", "1"}], "]"}]}]}], "]"}], ",", 
+             RowBox[{"StyleForm", "[", 
+              RowBox[{
+               RowBox[{"Simplify", "@", "tmpbass"}], ",", 
+               RowBox[{"FontColor", "\[Rule]", 
+                RowBox[{"RGBColor", "[", 
+                 RowBox[{"1", ",", "0", ",", "0"}], "]"}]}]}], "]"}]}], "}"}],
+            "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"IsNewComponent", "[", "#", "]"}], ",", 
+             RowBox[{"++", "j"}]}], "]"}], "&"}], ",", "tmpbass"}], "]"}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"midres", "=", 
+           RowBox[{"Length", "@", 
+            RowBox[{"intTest", "[", 
+             RowBox[{"PseudoRemainderSet", "[", 
+              RowBox[{"polyset", ",", 
+               RowBox[{"Reverse", "@", "tmpbass"}], ",", "ord", ",", 
+               "const"}], "]"}], "]"}]}]}], ";"}], "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"i", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"j", ">", "0"}], ",", 
+       RowBox[{"Print", "[", 
+        RowBox[{"{", 
+         RowBox[{"StyleForm", "[", 
+          RowBox[{
+           RowBox[{"StringJoin", "[", 
+            RowBox[{"\"\<Total \>\"", ",", 
+             RowBox[{"ToString", "[", "j", "]"}], ",", 
+             "\"\< New Component(s) Discovered\>\""}], "]"}], ",", 
+           "Subsubtitle", ",", 
+           RowBox[{"FontColor", "\[Rule]", 
+            RowBox[{"RGBColor", "[", 
+             RowBox[{"0", ",", "0.6", ",", "0"}], "]"}]}]}], "]"}], "}"}], 
+        "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "tmpbass", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["OLD Characteristic Form", "Subsubsection",
+ CellTags->{"toc:16", "b:3.3"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"InsertDoubleZeros", "[", 
+   RowBox[{"lst_", ",", "checklst_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", "tmp", ",", "mid"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"mid", "=", "lst"}], ";", "\n", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"i", "<=", 
+        RowBox[{"Length", "[", "checklst", "]"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"tmp", "=", 
+         RowBox[{"Insert", "[", 
+          RowBox[{"mid", ",", "\"\<00\>\"", ",", 
+           RowBox[{
+            RowBox[{"checklst", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"i", "++"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"mid", "=", "tmp"}], ";"}]}], "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{"Print", "@", "mid"}], "*)"}], "\[IndentingNewLine]", "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "mid", "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HasInsertDoubleZeros", "[", "varlst_", "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "mid", ",", "res", ",", "i"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Complement", "[", 
+         RowBox[{
+          RowBox[{"Union", "@@", 
+           RowBox[{"Take", "[", 
+            RowBox[{"varlst", ",", "i"}], "]"}]}], ",", 
+          RowBox[{"Flatten", "@", 
+           RowBox[{"Take", "[", 
+            RowBox[{"varlst", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"i", "+", "1"}], ",", 
+               RowBox[{"i", "+", "1"}]}], "}"}]}], "]"}]}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{
+           RowBox[{"Length", "[", "varlst", "]"}], "-", "1"}]}], "}"}]}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"InsertDoubleZeros", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Rest", "[", "varlst", "]"}], "[", 
+           RowBox[{"[", "i", "]"}], "]"}], ",", 
+          RowBox[{"tmp", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", 
+           RowBox[{"Rest", "[", "varlst", "]"}], "]"}]}], "}"}]}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"Insert", "[", 
+       RowBox[{"mid", ",", 
+        RowBox[{"InsertDoubleZeros", "[", 
+         RowBox[{
+          RowBox[{"First", "@", "varlst"}], ",", 
+          RowBox[{"Complement", "[", 
+           RowBox[{
+            RowBox[{"Apply", "[", 
+             RowBox[{"Union", ",", "varlst"}], "]"}], ",", 
+            RowBox[{"First", "@", "varlst"}]}], "]"}]}], "]"}], ",", "1"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CharacteristicForm", "[", 
+   RowBox[{"cspolyset_", ",", "const___"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "vars", ",", "maxlen", ",", "tmp", ",", "mid", ",", "res", ",", 
+      "tmpcs"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"vars", "=", 
+      RowBox[{"HasInsertDoubleZeros", "@", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"PolyVariables", "[", 
+           RowBox[{"#", ",", "const"}], "]"}], "&"}], ",", "cspolyset"}], 
+        "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"maxlen", "=", 
+      RowBox[{"Max", "[", 
+       RowBox[{"Length", "/@", "vars"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmp", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"PadRight", "[", 
+          RowBox[{"#", ",", "maxlen", ",", "\"\<00\>\""}], "]"}], "&"}], ",", 
+        "vars"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmpcs", "=", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ExpandAll", "[", 
+          RowBox[{"#1", ",", 
+           RowBox[{"Last", "[", "#2", "]"}]}], "]"}], "&"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"cspolyset", ",", "vars"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"#1", ",", "#2"}], "}"}], "&"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"tmpcs", ",", "tmp"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "@", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Length", "@", "vars"}], ",", "maxlen", ",", "tmp"}], 
+         "}"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"MatrixForm", "[", "mid", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["New Characteristic Form", "Subsubsection",
+ CellTags->{"toc:17", "b:3.3"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"toDoubledZeros", "[", 
+   RowBox[{"cspolyset_", ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"csvarlst", ",", "varlst", ",", 
+      RowBox[{"i", "=", "1"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"csvarlst", "=", 
+      RowBox[{"Map", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"PolyVariables", "[", 
+          RowBox[{"#", ",", "const"}], "]"}], "&"}], ",", "cspolyset"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"varlst", "=", 
+      RowBox[{"Union", "@", 
+       RowBox[{"Flatten", "[", "csvarlst", "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tmp", "=", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Flatten", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"Not", "@", 
+               RowBox[{"MemberQ", "[", 
+                RowBox[{
+                 RowBox[{"csvarlst", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], ",", 
+                 RowBox[{"varlst", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "j"}], "}"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "csvarlst", "]"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "1", ",", 
+              RowBox[{"Length", "[", "varlst", "]"}]}], "}"}]}], "]"}], ",", 
+          "1"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"#", "=!=", "Null"}], "&"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "<=", 
+        RowBox[{"Length", "[", "tmp", "]"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"csvarlst", "=", 
+         RowBox[{"Insert", "[", 
+          RowBox[{"csvarlst", ",", "\"\<00\>\"", ",", 
+           RowBox[{"tmp", "[", 
+            RowBox[{"[", "i", "]"}], "]"}]}], "]"}]}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "csvarlst", "]"}], ";"}]}], "\[IndentingNewLine]",
+    "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NewCharacteristicForm", "[", 
+   RowBox[{"cspolyset_", ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "mid", ",", "res", ",", "tmpcs"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"toDoubledZeros", "[", 
+       RowBox[{"cspolyset", ",", "const"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"mid", "=", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"#1", ",", "#2"}], "}"}], "&"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"cspolyset", ",", "tmp"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"MatrixForm", "[", "mid", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["WuRitt Equations Solvor", "Subsubsection",
+ CellTags->{"toc:18", "b:3.3"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WuRittEqnsSolve", "[", 
+   RowBox[{"cspolyset_", ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "mainvars", ",", "sollen", ",", 
+      RowBox[{"j", "=", "2"}], ",", "mid", ",", "result", ",", 
+      RowBox[{"cslen", "=", 
+       RowBox[{"Length", "@", "cspolyset"}]}], ",", "sols"}], "}"}], ",", 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"sols", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{"0", ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "cspolyset", "]"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"mainvars", "=", 
+      RowBox[{"Last", "/@", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"PolyVariables", "[", 
+           RowBox[{"#", ",", "const"}], "]"}], "&"}], "/@", "cspolyset"}], 
+        ")"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmp", "=", 
+      RowBox[{"MapThread", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Solve", "[", 
+          RowBox[{
+           RowBox[{"#1", "\[Equal]", "0"}], ",", "#2"}], "]"}], "&"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"cspolyset", ",", "mainvars"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"sols", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "=", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"First", "[", "tmp", "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"sollen", "=", 
+      RowBox[{"Length", "[", 
+       RowBox[{"sols", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"{", 
+         RowBox[{"solsts", ",", "sols", ",", "sollen", ",", "cslen"}], "}"}], 
+        "]"}], ";"}], "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"j", "<=", "cslen"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"mid", "=", 
+         RowBox[{"Simplify", "@", 
+          RowBox[{"Flatten", "@", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"ReplaceAll", "[", 
+              RowBox[{
+               RowBox[{"tmp", "[", 
+                RowBox[{"[", "j", "]"}], "]"}], ",", 
+               RowBox[{"Flatten", "@", 
+                RowBox[{"Map", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"Take", "[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"i", ",", "i"}], "}"}]}], "]"}], "&"}], ",", 
+                  RowBox[{"Take", "[", 
+                   RowBox[{"sols", ",", 
+                    RowBox[{"j", "-", "1"}]}], "]"}]}], "]"}]}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", "sollen"}], "}"}]}], "]"}]}]}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"sols", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "=", "mid"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"Print", "@", "mid"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"j", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"res", "=", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{
+          RowBox[{"Partition", "[", 
+           RowBox[{
+            RowBox[{"Transpose", "@", "tt"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "cslen"}], "}"}]}], "]"}], ",", "2"}], "]"}]}],
+        ";"}], "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"Flatten", "/@", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Map", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Take", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", "i"}], "}"}]}], "]"}], "&"}], ",", "sols"}], 
+          "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "sollen"}], "}"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Test Example", "Text",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"h1", "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "1"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], "2"], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h2", "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "2"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "3"], "-", 
+       SubscriptBox["x", "2"]}], ")"}], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h3", "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "4"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["u", "2"]}], ")"}], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h4", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "5"]}], ")"}], 
+     SubscriptBox["u", "3"]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "4"], "-", 
+       SubscriptBox["x", "4"]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "2"], "-", 
+       SubscriptBox["u", "1"]}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h5", "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "5"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "2"], "-", 
+       SubscriptBox["u", "1"]}], ")"}]}], "-", 
+    RowBox[{
+     SubscriptBox["u", "3"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "4"], "-", 
+       SubscriptBox["u", "1"]}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h6", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "7"]}], ")"}], 
+     SubscriptBox["u", "3"]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "4"], "-", 
+       SubscriptBox["x", "6"]}], ")"}], 
+     SubscriptBox["u", "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h7", "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "7"], 
+     SubscriptBox["u", "2"]}], "-", 
+    RowBox[{
+     SubscriptBox["x", "6"], 
+     SubscriptBox["u", "3"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hset", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "h1", ",", "h2", ",", "h3", ",", "h4", ",", "h5", ",", "h6", ",", "h7"}], 
+    "}"}]}], ";"}]}], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"cset", "=", 
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{"hset", ",", "True"}], "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"CharacteristicForm", "[", 
+  RowBox[{"cset", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["u", "1"], ",", 
+     SubscriptBox["u", "2"], ",", 
+     SubscriptBox["u", "3"], ",", 
+     SubscriptBox["u", "4"]}], "}"}]}], "]"}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"WuRittEqnsSolve", "[", 
+  RowBox[{"cset", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["u", "1"], ",", 
+     SubscriptBox["u", "2"], ",", 
+     SubscriptBox["u", "3"], ",", 
+     SubscriptBox["u", "4"]}], "}"}]}], "]"}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Test Example 1", "Text",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "1"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    RowBox[{"2", 
+     SubscriptBox["x", "1"], 
+     SubscriptBox["x", "3"]}], "+", "1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "2"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "1"], " ", 
+     SubscriptBox["x", "2"]}], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "3"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "3"], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "3"}], 
+     SuperscriptBox[
+      SubscriptBox["x", "2"], "2"]}], "+", 
+    RowBox[{"2", 
+     SuperscriptBox[
+      SubscriptBox["x", "3"], "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"polyset", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["poly", "1"], ",", 
+     SubscriptBox["poly", "2"], ",", 
+     SubscriptBox["poly", "3"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ord", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["x", "1"], ",", 
+     SubscriptBox["x", "2"], ",", 
+     SubscriptBox["x", "3"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"const", "=", 
+   RowBox[{"{", "}"}]}], ";"}]}], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"cset", "=", 
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{"polyset", ",", "ord", ",", "const", ",", 
+    RowBox[{"TracePrintOn", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"CharacteristicForm", "[", 
+  RowBox[{"cset", ",", "ord", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["u", "1"], ",", 
+     SubscriptBox["u", "2"], ",", 
+     SubscriptBox["u", "3"], ",", 
+     SubscriptBox["u", "4"]}], "}"}]}], "]"}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"WuRittEqnsSolve", "[", 
+  RowBox[{"cset", ",", "ord", ",", "const"}], "]"}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Test Example 2", "Text",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "1"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    RowBox[{"2", 
+     SubscriptBox["x", "2"], " ", 
+     SubscriptBox["x", "3"]}], "+", "1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "2"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "1"], " ", 
+     SubscriptBox["x", "2"]}], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "3"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "3"], "=", 
+   RowBox[{
+    RowBox[{"3", 
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "2"]}], "-", 
+    RowBox[{"2", 
+     SuperscriptBox[
+      SubscriptBox["x", "3"], "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "4"], "=", 
+   RowBox[{
+    RowBox[{"2", 
+     SubscriptBox["x", "1"]}], "+", 
+    RowBox[{"2", 
+     SubscriptBox["x", "2"], 
+     SubscriptBox["x", "1"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "5"], "=", 
+   RowBox[{
+    RowBox[{"2", 
+     SubscriptBox["x", "1"]}], "+", 
+    RowBox[{"2", 
+     SuperscriptBox[
+      SubscriptBox["x", "2"], "2"], 
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "6"], "=", 
+   RowBox[{
+    RowBox[{"3", 
+     SuperscriptBox[
+      SubscriptBox["x", "1"], "2"]}], "+", 
+    RowBox[{"2", 
+     SuperscriptBox[
+      SubscriptBox["x", "3"], "3"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["poly", "7"], "=", 
+   RowBox[{
+    RowBox[{"3", 
+     SubscriptBox["x", "1"], 
+     SubscriptBox["x", "2"]}], "+", "1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"polyset", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["poly", "1"], ",", 
+     SubscriptBox["poly", "2"], ",", 
+     SubscriptBox["poly", "4"], ",", 
+     SubscriptBox["poly", "3"], ",", 
+     SubscriptBox["poly", "6"], ",", 
+     SubscriptBox["poly", "5"], ",", 
+     SubscriptBox["poly", "7"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ord", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["x", "1"], ",", 
+     SubscriptBox["x", "2"], ",", 
+     SubscriptBox["x", "3"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"const", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["u", "1"], ",", 
+     SubscriptBox["u", "2"], ",", 
+     SubscriptBox["u", "3"], ",", 
+     SubscriptBox["u", "4"]}], "}"}]}], ";"}]}], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"cset", "=", 
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["poly", "1"], ",", 
+      SubscriptBox["poly", "2"], ",", 
+      SubscriptBox["poly", "3"]}], "}"}], ",", "ord", ",", "const", ",", 
+    RowBox[{"TracePrintOn", "->", "True"}]}], "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"CharacteristicForm", "[", 
+  RowBox[{"cset", ",", "ord", ",", "const"}], "]"}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"WuRittEqnsSolve", "[", 
+  RowBox[{"cset", ",", "ord", ",", "const"}], "]"}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"cset", "=", 
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{"polyset", ",", "ord", ",", "const", ",", 
+    RowBox[{"TracePrintOn", "\[Rule]", "True"}]}], "]"}]}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"CharacteristicForm", "[", 
+  RowBox[{"cset", ",", "ord", ",", "const"}], "]"}]], "Input",
+ CellTags->"b:3.3"],
+
+Cell[BoxData[
+ RowBox[{"WuRittEqnsSolve", "[", 
+  RowBox[{"cset", ",", "ord", ",", "const"}], "]"}]], "Input",
+ CellTags->"b:3.3"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_V:Polynomial Rank and Some Other Functions", "Section",
+ CellTags->{"b:3.4", "c:6"}],
+
+Cell[CellGroupData[{
+
+Cell["Polnomial Rank of lhspoly", "Subsubsection",
+ CellTags->{"toc:19", "b:3.4"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"PolynomialRank", "[", 
+   RowBox[{"lhspoly_", ",", "ord___", ",", "const___"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "res", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"res", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Class", "[", 
+         RowBox[{"lhspoly", ",", "ord", ",", "const"}], "]"}], ",", 
+        RowBox[{"MainVariableExponent", "[", 
+         RowBox[{"lhspoly", ",", "ord", ",", "const"}], "]"}]}], "}"}]}], ";",
+      "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.4"],
+
+Cell[BoxData[
+ RowBox[{"PolynomialRank", "/@", "polyset"}]], "Input",
+ CellTags->"b:3.4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Is Rank Equal of lhspoly to rhspoly", "Subsubsection",
+ CellTags->{"toc:20", "b:3.4"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsRankEqual", "[", 
+   RowBox[{"lhspoly_", ",", "rhspoly_", ",", "ord___", ",", "const___"}], 
+   "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "res", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"res", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"PolynomialRank", "[", 
+          RowBox[{"lhspoly", ",", "ord", ",", "const"}], "]"}], "==", 
+         RowBox[{"PolynomialRank", "[", 
+          RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}]}], ",", "True",
+         ",", "False"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.4"],
+
+Cell[BoxData[
+ RowBox[{"IsRankEqual", "[", 
+  RowBox[{
+   SubscriptBox["poly", "1"], ",", 
+   SubscriptBox["poly", "2"]}], "]"}]], "Input",
+ CellTags->"b:3.4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Is Rank Less of lhspoly to rhspoly", "Subsubsection",
+ CellTags->{"toc:21", "b:3.4"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsRankLess", "[", 
+   RowBox[{"lhspoly_", ",", "rhspoly_", ",", "ord___", ",", "const___"}], 
+   "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"lhsrank", ",", "rhsrank", ",", "res"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"lhsrank", "=", 
+      RowBox[{"PolynomialRank", "[", 
+       RowBox[{"lhspoly", ",", "ord", ",", "const"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"rhsrank", "=", 
+      RowBox[{"PolynomialRank", "[", 
+       RowBox[{"rhspoly", ",", "ord", ",", "const"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"lhsrank", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "<", 
+          RowBox[{"rhsrank", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "||", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"lhsrank", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", 
+            RowBox[{"rhsrank", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], "&&", 
+           RowBox[{
+            RowBox[{"lhsrank", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "<", 
+            RowBox[{"rhsrank", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}]}], ")"}]}], ",", "True", ",", 
+        "False"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.4"],
+
+Cell[BoxData[
+ RowBox[{"IsRankLess", "[", 
+  RowBox[{
+   SubscriptBox["poly", "1"], ",", 
+   SubscriptBox["poly", "2"]}], "]"}]], "Input",
+ CellTags->"b:3.4"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Is Rank Greater of lhspoly to rhspoly", "Subsubsection",
+ CellTags->{"toc:22", "b:3.4"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IsRankGreater", "[", 
+   RowBox[{"lhspoly_", ",", "rhspoly_", ",", "ord___", ",", "const___"}], 
+   "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "res", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"res", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Not", "[", 
+          RowBox[{"IsRankEqual", "[", 
+           RowBox[{"lhspoly", ",", "rhspoly", ",", "ord", ",", "const"}], 
+           "]"}], "]"}], "&&", 
+         RowBox[{"Not", "[", 
+          RowBox[{"IsRankLess", "[", 
+           RowBox[{"lhspoly", ",", "rhspoly", ",", "ord", ",", "const"}], 
+           "]"}], "]"}]}], ",", "True", ",", "False"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.4"],
+
+Cell[BoxData[
+ RowBox[{"IsRankGreater", "[", 
+  RowBox[{
+   SubscriptBox["poly", "5"], ",", 
+   SubscriptBox["poly", "4"]}], "]"}]], "Input",
+ CellTags->"b:3.4"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Section WRS_VI: WuRittProver", "Section",
+ CellTags->{"b:3.5", "c:7"}],
+
+Cell[CellGroupData[{
+
+Cell["WuRittProver for geometry theorem proof", "Subsubsection",
+ CellTags->{"toc:23", "b:3.5"}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AuxProverRemainder", "[", 
+   RowBox[{
+   "poly_", ",", "polyset_", ",", "switch_", ",", "ord___", ",", "const___"}],
+    "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"len", ",", "tmp", ",", "mid", ",", 
+      RowBox[{"i", "=", "1"}]}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"len", "=", 
+      RowBox[{"Length", "[", "polyset", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tmp", "=", "poly"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"i", "\[LessEqual]", "len"}], ",", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"mid", "=", 
+          RowBox[{"Evaluate", "[", 
+           RowBox[{"PseudoRemainder", "[", 
+            RowBox[{"tmp", ",", 
+             RowBox[{"polyset", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], ",", "ord", ",", "const"}], 
+            "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"tmp", "=", "mid"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{"switch", ",", 
+           RowBox[{"Print", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"StyleForm", "[", 
+               RowBox[{
+                RowBox[{"StringJoin", "[", 
+                 RowBox[{"\"\<WRP_STEP:\>\"", ",", 
+                  RowBox[{"ToString", "[", "i", "]"}]}], "]"}], ",", 
+                RowBox[{"FontColor", "\[Rule]", 
+                 RowBox[{"RGBColor", "[", 
+                  RowBox[{"0", ",", "0", ",", "1"}], "]"}]}]}], "]"}], ",", 
+              RowBox[{"StyleForm", "[", 
+               RowBox[{"tmp", ",", 
+                RowBox[{"FontColor", "\[Rule]", 
+                 RowBox[{"RGBColor", "[", 
+                  RowBox[{"1", ",", "0", ",", "0"}], "]"}]}]}], "]"}]}], 
+             "}"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"i", "++"}], ";"}], ")"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", 
+      RowBox[{"Expand", "[", "tmp", "]"}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WuRittProver", "[", 
+   RowBox[{
+   "lhspolyset_", ",", "rhspoly_", ",", "switch_", ",", "ord___", ",", 
+    "const___"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"tmp", ",", "res"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tmp", "=", 
+      RowBox[{"AuxPseudoRemainder", "[", 
+       RowBox[{
+       "rhspoly", ",", "lhspolyset", ",", "switch", ",", "ord", ",", 
+        "const"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"res", "=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"tmp", "===", "0"}], ",", "True", ",", "False"}], "]"}]}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "res", "]"}], ";"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example 1(Paralell Square Theorem)", "Text",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "1"], "=", 
+   RowBox[{
+    SubscriptBox["x", "1"], "-", 
+    SubscriptBox["u", "1"], "-", 
+    SubscriptBox["u", "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "2"], "=", 
+   RowBox[{
+    SubscriptBox["x", "2"], "-", 
+    SubscriptBox["u", "3"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "3"], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      SubscriptBox["u", "1"]}], 
+     SubscriptBox["u", "3"], 
+     SubscriptBox["x", "1"]}], "+", 
+    RowBox[{
+     SubscriptBox["u", "1"], 
+     SubscriptBox["u", "3"], 
+     SubscriptBox["x", "3"]}], "-", 
+    RowBox[{
+     SubscriptBox["u", "2"], 
+     SubscriptBox["u", "3"], 
+     SubscriptBox["x", "3"]}], "+", 
+    RowBox[{
+     SubscriptBox["u", "3"], 
+     SubscriptBox["x", "1"], 
+     SubscriptBox["x", "3"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "4"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "4"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "2"], "-", 
+       SubscriptBox["u", "1"]}], ")"}]}], "-", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["u", "1"]}], ")"}], 
+     SubscriptBox["u", "3"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HSet", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["H", "1"], ",", 
+     SubscriptBox["H", "2"], ",", 
+     SubscriptBox["H", "3"], ",", 
+     SubscriptBox["H", "4"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "1"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    RowBox[{"2", 
+     SubscriptBox["x", "1"], 
+     SubscriptBox["x", "3"]}], "-", 
+    RowBox[{"2", 
+     SubscriptBox["x", "4"], 
+     SubscriptBox["x", "2"]}], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["G", "2"], "=", 
+   RowBox[{
+    RowBox[{"2", 
+     SubscriptBox["x", "3"], 
+     SubscriptBox["u", "1"]}], "-", 
+    RowBox[{"2", 
+     SubscriptBox["x", "3"], 
+     SubscriptBox["u", "2"]}], "-", 
+    RowBox[{"2", 
+     SubscriptBox["x", "4"], 
+     SubscriptBox["u", "3"]}], "-", 
+    SuperscriptBox[
+     SubscriptBox["u", "1"], "2"], "+", 
+    SuperscriptBox[
+     SubscriptBox["u", "2"], "2"], "+", 
+    SuperscriptBox[
+     SubscriptBox["u", "3"], "2"]}]}], ";"}]}], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"CS", "=", 
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{"HSet", ",", "True"}], "]"}]}]], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"WuRittProver", "[", 
+  RowBox[{
+   RowBox[{"Reverse", "@", "CS"}], ",", 
+   SubscriptBox["G", "1"]}], "]"}]], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"WuRittProver", "[", 
+  RowBox[{
+   RowBox[{"Reverse", "@", "CS"}], ",", 
+   SubscriptBox["G", "2"]}], "]"}]], "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example2(Desargus Theorem)", "Text",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "1"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "1"], 
+     SubscriptBox["x", "6"]}], "-", 
+    RowBox[{
+     SubscriptBox["x", "2"], 
+     SubscriptBox["x", "3"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "2"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "4"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "8"], "-", 
+       SubscriptBox["x", "6"]}], ")"}]}], "-", 
+    RowBox[{
+     SubscriptBox["x", "7"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "5"], "-", 
+       SubscriptBox["x", "3"]}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "3"], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "4"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], 
+     SubscriptBox["x", "8"]}], "-", 
+    RowBox[{
+     SubscriptBox["x", "5"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "7"], "-", 
+       SubscriptBox["x", "2"]}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HSet", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["H", "1"], ",", 
+     SubscriptBox["H", "2"], ",", 
+     SubscriptBox["H", "3"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"G", "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "4"], 
+     SubscriptBox["x", "8"]}], "-", 
+    RowBox[{
+     SubscriptBox["x", "5"], 
+     SubscriptBox["x", "7"]}]}]}], ";"}]}], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"CS", "=", 
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{"HSet", ",", "True"}], "]"}]}]], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"WuRittProver", "[", 
+  RowBox[{
+   RowBox[{"Reverse", "@", "CS"}], ",", "G"}], "]"}]], "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example3(Simon Theorem)", "Text",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "1"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "1"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], "2"], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "2"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "2"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "3"], "-", 
+       SubscriptBox["x", "2"]}], ")"}], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "3"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "4"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "2"]}], ")"}], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "4"], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "5"]}], ")"}], 
+     SubscriptBox["u", "3"]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "4"], "-", 
+       SubscriptBox["x", "4"]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "2"], "-", 
+       SubscriptBox["u", "1"]}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "5"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "5"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "2"], "-", 
+       SubscriptBox["u", "1"]}], ")"}]}], "-", 
+    RowBox[{
+     SubscriptBox["u", "3"], 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "4"], "-", 
+       SubscriptBox["u", "1"]}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "6"], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "7"]}], ")"}], 
+     SubscriptBox["u", "3"]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["u", "4"], "-", 
+       SubscriptBox["x", "6"]}], ")"}], 
+     SubscriptBox["u", "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "7"], "=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "7"], 
+     SubscriptBox["u", "2"]}], "-", 
+    RowBox[{
+     SubscriptBox["x", "6"], 
+     SubscriptBox["u", "3"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HSet", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["H", "1"], ",", 
+     SubscriptBox["H", "2"], ",", 
+     SubscriptBox["H", "3"], ",", 
+     SubscriptBox["H", "4"], ",", 
+     SubscriptBox["H", "5"], ",", 
+     SubscriptBox["H", "6"], ",", 
+     SubscriptBox["H", "7"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{"G", "=", 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["x", "7"], 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["x", "4"], "-", 
+        SubscriptBox["u", "4"]}], ")"}]}], "-", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["x", "6"], "-", 
+        SubscriptBox["u", "4"]}], ")"}], 
+      SubscriptBox["x", "5"]}]}]}], ";"}],
+  FontFamily->"Courier New"]}], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"defCS", "=", 
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{
+    RowBox[{"Expand", "@", "HSet"}], ",", "True"}], "]"}]}]], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"WuRittProver", "[", 
+  RowBox[{
+   RowBox[{"Reverse", "@", "defCS"}], ",", "G", ",", "True"}], "]"}]], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"CS", "=", 
+  RowBox[{
+   RowBox[{"{", " ", 
+    RowBox[{
+     SubscriptBox["H", "1"], ",", 
+     SubscriptBox["H", "2"], ",", 
+     SubscriptBox["H", "3"], ",", 
+     RowBox[{"PolyPRemainder", "[", 
+      RowBox[{
+       SubscriptBox["H", "4"], ",", 
+       SubscriptBox["H", "5"], ",", 
+       SubscriptBox["x", "5"]}], "]"}], ",", 
+     SubscriptBox["H", "5"], ",", 
+     RowBox[{"PolyPRemainder", "[", 
+      RowBox[{
+       SubscriptBox["H", "6"], ",", 
+       SubscriptBox["H", "7"], ",", 
+       SubscriptBox["x", "7"]}], "]"}], ",", 
+     SubscriptBox["H", "7"]}], "}"}], "//", "Expand"}]}]], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{"WuRittProver", "[", 
+  RowBox[{
+   RowBox[{"Reverse", "@", "CS"}], ",", "G", ",", "True"}], "]"}]], "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Example4(Algebra Relations Discovery)", "Text",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "1"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "3"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "5"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "2"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "2"], "2"], "+", 
+    SuperscriptBox[
+     SubscriptBox["x", "4"], "2"], "-", 
+    SuperscriptBox[
+     SubscriptBox["x", "5"], "2"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "3"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "5"]}], ")"}], "2"], "-", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "2"], "-", 
+       SubscriptBox["x", "1"]}], ")"}], "2"], "-", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "4"]}], ")"}], "2"]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   SubscriptBox["H", "4"], "=", 
+   RowBox[{
+    SuperscriptBox[
+     SubscriptBox["x", "1"], "2"], "+", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", "3"], "-", 
+       SubscriptBox["x", "5"]}], ")"}], "2"], "-", 
+    RowBox[{"4", 
+     SuperscriptBox[
+      SubscriptBox["x", "2"], "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HSet", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["H", "1"], ",", 
+     SubscriptBox["H", "2"], ",", 
+     SubscriptBox["H", "3"], ",", 
+     SubscriptBox["H", "4"]}], "}"}]}], ";"}]}], "Input",
+ CellTags->"b:3.5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CharacteristicSet", "[", 
+   RowBox[{"HSet", ",", "True"}], "]"}], "//", "Simplify"}]], "Input",
+ CellTags->"b:3.5"]
+}, Closed]]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Relevent Resources ", "Section",
+ CellTags->{"b:3.6", "c:8"}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Some resources are available for developing the WuRittSolva Tools,and these \
+coresponding notebooks are listed below:\
+\>", "Text",
+ CellTags->"b:3.6"],
+
+Cell["\<\
+[1]. Demonstration of WuRittSolva.nb
+[2]. WuRittSolva User Guide.nb
+[3]. Demonstration of WuRittSolva in Elementary Geometry.nb
+[4]. A Collection of Testing Problems.nb
+[5]. WuRittSolva for Concrete Geometric Configurations in Elementary \
+Geometry.nb
+[6]. WuRittSolva User Manual.nb\
+\>", "SmallText",
+ CellTags->"b:3.6"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+CellGrouping->Manual,
+WindowSize->{1440, 818},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+PrintingCopies->1,
+PrintingStartingPageNumber->5,
+PrintingPageRange->{Automatic, Automatic},
+TaggingRules:>{
+ "PaginationCache" -> {{2005, 6, 6, 12, 38, 56.7418128`9.50647804303606}, {5, 
+    5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+    5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 
+    5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5}}},
+Magnification->1,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (2015\:5e747\:67087\
+\:65e5)",
+StyleDefinitions->"Demo.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "toc:1"->{
+  Cell[580, 22, 133, 3, 46, "Title",
+   CellTags->{"toc:1", "c:1"}]},
+ "c:1"->{
+  Cell[580, 22, 133, 3, 46, "Title",
+   CellTags->{"toc:1", "c:1"}]},
+ "b:3.0"->{
+  Cell[2996, 111, 107, 1, 74, "Section",
+   CellTags->{"b:3.0", "c:2"}],
+  Cell[3128, 116, 71, 1, 31, "Subsubsection",
+   CellTags->{"toc:2", "b:3.0"}],
+  Cell[3202, 119, 610, 19, 55, "Input",
+   CellTags->"b:3.0"],
+  Cell[3849, 143, 79, 1, 25, "Subsubsection",
+   CellTags->{"toc:3", "b:3.0"}],
+  Cell[3931, 146, 707, 19, 131, "Input",
+   CellTags->"b:3.0"],
+  Cell[4675, 170, 207, 9, 25, "Subsubsection",
+   CellTags->{"toc:4", "b:3.0"}],
+  Cell[4885, 181, 472, 14, 71, "Input",
+   CellTags->"b:3.0"]},
+ "c:2"->{
+  Cell[2996, 111, 107, 1, 74, "Section",
+   CellTags->{"b:3.0", "c:2"}]},
+ "toc:2"->{
+  Cell[3128, 116, 71, 1, 31, "Subsubsection",
+   CellTags->{"toc:2", "b:3.0"}]},
+ "toc:3"->{
+  Cell[3849, 143, 79, 1, 25, "Subsubsection",
+   CellTags->{"toc:3", "b:3.0"}]},
+ "toc:4"->{
+  Cell[4675, 170, 207, 9, 25, "Subsubsection",
+   CellTags->{"toc:4", "b:3.0"}]},
+ "b:3.1"->{
+  Cell[5406, 201, 100, 1, 43, "Section",
+   CellTags->{"b:3.1", "c:3"}],
+  Cell[5531, 206, 84, 1, 33, "Subsubsection",
+   CellTags->{"toc:5", "b:3.1"}],
+  Cell[5618, 209, 969, 29, 131, "Input",
+   CellTags->"b:3.1"],
+  Cell[6590, 240, 922, 27, 171, "Input",
+   CellTags->"b:3.1"],
+  Cell[7515, 269, 729, 21, 111, "Input",
+   CellTags->"b:3.1"],
+  Cell[8281, 295, 90, 1, 33, "Subsubsection",
+   CellTags->{"toc:6", "b:3.1"}],
+  Cell[8374, 298, 550, 15, 111, "Input",
+   CellTags->"b:3.1"],
+  Cell[8927, 315, 729, 19, 131, "Input",
+   CellTags->"b:3.1"],
+  Cell[9659, 336, 843, 23, 131, "Input",
+   CellTags->"b:3.1"],
+  Cell[10539, 364, 78, 1, 33, "Subsubsection",
+   CellTags->{"toc:7", "b:3.1"}],
+  Cell[10620, 367, 582, 16, 111, "Input",
+   CellTags->"b:3.1"],
+  Cell[11205, 385, 874, 24, 151, "Input",
+   CellTags->"b:3.1"],
+  Cell[12082, 411, 567, 15, 111, "Input",
+   CellTags->"b:3.1"],
+  Cell[12652, 428, 2120, 54, 231, "Input",
+   CellTags->"b:3.1"]},
+ "c:3"->{
+  Cell[5406, 201, 100, 1, 43, "Section",
+   CellTags->{"b:3.1", "c:3"}]},
+ "toc:5"->{
+  Cell[5531, 206, 84, 1, 33, "Subsubsection",
+   CellTags->{"toc:5", "b:3.1"}]},
+ "toc:6"->{
+  Cell[8281, 295, 90, 1, 33, "Subsubsection",
+   CellTags->{"toc:6", "b:3.1"}]},
+ "toc:7"->{
+  Cell[10539, 364, 78, 1, 33, "Subsubsection",
+   CellTags->{"toc:7", "b:3.1"}]},
+ "b:3.2"->{
+  Cell[14821, 488, 90, 1, 43, "Section",
+   CellTags->{"b:3.2", "c:4"}],
+  Cell[14936, 493, 105, 1, 33, "Subsubsection",
+   CellTags->{"toc:8", "b:3.2"}],
+  Cell[15044, 496, 1805, 42, 291, "Input",
+   CellTags->"b:3.2"],
+  Cell[16852, 540, 4240, 105, 471, "Input",
+   CellTags->"b:3.2"],
+  Cell[21117, 649, 60, 1, 27, "Text",
+   CellTags->"b:3.2"],
+  Cell[21180, 652, 455, 17, 51, "Input",
+   CellTags->"b:3.2"],
+  Cell[21638, 671, 223, 7, 31, "Input",
+   CellTags->"b:3.2"],
+  Cell[21910, 684, 107, 1, 33, "Subsubsection",
+   CellTags->{"toc:9", "b:3.2"}],
+  Cell[22020, 687, 1406, 35, 251, "Input",
+   CellTags->"b:3.2"],
+  Cell[23429, 724, 1399, 35, 251, "Input",
+   CellTags->"b:3.2"],
+  Cell[24865, 764, 111, 1, 33, "Subsubsection",
+   CellTags->{"toc:10", "b:3.2"}],
+  Cell[24979, 767, 659, 18, 111, "Input",
+   CellTags->"b:3.2"],
+  Cell[25641, 787, 661, 18, 111, "Input",
+   CellTags->"b:3.2"],
+  Cell[26339, 810, 79, 1, 33, "Subsubsection",
+   CellTags->{"toc:11", "b:3.2"}],
+  Cell[26421, 813, 1153, 31, 171, "Input",
+   CellTags->"b:3.2"],
+  Cell[27599, 848, 56, 1, 27, "Text",
+   CellTags->"b:3.2"],
+  Cell[27658, 851, 1237, 44, 111, "Input",
+   CellTags->"b:3.2"],
+  Cell[28898, 897, 115, 3, 31, "Input",
+   CellTags->"b:3.2"],
+  Cell[29016, 902, 455, 17, 51, "Input",
+   CellTags->"b:3.2"],
+  Cell[29474, 921, 223, 7, 31, "Input",
+   CellTags->"b:3.2"],
+  Cell[29700, 930, 135, 4, 31, "Input",
+   CellTags->"b:3.2"],
+  Cell[29838, 936, 113, 3, 31, "Input",
+   CellTags->"b:3.2"]},
+ "c:4"->{
+  Cell[14821, 488, 90, 1, 43, "Section",
+   CellTags->{"b:3.2", "c:4"}]},
+ "toc:8"->{
+  Cell[14936, 493, 105, 1, 33, "Subsubsection",
+   CellTags->{"toc:8", "b:3.2"}]},
+ "toc:9"->{
+  Cell[21910, 684, 107, 1, 33, "Subsubsection",
+   CellTags->{"toc:9", "b:3.2"}]},
+ "toc:10"->{
+  Cell[24865, 764, 111, 1, 33, "Subsubsection",
+   CellTags->{"toc:10", "b:3.2"}]},
+ "toc:11"->{
+  Cell[26339, 810, 79, 1, 33, "Subsubsection",
+   CellTags->{"toc:11", "b:3.2"}]},
+ "b:3.3"->{
+  Cell[30012, 946, 93, 1, 43, "Section",
+   CellTags->{"b:3.3", "c:5"}],
+  Cell[30130, 951, 105, 1, 33, "Subsubsection",
+   CellTags->{"toc:12", "b:3.3"}],
+  Cell[30238, 954, 1991, 54, 231, "Input",
+   CellTags->"b:3.3"],
+  Cell[32266, 1013, 130, 3, 33, "Subsubsection",
+   CellTags->{"toc:13", "b:3.3"}],
+  Cell[32399, 1018, 1489, 42, 191, "Input",
+   CellTags->"b:3.3"],
+  Cell[33925, 1065, 119, 2, 33, "Subsubsection",
+   CellTags->{"toc:14", "b:3.3"}],
+  Cell[34047, 1069, 2121, 54, 171, "Input",
+   CellTags->"b:3.3"],
+  Cell[36171, 1125, 5014, 126, 451, "Input",
+   CellTags->"b:3.3"],
+  Cell[41222, 1256, 79, 1, 33, "Subsubsection",
+   CellTags->{"toc:15", "b:3.3"}],
+  Cell[41304, 1259, 537, 16, 91, "Input",
+   CellTags->"b:3.3"],
+  Cell[41844, 1277, 5016, 124, 511, "Input",
+   CellTags->"b:3.3"],
+  Cell[46897, 1406, 80, 1, 33, "Subsubsection",
+   CellTags->{"toc:16", "b:3.3"}],
+  Cell[46980, 1409, 1224, 33, 231, "Input",
+   CellTags->"b:3.3"],
+  Cell[48207, 1444, 2138, 59, 191, "Input",
+   CellTags->"b:3.3"],
+  Cell[50348, 1505, 2081, 59, 231, "Input",
+   CellTags->"b:3.3"],
+  Cell[52466, 1569, 80, 1, 33, "Subsubsection",
+   CellTags->{"toc:17", "b:3.3"}],
+  Cell[52549, 1572, 2411, 65, 251, "Input",
+   CellTags->"b:3.3"],
+  Cell[54963, 1639, 982, 28, 151, "Input",
+   CellTags->"b:3.3"],
+  Cell[55982, 1672, 80, 1, 33, "Subsubsection",
+   CellTags->{"toc:18", "b:3.3"}],
+  Cell[56065, 1675, 4438, 120, 511, "Input",
+   CellTags->"b:3.3"],
+  Cell[60540, 1800, 48, 1, 27, "Text",
+   CellTags->"b:3.3"],
+  Cell[60591, 1803, 3075, 112, 171, "Input",
+   CellTags->"b:3.3"],
+  Cell[63669, 1917, 146, 4, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[63818, 1923, 286, 9, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[64107, 1934, 283, 9, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[64427, 1948, 50, 1, 27, "Text",
+   CellTags->"b:3.3"],
+  Cell[64480, 1951, 1316, 47, 131, "Input",
+   CellTags->"b:3.3"],
+  Cell[65799, 2000, 217, 5, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[66019, 2007, 298, 9, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[66320, 2018, 130, 3, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[66487, 2026, 50, 1, 25, "Text",
+   CellTags->"b:3.3"],
+  Cell[66540, 2029, 2591, 92, 211, "Input",
+   CellTags->"b:3.3"],
+  Cell[69134, 2123, 354, 10, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[69491, 2135, 133, 3, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[69627, 2140, 130, 3, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[69760, 2145, 217, 5, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[69980, 2152, 133, 3, 31, "Input",
+   CellTags->"b:3.3"],
+  Cell[70116, 2157, 130, 3, 31, "Input",
+   CellTags->"b:3.3"]},
+ "c:5"->{
+  Cell[30012, 946, 93, 1, 43, "Section",
+   CellTags->{"b:3.3", "c:5"}]},
+ "toc:12"->{
+  Cell[30130, 951, 105, 1, 33, "Subsubsection",
+   CellTags->{"toc:12", "b:3.3"}]},
+ "toc:13"->{
+  Cell[32266, 1013, 130, 3, 33, "Subsubsection",
+   CellTags->{"toc:13", "b:3.3"}]},
+ "toc:14"->{
+  Cell[33925, 1065, 119, 2, 33, "Subsubsection",
+   CellTags->{"toc:14", "b:3.3"}]},
+ "toc:15"->{
+  Cell[41222, 1256, 79, 1, 33, "Subsubsection",
+   CellTags->{"toc:15", "b:3.3"}]},
+ "toc:16"->{
+  Cell[46897, 1406, 80, 1, 33, "Subsubsection",
+   CellTags->{"toc:16", "b:3.3"}]},
+ "toc:17"->{
+  Cell[52466, 1569, 80, 1, 33, "Subsubsection",
+   CellTags->{"toc:17", "b:3.3"}]},
+ "toc:18"->{
+  Cell[55982, 1672, 80, 1, 33, "Subsubsection",
+   CellTags->{"toc:18", "b:3.3"}]},
+ "b:3.4"->{
+  Cell[70295, 2166, 102, 1, 43, "Section",
+   CellTags->{"b:3.4", "c:6"}],
+  Cell[70422, 2171, 82, 1, 29, "Subsubsection",
+   CellTags->{"toc:19", "b:3.4"}],
+  Cell[70507, 2174, 699, 19, 111, "Input",
+   CellTags->"b:3.4"],
+  Cell[71209, 2195, 89, 2, 31, "Input",
+   CellTags->"b:3.4"],
+  Cell[71335, 2202, 92, 1, 23, "Subsubsection",
+   CellTags->{"toc:20", "b:3.4"}],
+  Cell[71430, 2205, 777, 20, 131, "Input",
+   CellTags->"b:3.4"],
+  Cell[72210, 2227, 159, 5, 31, "Input",
+   CellTags->"b:3.4"],
+  Cell[72406, 2237, 91, 1, 23, "Subsubsection",
+   CellTags->{"toc:21", "b:3.4"}],
+  Cell[72500, 2240, 1582, 43, 191, "Input",
+   CellTags->"b:3.4"],
+  Cell[74085, 2285, 158, 5, 31, "Input",
+   CellTags->"b:3.4"],
+  Cell[74280, 2295, 94, 1, 23, "Subsubsection",
+   CellTags->{"toc:22", "b:3.4"}],
+  Cell[74399, 2300, 903, 24, 131, "Input",
+   CellTags->"b:3.4"],
+  Cell[75305, 2326, 161, 5, 31, "Input",
+   CellTags->"b:3.4"]},
+ "c:6"->{
+  Cell[70295, 2166, 102, 1, 43, "Section",
+   CellTags->{"b:3.4", "c:6"}]},
+ "toc:19"->{
+  Cell[70422, 2171, 82, 1, 29, "Subsubsection",
+   CellTags->{"toc:19", "b:3.4"}]},
+ "toc:20"->{
+  Cell[71335, 2202, 92, 1, 23, "Subsubsection",
+   CellTags->{"toc:20", "b:3.4"}]},
+ "toc:21"->{
+  Cell[72406, 2237, 91, 1, 23, "Subsubsection",
+   CellTags->{"toc:21", "b:3.4"}]},
+ "toc:22"->{
+  Cell[74280, 2295, 94, 1, 23, "Subsubsection",
+   CellTags->{"toc:22", "b:3.4"}]},
+ "b:3.5"->{
+  Cell[75527, 2338, 76, 1, 43, "Section",
+   CellTags->{"b:3.5", "c:7"}],
+  Cell[75628, 2343, 96, 1, 33, "Subsubsection",
+   CellTags->{"toc:23", "b:3.5"}],
+  Cell[75727, 2346, 2110, 52, 231, "Input",
+   CellTags->"b:3.5"],
+  Cell[77840, 2400, 839, 23, 131, "Input",
+   CellTags->"b:3.5"],
+  Cell[78716, 2428, 70, 1, 27, "Text",
+   CellTags->"b:3.5"],
+  Cell[78789, 2431, 2517, 92, 151, "Input",
+   CellTags->"b:3.5"],
+  Cell[81309, 2525, 144, 4, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[81456, 2531, 162, 5, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[81621, 2538, 162, 5, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[81820, 2548, 62, 1, 27, "Text",
+   CellTags->"b:3.5"],
+  Cell[81885, 2551, 1551, 59, 111, "Input",
+   CellTags->"b:3.5"],
+  Cell[83439, 2612, 144, 4, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[83586, 2618, 139, 4, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[83762, 2627, 59, 1, 27, "Text",
+   CellTags->"b:3.5"],
+  Cell[83824, 2630, 3839, 141, 191, "Input",
+   CellTags->"b:3.5"],
+  Cell[87666, 2773, 177, 5, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[87846, 2780, 155, 4, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[88004, 2786, 652, 20, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[88659, 2808, 152, 4, 31, "Input",
+   CellTags->"b:3.5"],
+  Cell[88848, 2817, 73, 1, 27, "Text",
+   CellTags->"b:3.5"],
+  Cell[88924, 2820, 1787, 65, 111, "Input",
+   CellTags->"b:3.5"],
+  Cell[90714, 2887, 151, 4, 31, "Input",
+   CellTags->"b:3.5"]},
+ "c:7"->{
+  Cell[75527, 2338, 76, 1, 43, "Section",
+   CellTags->{"b:3.5", "c:7"}]},
+ "toc:23"->{
+  Cell[75628, 2343, 96, 1, 33, "Subsubsection",
+   CellTags->{"toc:23", "b:3.5"}]},
+ "b:3.6"->{
+  Cell[90914, 2897, 67, 1, 43, "Section",
+   CellTags->{"b:3.6", "c:8"}],
+  Cell[91006, 2902, 162, 4, 30, "Text",
+   CellTags->"b:3.6"],
+  Cell[91171, 2908, 332, 9, 103, "SmallText",
+   CellTags->"b:3.6"]},
+ "c:8"->{
+  Cell[90914, 2897, 67, 1, 43, "Section",
+   CellTags->{"b:3.6", "c:8"}]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"toc:1", 92461, 2945},
+ {"c:1", 92541, 2948},
+ {"b:3.0", 92623, 2951},
+ {"c:2", 93138, 2966},
+ {"toc:2", 93224, 2969},
+ {"toc:3", 93317, 2972},
+ {"toc:4", 93410, 2975},
+ {"b:3.1", 93504, 2978},
+ {"c:3", 94474, 3007},
+ {"toc:5", 94560, 3010},
+ {"toc:6", 94653, 3013},
+ {"toc:7", 94746, 3016},
+ {"b:3.2", 94840, 3019},
+ {"c:4", 96345, 3064},
+ {"toc:8", 96431, 3067},
+ {"toc:9", 96526, 3070},
+ {"toc:10", 96622, 3073},
+ {"toc:11", 96719, 3076},
+ {"b:3.3", 96814, 3079},
+ {"c:5", 99441, 3156},
+ {"toc:12", 99528, 3159},
+ {"toc:13", 99625, 3162},
+ {"toc:14", 99723, 3165},
+ {"toc:15", 99821, 3168},
+ {"toc:16", 99918, 3171},
+ {"toc:17", 100015, 3174},
+ {"toc:18", 100112, 3177},
+ {"b:3.4", 100208, 3180},
+ {"c:6", 101146, 3207},
+ {"toc:19", 101235, 3210},
+ {"toc:20", 101332, 3213},
+ {"toc:21", 101429, 3216},
+ {"toc:22", 101526, 3219},
+ {"b:3.5", 101622, 3222},
+ {"c:7", 103081, 3267},
+ {"toc:23", 103169, 3270},
+ {"b:3.6", 103265, 3273},
+ {"c:8", 103482, 3280}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 133, 3, 46, "Title",
+ CellTags->{"toc:1", "c:1"}],
+Cell[716, 27, 92, 1, 21, "Subtitle"],
+Cell[811, 30, 2160, 77, 184, "Text"],
+Cell[CellGroupData[{
+Cell[2996, 111, 107, 1, 74, "Section",
+ CellTags->{"b:3.0", "c:2"}],
+Cell[CellGroupData[{
+Cell[3128, 116, 71, 1, 31, "Subsubsection",
+ CellTags->{"toc:2", "b:3.0"}],
+Cell[3202, 119, 610, 19, 55, "Input",
+ CellTags->"b:3.0"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3849, 143, 79, 1, 25, "Subsubsection",
+ CellTags->{"toc:3", "b:3.0"}],
+Cell[3931, 146, 707, 19, 131, "Input",
+ CellTags->"b:3.0"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4675, 170, 207, 9, 25, "Subsubsection",
+ CellTags->{"toc:4", "b:3.0"}],
+Cell[4885, 181, 472, 14, 71, "Input",
+ CellTags->"b:3.0"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5406, 201, 100, 1, 43, "Section",
+ CellTags->{"b:3.1", "c:3"}],
+Cell[CellGroupData[{
+Cell[5531, 206, 84, 1, 33, "Subsubsection",
+ CellTags->{"toc:5", "b:3.1"}],
+Cell[5618, 209, 969, 29, 131, "Input",
+ CellTags->"b:3.1"],
+Cell[6590, 240, 922, 27, 171, "Input",
+ CellTags->"b:3.1"],
+Cell[7515, 269, 729, 21, 111, "Input",
+ CellTags->"b:3.1"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8281, 295, 90, 1, 33, "Subsubsection",
+ CellTags->{"toc:6", "b:3.1"}],
+Cell[8374, 298, 550, 15, 111, "Input",
+ CellTags->"b:3.1"],
+Cell[8927, 315, 729, 19, 131, "Input",
+ CellTags->"b:3.1"],
+Cell[9659, 336, 843, 23, 131, "Input",
+ CellTags->"b:3.1"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[10539, 364, 78, 1, 33, "Subsubsection",
+ CellTags->{"toc:7", "b:3.1"}],
+Cell[10620, 367, 582, 16, 111, "Input",
+ CellTags->"b:3.1"],
+Cell[11205, 385, 874, 24, 151, "Input",
+ CellTags->"b:3.1"],
+Cell[12082, 411, 567, 15, 111, "Input",
+ CellTags->"b:3.1"],
+Cell[12652, 428, 2120, 54, 231, "Input",
+ CellTags->"b:3.1"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[14821, 488, 90, 1, 43, "Section",
+ CellTags->{"b:3.2", "c:4"}],
+Cell[CellGroupData[{
+Cell[14936, 493, 105, 1, 33, "Subsubsection",
+ CellTags->{"toc:8", "b:3.2"}],
+Cell[15044, 496, 1805, 42, 291, "Input",
+ CellTags->"b:3.2"],
+Cell[16852, 540, 4240, 105, 471, "Input",
+ CellTags->"b:3.2"],
+Cell[CellGroupData[{
+Cell[21117, 649, 60, 1, 27, "Text",
+ CellTags->"b:3.2"],
+Cell[21180, 652, 455, 17, 51, "Input",
+ CellTags->"b:3.2"],
+Cell[21638, 671, 223, 7, 31, "Input",
+ CellTags->"b:3.2"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[21910, 684, 107, 1, 33, "Subsubsection",
+ CellTags->{"toc:9", "b:3.2"}],
+Cell[22020, 687, 1406, 35, 251, "Input",
+ CellTags->"b:3.2"],
+Cell[23429, 724, 1399, 35, 251, "Input",
+ CellTags->"b:3.2"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[24865, 764, 111, 1, 33, "Subsubsection",
+ CellTags->{"toc:10", "b:3.2"}],
+Cell[24979, 767, 659, 18, 111, "Input",
+ CellTags->"b:3.2"],
+Cell[25641, 787, 661, 18, 111, "Input",
+ CellTags->"b:3.2"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[26339, 810, 79, 1, 33, "Subsubsection",
+ CellTags->{"toc:11", "b:3.2"}],
+Cell[26421, 813, 1153, 31, 171, "Input",
+ CellTags->"b:3.2"],
+Cell[CellGroupData[{
+Cell[27599, 848, 56, 1, 27, "Text",
+ CellTags->"b:3.2"],
+Cell[27658, 851, 1237, 44, 111, "Input",
+ CellTags->"b:3.2"],
+Cell[28898, 897, 115, 3, 31, "Input",
+ CellTags->"b:3.2"],
+Cell[29016, 902, 455, 17, 51, "Input",
+ CellTags->"b:3.2"],
+Cell[29474, 921, 223, 7, 31, "Input",
+ CellTags->"b:3.2"],
+Cell[29700, 930, 135, 4, 31, "Input",
+ CellTags->"b:3.2"],
+Cell[29838, 936, 113, 3, 31, "Input",
+ CellTags->"b:3.2"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[30012, 946, 93, 1, 43, "Section",
+ CellTags->{"b:3.3", "c:5"}],
+Cell[CellGroupData[{
+Cell[30130, 951, 105, 1, 33, "Subsubsection",
+ CellTags->{"toc:12", "b:3.3"}],
+Cell[30238, 954, 1991, 54, 231, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32266, 1013, 130, 3, 33, "Subsubsection",
+ CellTags->{"toc:13", "b:3.3"}],
+Cell[32399, 1018, 1489, 42, 191, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[33925, 1065, 119, 2, 33, "Subsubsection",
+ CellTags->{"toc:14", "b:3.3"}],
+Cell[34047, 1069, 2121, 54, 171, "Input",
+ CellTags->"b:3.3"],
+Cell[36171, 1125, 5014, 126, 451, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[41222, 1256, 79, 1, 33, "Subsubsection",
+ CellTags->{"toc:15", "b:3.3"}],
+Cell[41304, 1259, 537, 16, 91, "Input",
+ CellTags->"b:3.3"],
+Cell[41844, 1277, 5016, 124, 511, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[46897, 1406, 80, 1, 33, "Subsubsection",
+ CellTags->{"toc:16", "b:3.3"}],
+Cell[46980, 1409, 1224, 33, 231, "Input",
+ CellTags->"b:3.3"],
+Cell[48207, 1444, 2138, 59, 191, "Input",
+ CellTags->"b:3.3"],
+Cell[50348, 1505, 2081, 59, 231, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[52466, 1569, 80, 1, 33, "Subsubsection",
+ CellTags->{"toc:17", "b:3.3"}],
+Cell[52549, 1572, 2411, 65, 251, "Input",
+ CellTags->"b:3.3"],
+Cell[54963, 1639, 982, 28, 151, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[55982, 1672, 80, 1, 33, "Subsubsection",
+ CellTags->{"toc:18", "b:3.3"}],
+Cell[56065, 1675, 4438, 120, 511, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[60540, 1800, 48, 1, 27, "Text",
+ CellTags->"b:3.3"],
+Cell[60591, 1803, 3075, 112, 171, "Input",
+ CellTags->"b:3.3"],
+Cell[63669, 1917, 146, 4, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[63818, 1923, 286, 9, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[64107, 1934, 283, 9, 31, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[64427, 1948, 50, 1, 27, "Text",
+ CellTags->"b:3.3"],
+Cell[64480, 1951, 1316, 47, 131, "Input",
+ CellTags->"b:3.3"],
+Cell[65799, 2000, 217, 5, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[66019, 2007, 298, 9, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[66320, 2018, 130, 3, 31, "Input",
+ CellTags->"b:3.3"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[66487, 2026, 50, 1, 25, "Text",
+ CellTags->"b:3.3"],
+Cell[66540, 2029, 2591, 92, 211, "Input",
+ CellTags->"b:3.3"],
+Cell[69134, 2123, 354, 10, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[69491, 2135, 133, 3, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[69627, 2140, 130, 3, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[69760, 2145, 217, 5, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[69980, 2152, 133, 3, 31, "Input",
+ CellTags->"b:3.3"],
+Cell[70116, 2157, 130, 3, 31, "Input",
+ CellTags->"b:3.3"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[70295, 2166, 102, 1, 43, "Section",
+ CellTags->{"b:3.4", "c:6"}],
+Cell[CellGroupData[{
+Cell[70422, 2171, 82, 1, 29, "Subsubsection",
+ CellTags->{"toc:19", "b:3.4"}],
+Cell[70507, 2174, 699, 19, 111, "Input",
+ CellTags->"b:3.4"],
+Cell[71209, 2195, 89, 2, 31, "Input",
+ CellTags->"b:3.4"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[71335, 2202, 92, 1, 23, "Subsubsection",
+ CellTags->{"toc:20", "b:3.4"}],
+Cell[71430, 2205, 777, 20, 131, "Input",
+ CellTags->"b:3.4"],
+Cell[72210, 2227, 159, 5, 31, "Input",
+ CellTags->"b:3.4"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[72406, 2237, 91, 1, 23, "Subsubsection",
+ CellTags->{"toc:21", "b:3.4"}],
+Cell[72500, 2240, 1582, 43, 191, "Input",
+ CellTags->"b:3.4"],
+Cell[74085, 2285, 158, 5, 31, "Input",
+ CellTags->"b:3.4"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[74280, 2295, 94, 1, 23, "Subsubsection",
+ CellTags->{"toc:22", "b:3.4"}],
+Cell[CellGroupData[{
+Cell[74399, 2300, 903, 24, 131, "Input",
+ CellTags->"b:3.4"],
+Cell[75305, 2326, 161, 5, 31, "Input",
+ CellTags->"b:3.4"]
+}, Closed]]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[75527, 2338, 76, 1, 43, "Section",
+ CellTags->{"b:3.5", "c:7"}],
+Cell[CellGroupData[{
+Cell[75628, 2343, 96, 1, 33, "Subsubsection",
+ CellTags->{"toc:23", "b:3.5"}],
+Cell[75727, 2346, 2110, 52, 231, "Input",
+ CellTags->"b:3.5"],
+Cell[77840, 2400, 839, 23, 131, "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[78716, 2428, 70, 1, 27, "Text",
+ CellTags->"b:3.5"],
+Cell[78789, 2431, 2517, 92, 151, "Input",
+ CellTags->"b:3.5"],
+Cell[81309, 2525, 144, 4, 31, "Input",
+ CellTags->"b:3.5"],
+Cell[81456, 2531, 162, 5, 31, "Input",
+ CellTags->"b:3.5"],
+Cell[81621, 2538, 162, 5, 31, "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[81820, 2548, 62, 1, 27, "Text",
+ CellTags->"b:3.5"],
+Cell[81885, 2551, 1551, 59, 111, "Input",
+ CellTags->"b:3.5"],
+Cell[83439, 2612, 144, 4, 31, "Input",
+ CellTags->"b:3.5"],
+Cell[83586, 2618, 139, 4, 31, "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[83762, 2627, 59, 1, 27, "Text",
+ CellTags->"b:3.5"],
+Cell[83824, 2630, 3839, 141, 191, "Input",
+ CellTags->"b:3.5"],
+Cell[87666, 2773, 177, 5, 31, "Input",
+ CellTags->"b:3.5"],
+Cell[87846, 2780, 155, 4, 31, "Input",
+ CellTags->"b:3.5"],
+Cell[88004, 2786, 652, 20, 31, "Input",
+ CellTags->"b:3.5"],
+Cell[88659, 2808, 152, 4, 31, "Input",
+ CellTags->"b:3.5"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[88848, 2817, 73, 1, 27, "Text",
+ CellTags->"b:3.5"],
+Cell[88924, 2820, 1787, 65, 111, "Input",
+ CellTags->"b:3.5"],
+Cell[90714, 2887, 151, 4, 31, "Input",
+ CellTags->"b:3.5"]
+}, Closed]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[90914, 2897, 67, 1, 43, "Section",
+ CellTags->{"b:3.6", "c:8"}],
+Cell[CellGroupData[{
+Cell[91006, 2902, 162, 4, 30, "Text",
+ CellTags->"b:3.6"],
+Cell[91171, 2908, 332, 9, 103, "SmallText",
+ CellTags->"b:3.6"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
