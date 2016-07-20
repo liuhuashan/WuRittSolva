@@ -1,0 +1,58 @@
+see http://www.mmrc.iss.ac.cn/~dwang/
+
+
+wsolve: A Maple Package for Solving System of Polynomial Equations
+
+ 
+
+Please download wsolve if you need it.
+
+help for wsolve :
+
+FUNCTION: wsolve - prepare the given algebraic system for solving
+
+CALLING SEQUENCE:
+wsolve(F)
+wsolve(F, X)
+wsolve(F, X,nonzero)
+e_val(F,X,nonzero)
+charset(F,X)
+od_wsolve(F,X) (zero decomposition for ordinary differential poly system)
+pd_wsolve(F,X) (zero decomposition for partial differential poly system)
+
+PARAMETERS:
+F - set or list of polynomials in indeterminates X
+X - list of indeterminates (not including parameters)
+nonzero - set of polynomials in indeterminates X
+
+SYNOPSIS:
+- The command wsolve(F,X,nonzero) computes a collection of ascending sets
+corresponding to F.
+
+- First the system corresponding to F is subdivided by factorization.
+
+- Then each subsystem is passed to a variant of Wu's algorithm which
+factors all intermediate results.
+
+- The result is a set of subsystems whose roots which are not the zeros of
+the initials (leading coefficients to the main variable) are those of the 
+original system but whose variables have been successively eliminated
+
+- If desired the solveas(asord) function may then be applied to solve 
+the subsystems
+
+- If desired the simplifyas(as,ord,nonzero) function may then be applied 
+to simplify the ascending set.
+
+- The set nonzero may be used to prevent certain quantities from being con-
+sidered in roots; however this may not stop all such solutions.
+
+
+EXAMPLES:
+> F := [x^2 - 2*x*z + 5, x*y^2 + y*z^3, 3*y^2 - 8*z^3]:
+> wsolve(F,[z,y,x]);
+
+
+{[z, y, x^2 + 5] 
+
+[x^2-2*x*z+5, 3*y+8*x, 3*x^6-64*x^5+45*x^4+225*x^2+375]}
