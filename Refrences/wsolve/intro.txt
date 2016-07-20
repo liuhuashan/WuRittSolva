@@ -1,5 +1,6 @@
-see http://www.mmrc.iss.ac.cn/~dwang/
+see also, http://www.mmrc.iss.ac.cn/~dwang/wsolve.html
 
+----
 
 wsolve: A Maple Package for Solving System of Polynomial Equations
 
