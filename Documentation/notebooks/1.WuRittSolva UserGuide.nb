@@ -1,0 +1,372 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      6908,        219]*)
+(*NotebookOutlinePosition[     10024,        320]*)
+(*  CellTagsIndexPosition[      9652,        301]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["WuRittSolva User Guide", "Title",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman",
+  CellTags->{"toc:1", "c:1"}],
+
+Cell["Standard Application Package for Wu-Ritt Process", "Subtitle",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman"],
+
+Cell[TextData[Cell[BoxData[{
+    StyleBox["By",
+      FontSlant->"Italic"], "\n", 
+    StyleBox[\(\(\ \)\(Huashan\ Liu, \[IndentingNewLine]Department\ of\ \
+Mathematics, Tianjin\ Polytechnic\ University, 
+      P . R . C . \[IndentingNewLine]E - \(Mail : 
+          liukaitianpidi@sina . com\)\)\),
+      FontSlant->"Italic"], "\n", 
+    StyleBox[\(HomePage : \(\(http\)\(:\)\) // magicm  .51 . net\),
+      FontSlant->"Italic"], "\n", 
+    StyleBox[\(\(Instructed\ by\)\(\ \)\),
+      FontSlant->"Italic"], "\n", 
+    RowBox[{"Associate", " ", 
+      StyleBox[\(Prof . \ Huang\),
+        FontSlant->"Italic"], 
+      StyleBox[" ",
+        FontSlant->"Italic"], 
+      StyleBox["Dongwei",
+        FontSlant->"Italic"]}], "\n", 
+    RowBox[{\(Department\ of\ Mathematics\), 
+      ",", \(Tianjin\ Polytechnic\ University\), ",", 
+      RowBox[{"P", ".", "R", ".", "C", ".", "\[IndentingNewLine]", 
+        StyleBox["March",
+          FontSlant->"Italic"], 
+        StyleBox[".",
+          FontSlant->"Italic"], 
+        StyleBox[
+          FormBox[\(4\^th\),
+            "TraditionalForm"],
+          FontSlant->"Italic"]}], 
+      StyleBox[",",
+        FontSlant->"Italic"], 
+      StyleBox[
+        RowBox[{"2005", "-", 
+          RowBox[{"March", ".", 
+            FormBox[\(15\^th\),
+              "TraditionalForm"]}]}],
+        FontSlant->"Italic"], 
+      StyleBox[",",
+        FontSlant->"Italic"], 
+      StyleBox["2005",
+        FontSlant->"Italic"]}]}], "Text",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman"]], "Text",
+  TextAlignment->Center,
+  FontFamily->"Times New Roman",
+  FontSlant->"Italic"],
+
+Cell[CellGroupData[{
+
+Cell["About WuRittSolva", "Section",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->{"toc:2", "b:6.0", "c:2"}],
+
+Cell["\<\
+WuRittSolva is a Mathematica standard application package developed for \
+Wu-Ritt process, and now I have realized the characteristic set \
+computaion,polynomial equations system solving etc.; For further development, \
+I need to compliment it with more useful tools for special purposes.\
+\>", "Text",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->"b:6.0"],
+
+Cell["\<\
+It contains several .m file in general, and the init.m is for initializing \
+the working enviroment while the others realize the concrete functions \
+directly or indirectly. The other ones are WuRittSolva.m, Master.m .\
+\>", "Text",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->"b:6.0"],
+
+Cell["\<\
+The original version of the algorithm is deriveted from wsolve written by \
+Doctor Wang Dingkang, MMRC,ISS,CAS. For the sake of convenience, I take the \
+concrete steps of user-defined functions from wsolve,It works well.\
+\>", "Text",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->"b:6.0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["How WuRittSolva Works", "Section",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->{"toc:3", "b:6.1", "c:3"}],
+
+Cell[TextData[{
+  "When to use this package, it is convenient to copy it to Autoload \
+directory under the addons dirctory of installation directory, then start the \
+",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " Frontend and try use it. Another way is to copy it to StandardPackages \
+directory, then call functions by using command Need[WuRittSolva`*] or <<",
+  "WuRittSolva",
+  "`*;  Both ways are reasonable."
+}], "Text",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->"b:6.1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Some Comments on Functions", "Section",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->{"toc:4", "b:6.2", "c:4"}],
+
+Cell[TextData[{
+  "Some functions in WuRittSolva are not described detailly, but they are \
+useful. It is still possible to acquire the usage from the status bar of each \
+palatte of WuRittSolva Tools. Preknowledge on ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " is necessary."
+}], "Text",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->"b:6.2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Relevent Resources ", "Section",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->{"toc:5", "b:6.3", "c:5"}],
+
+Cell["\<\
+Some resources are available for developing the WuRittSolva , and these \
+coresponding notebooks are listed below:\
+\>", "Text",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->"b:6.3"],
+
+Cell["\<\
+[1]. Demonstration of WuRittSolva.nb
+[2]. Details of WuRittSolva.nb
+[3]. Demonstration of WuRittSolva in Elementary Geometry.nb
+[4]. A Collection of Testing Problems.nb
+[5]. WuRittSolva for Concrete Geometric Configurations in Elementary \
+Geometry.nb
+[6]. WuRittSolva User Manual.nb\
+\>", "FramedBox",
+  TextAlignment->Left,
+  FontFamily->"Times New Roman",
+  CellTags->"b:6.3"]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 800}, {0, 527}},
+ShowPageBreaks->False,
+WindowSize->{792, 500},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingStartingPageNumber->8,
+PrintingPageRange->{Automatic, Automatic},
+TaggingRules:>{"PaginationCache" -> {{2005, 6, 6, 12, 38, \
+59.4457008`9.526695279514206}, {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9}}},
+StyleDefinitions -> "HelpBrowser.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "toc:1"->{
+    Cell[1776, 53, 127, 3, 103, "Title",
+      CellTags->{"toc:1", "c:1"}]},
+  "c:1"->{
+    Cell[1776, 53, 127, 3, 103, "Title",
+      CellTags->{"toc:1", "c:1"}]},
+  "toc:2"->{
+    Cell[3680, 112, 131, 3, 55, "Section",
+      CellTags->{"toc:2", "b:6.0", "c:2"}]},
+  "b:6.0"->{
+    Cell[3680, 112, 131, 3, 55, "Section",
+      CellTags->{"toc:2", "b:6.0", "c:2"}],
+    Cell[3814, 117, 389, 8, 42, "Text",
+      CellTags->"b:6.0"],
+    Cell[4206, 127, 319, 7, 42, "Text",
+      CellTags->"b:6.0"],
+    Cell[4528, 136, 322, 7, 42, "Text",
+      CellTags->"b:6.0"]},
+  "c:2"->{
+    Cell[3680, 112, 131, 3, 55, "Section",
+      CellTags->{"toc:2", "b:6.0", "c:2"}]},
+  "toc:3"->{
+    Cell[4887, 148, 135, 3, 55, "Section",
+      CellTags->{"toc:3", "b:6.1", "c:3"}]},
+  "b:6.1"->{
+    Cell[4887, 148, 135, 3, 55, "Section",
+      CellTags->{"toc:3", "b:6.1", "c:3"}],
+    Cell[5025, 153, 515, 13, 59, "Text",
+      CellTags->"b:6.1"]},
+  "c:3"->{
+    Cell[4887, 148, 135, 3, 55, "Section",
+      CellTags->{"toc:3", "b:6.1", "c:3"}]},
+  "toc:4"->{
+    Cell[5577, 171, 140, 3, 55, "Section",
+      CellTags->{"toc:4", "b:6.2", "c:4"}]},
+  "b:6.2"->{
+    Cell[5577, 171, 140, 3, 55, "Section",
+      CellTags->{"toc:4", "b:6.2", "c:4"}],
+    Cell[5720, 176, 380, 10, 42, "Text",
+      CellTags->"b:6.2"]},
+  "c:4"->{
+    Cell[5577, 171, 140, 3, 55, "Section",
+      CellTags->{"toc:4", "b:6.2", "c:4"}]},
+  "toc:5"->{
+    Cell[6137, 191, 133, 3, 55, "Section",
+      CellTags->{"toc:5", "b:6.3", "c:5"}]},
+  "b:6.3"->{
+    Cell[6137, 191, 133, 3, 55, "Section",
+      CellTags->{"toc:5", "b:6.3", "c:5"}],
+    Cell[6273, 196, 215, 6, 25, "Text",
+      CellTags->"b:6.3"],
+    Cell[6491, 204, 389, 11, 127, "FramedBox",
+      CellTags->"b:6.3"]},
+  "c:5"->{
+    Cell[6137, 191, 133, 3, 55, "Section",
+      CellTags->{"toc:5", "b:6.3", "c:5"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"toc:1", 7787, 241},
+  {"c:1", 7875, 244},
+  {"toc:2", 7965, 247},
+  {"b:6.0", 8066, 250},
+  {"c:2", 8363, 259},
+  {"toc:3", 8464, 262},
+  {"b:6.1", 8565, 265},
+  {"c:3", 8731, 270},
+  {"toc:4", 8832, 273},
+  {"b:6.2", 8933, 276},
+  {"c:4", 9099, 281},
+  {"toc:5", 9200, 284},
+  {"b:6.3", 9301, 287},
+  {"c:5", 9539, 294}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 127, 3, 103, "Title",
+  CellTags->{"toc:1", "c:1"}],
+Cell[1906, 58, 126, 2, 64, "Subtitle"],
+Cell[2035, 62, 1620, 46, 175, "Text"],
+
+Cell[CellGroupData[{
+Cell[3680, 112, 131, 3, 55, "Section",
+  CellTags->{"toc:2", "b:6.0", "c:2"}],
+Cell[3814, 117, 389, 8, 42, "Text",
+  CellTags->"b:6.0"],
+Cell[4206, 127, 319, 7, 42, "Text",
+  CellTags->"b:6.0"],
+Cell[4528, 136, 322, 7, 42, "Text",
+  CellTags->"b:6.0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4887, 148, 135, 3, 55, "Section",
+  CellTags->{"toc:3", "b:6.1", "c:3"}],
+Cell[5025, 153, 515, 13, 59, "Text",
+  CellTags->"b:6.1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5577, 171, 140, 3, 55, "Section",
+  CellTags->{"toc:4", "b:6.2", "c:4"}],
+Cell[5720, 176, 380, 10, 42, "Text",
+  CellTags->"b:6.2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6137, 191, 133, 3, 55, "Section",
+  CellTags->{"toc:5", "b:6.3", "c:5"}],
+Cell[6273, 196, 215, 6, 25, "Text",
+  CellTags->"b:6.3"],
+Cell[6491, 204, 389, 11, 127, "FramedBox",
+  CellTags->"b:6.3"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
